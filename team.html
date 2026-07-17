@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0713" />
+<title>Team — Bastian Castorene</title>
+<meta name="description" content="Quantum thermodynamics research group of Bastian Castorene at UTFSM & PUCV." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='0.5' stop-color='%23d946ef'/%3E%3Cstop offset='1' stop-color='%234f46e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3EBC%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="bg-glow"></div>
+<canvas id="energy"></canvas>
+<nav>
+  <a href="index.html#top" class="brand">Bastian Castorene</a>
+  <div class="nav-right">
+  <div class="nav-links">
+    <a class="backhome" href="index.html">&larr; <span class="lang-en">Home</span><span class="lang-es">Inicio</span><span class="lang-de">Start</span><span class="lang-zh">主页</span></a>
+    <a href="index.html#about"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span><span class="lang-de">Über mich</span><span class="lang-zh">关于</span></a>
+    <a href="index.html#research"><span class="lang-en">Research</span><span class="lang-es">Investigación</span><span class="lang-de">Forschung</span><span class="lang-zh">研究</span></a>
+    <a href="publications.html"><span class="lang-en">Publications</span><span class="lang-es">Publicaciones</span><span class="lang-de">Publikationen</span><span class="lang-zh">论文</span></a>
+    <a href="talks.html"><span class="lang-en">Talks</span><span class="lang-es">Congresos</span><span class="lang-de">Vorträge</span><span class="lang-zh">演讲</span></a>
+    <a href="index.html#team"><span class="lang-en">Team</span><span class="lang-es">Equipo</span><span class="lang-de">Team</span><span class="lang-zh">团队</span></a>
+    <a href="index.html#blog"><span class="lang-en">Blog</span><span class="lang-es">Blog</span><span class="lang-de">Blog</span><span class="lang-zh">博客</span></a>
+    <a href="index.html#notes"><span class="lang-en">Notes</span><span class="lang-es">Apuntes</span><span class="lang-de">Skripte</span><span class="lang-zh">讲义</span></a>
+    <a href="index.html#contact"><span class="lang-en">Contact</span><span class="lang-es">Contacto</span><span class="lang-de">Kontakt</span><span class="lang-zh">联系</span></a>
+  </div>
+    <button class="theme-toggle" aria-label="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <div class="lang-dd">
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" onclick="toggleLangMenu(this)"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
+      <ul class="lang-menu" role="listbox">
+        <li role="option" data-lang="en" onclick="pickLang('en')"><svg class="flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><rect x="25" width="10" height="30" fill="#fff"/><rect y="10" width="60" height="10" fill="#fff"/><rect x="27" width="6" height="30" fill="#C8102E"/><rect y="12" width="60" height="6" fill="#C8102E"/></svg> EN</li>
+        <li role="option" data-lang="es" onclick="pickLang('es')"><svg class="flag" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"><rect width="900" height="600" fill="#fff"/><rect y="300" width="900" height="300" fill="#D52B1E"/><rect width="300" height="300" fill="#0039A6"/><polygon points="150,55 172,119 240,120 186,162 206,227 150,188 94,227 114,162 60,120 128,119" fill="#fff"/></svg> ES</li>
+        <li role="option" data-lang="de" onclick="pickLang('de')"><svg class="flag" viewBox="0 0 5 3" xmlns="http://www.w3.org/2000/svg"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg> DE</li>
+        <li role="option" data-lang="zh" onclick="pickLang('zh')"><svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#DE2910"/><g fill="#FFDE00"><polygon points="5,2.5 6,5.5 9,5.5 6.6,7.4 7.5,10.4 5,8.6 2.5,10.4 3.4,7.4 1,5.5 4,5.5"/><circle cx="10.5" cy="2.2" r="0.7"/><circle cx="12.3" cy="4" r="0.7"/><circle cx="12.3" cy="6.5" r="0.7"/><circle cx="10.5" cy="8.3" r="0.7"/></g></svg> 中文</li>
+      </ul>
+    </div>
+    <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  </div>
+</nav>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
+  </div>
+<section class="reveal">
+  <span class="eyebrow"><span class="lang-en">Team</span><span class="lang-es">Equipo</span><span class="lang-de">Team</span><span class="lang-zh">团队</span></span>
+  <h2 class="section-title"><span class="lang-en">Quantum thermodynamics group</span><span class="lang-es">Grupo de termodinámica cuántica</span><span class="lang-de">Gruppe für Quantenthermodynamik</span><span class="lang-zh">量子热力学团队</span></h2>
+  <p class="section-lead"><span class="lang-en">The people I work with on quantum thermodynamics, quantum heat engines and magnetic systems.</span><span class="lang-es">Las personas con quienes trabajo en termodinámica cuántica, motores térmicos cuánticos y sistemas magnéticos.</span><span class="lang-de">Die Menschen, mit denen ich an Quantenthermodynamik, Quanten-Wärmekraftmaschinen und magnetischen Systemen arbeite.</span><span class="lang-zh">与我一同研究量子热力学、量子热机与磁性系统的伙伴。</span></p>
+  <div class="team-banner carousel">
+    <img class="cslide active" src="group1.jpg" alt="Quantum thermodynamics group" loading="lazy" />
+    <img class="cslide" src="group2.jpg" alt="Quantum thermodynamics group" loading="lazy" />
+  </div>
+  <div class="team-grid">
+    <div class="card member">
+      <div class="mphoto carousel"><img class="cslide active" src="pv1.jpg" alt="Patricio Vargas" loading="lazy" /><img class="cslide" src="pv2.jpg" alt="Patricio Vargas" loading="lazy" /><img class="cslide" src="pv3.jpg" alt="Patricio Vargas" loading="lazy" /></div>
+      <h3>Dr. Patricio Vargas</h3>
+      <p class="mrole"><span class="lang-en">Thesis advisor · Full Professor, UTFSM</span><span class="lang-es">Director de tesis · Profesor Titular, UTFSM</span><span class="lang-de">Doktorvater · Professor, UTFSM</span><span class="lang-zh">博士导师 · UTFSM 正教授</span></p>
+      <p class="mdesc"><span class="lang-en">Full Professor of Theoretical Physics and Director of the PhD Program in Physics at UTFSM. Works on magnetism, electronic properties of modern materials, nanotechnology and medical physics.</span><span class="lang-es">Profesor Titular de Física Teórica y Director del Programa de Doctorado en Física de la UTFSM. Trabaja en magnetismo, propiedades electrónicas de materiales modernos, nanotecnología y física médica.</span><span class="lang-de">Ordentlicher Professor für Theoretische Physik und Direktor des Physik-Promotionsprogramms der UTFSM. Arbeitet zu Magnetismus, elektronischen Eigenschaften moderner Materialien, Nanotechnologie und medizinischer Physik.</span><span class="lang-zh">UTFSM 理论物理正教授、物理博士项目主任。研究磁学、现代材料的电子性质、纳米技术与医学物理。</span></p>
+      <a class="doi" href="mailto:patricio.vargas@usm.cl" style="margin-top:12px;display:inline-block">✉ Email</a>
+    </div>
+    <div class="card member">
+      <div class="mphoto carousel"><img class="cslide active" src="fp1.jpg" alt="Francisco J. Peña" loading="lazy" /><img class="cslide" src="fp2.jpg" alt="Francisco J. Peña" loading="lazy" /><img class="cslide" src="fp3.jpg" alt="Francisco J. Peña" loading="lazy" /><img class="cslide" src="fp4.jpg" alt="Francisco J. Peña" loading="lazy" /><img class="cslide" src="fp5.jpg" alt="Francisco J. Peña" loading="lazy" /><img class="cslide" src="fp6.jpg" alt="Francisco J. Peña" loading="lazy" /></div>
+      <h3>Francisco J. Peña</h3>
+      <p class="mrole"><span class="lang-en">PhD in Physics (PUCV, 2015)</span><span class="lang-es">Dr. en Física (PUCV, 2015)</span><span class="lang-de">Dr. der Physik (PUCV, 2015)</span><span class="lang-zh">物理学博士（PUCV，2015）</span><br><span class="lang-en">Academic Researcher / Assistant Professor · <a class="inlink" href="https://scholar.google.com/citations?view_op=view_org&hl=es&org=1812728570911196340" target="_blank" rel="noopener">USS</a></span><span class="lang-es">Académico Investigador / Profesor Asistente · <a class="inlink" href="https://scholar.google.com/citations?view_op=view_org&hl=es&org=1812728570911196340" target="_blank" rel="noopener">USS</a></span><span class="lang-de">Wissenschaftl. Mitarbeiter / Assistenzprofessor · <a class="inlink" href="https://scholar.google.com/citations?view_op=view_org&hl=es&org=1812728570911196340" target="_blank" rel="noopener">USS</a></span><span class="lang-zh">研究员／助理教授 · <a class="inlink" href="https://scholar.google.com/citations?view_op=view_org&hl=es&org=1812728570911196340" target="_blank" rel="noopener">USS</a></span></p>
+      <p class="mdesc"><span class="lang-en">Specialist in quantum thermodynamics and energy transfer in nanosystems; long-time collaborator on my work.</span><span class="lang-es">Especialista en termodinámica cuántica y transferencia de energía en nanosistemas; colaborador de larga data en mi trabajo.</span><span class="lang-de">Spezialist für Quantenthermodynamik und Energietransfer in Nanosystemen; langjähriger Mitarbeiter an meiner Arbeit.</span><span class="lang-zh">专注量子热力学与纳米系统中的能量传递；长期合作者。</span></p>
+      <a class="doi" href="mailto:francisco.pena@uss.cl" style="margin-top:12px;display:inline-block">✉ Email</a>
+    </div>
+    <div class="card member">
+      <div class="mphoto carousel"><img class="cslide active" src="mg1.jpg" alt="Martin HvE Groves" loading="lazy" /><img class="cslide" src="mg2.jpg" alt="Martin HvE Groves" loading="lazy" /></div>
+      <h3>Martin HvE Groves</h3>
+      <p class="mrole"><span class="lang-en">PhD student · UTFSM &amp; PUCV</span><span class="lang-es">Estudiante de doctorado · UTFSM y PUCV</span><span class="lang-de">Doktorand · UTFSM &amp; PUCV</span><span class="lang-zh">博士研究生 · UTFSM 与 PUCV</span></p>
+      <p class="mdesc"><span class="lang-en">PhD student in the joint Physics program at UTFSM &amp; PUCV. Works on quantum thermodynamics and critical quantum engines, co-author on several of our recent works.</span><span class="lang-es">Estudiante del programa conjunto de Doctorado en Física UTFSM/PUCV. Trabaja en termodinámica cuántica y motores cuánticos críticos, coautor de varios de nuestros trabajos recientes.</span><span class="lang-de">Doktorand im gemeinsamen Physikprogramm der UTFSM &amp; PUCV. Arbeitet an Quantenthermodynamik und kritischen Quantenmaschinen, Mitautor mehrerer unserer jüngsten Arbeiten.</span><span class="lang-zh">UTFSM/PUCV 联合物理博士项目的研究生。研究量子热力学与临界量子热机，我们近期多篇论文的合著者。</span></p>
+      
+    </div>
+  </div>
+</section>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
+  </div>
+<footer>
+  <p>&copy; <span id="yr"></span> Bastian Castorene</p>
+  <p style="margin-top:6px;opacity:.7">Ph.D. (C) in Physics &middot; UTFSM &amp; PUCV &middot; Quantum thermodynamics</p>
+  <p style="margin-top:6px"><a href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

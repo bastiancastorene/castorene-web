@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0713" />
+<title>Bastian Castorene — Quantum Thermodynamics & Heat Engines</title>
+<meta name="description" content="Personal website of Bastian Castorene, PhD candidate in Physics (UTFSM & PUCV, Chile). Research in quantum thermodynamics, quantum heat engines, magnetic systems and criticality." />
+<meta name="author" content="Bastian Esteban Castorene Castorene" />
+<link rel="canonical" href="https://www.castorene.cl/" />
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Bastian Castorene" />
+<meta property="og:title" content="Bastian Castorene — Quantum Thermodynamics & Heat Engines" />
+<meta property="og:description" content="PhD candidate in Physics (UTFSM & PUCV). Quantum thermodynamics, quantum heat engines and magnetic systems." />
+<meta property="og:url" content="https://www.castorene.cl/" />
+<meta property="og:image" content="https://www.castorene.cl/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:alt" content="Bastian Castorene — PhD in Physics, quantum thermodynamics" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bastian Castorene — Quantum Thermodynamics & Heat Engines" />
+<meta name="twitter:description" content="PhD candidate in Physics (UTFSM & PUCV). Quantum thermodynamics, quantum heat engines and magnetic systems." />
+<meta name="twitter:image" content="https://www.castorene.cl/og-image.jpg" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='0.5' stop-color='%23d946ef'/%3E%3Cstop offset='1' stop-color='%234f46e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3EBC%3C/text%3E%3C/svg%3E" />
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Bastian Esteban Castorene Castorene",
+  "alternateName": "Bastian Castorene",
+  "email": "mailto:bastian.castorene@gmail.com",
+  "jobTitle": "PhD Candidate in Physics",
+  "url": "https://www.castorene.cl/",
+  "sameAs": [
+    "https://orcid.org/0009-0002-9075-5716",
+    "https://scholar.google.com/citations?hl=es&user=NQpSh18AAAAJ",
+    "https://www.linkedin.com/in/bastiancastorene/"
+  ],
+  "identifier": {"@type":"PropertyValue","propertyID":"ORCID","value":"0009-0002-9075-5716"},
+  "affiliation": [
+    {"@type":"Organization","name":"Universidad Técnica Federico Santa María"},
+    {"@type":"Organization","name":"Pontificia Universidad Católica de Valparaíso"}
+  ],
+  "knowsAbout": ["Quantum thermodynamics","Quantum heat engines","Magnetic systems","Quantum criticality","Statistical physics"]
+}
+</script>
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="bg-glow"></div>
+<canvas id="energy"></canvas>
+
+<nav>
+  <a href="#top" class="brand">Bastian Castorene</a>
+  <div class="nav-right">
+  <div class="nav-links">
+    <a href="#about"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span><span class="lang-de">Über mich</span><span class="lang-zh">关于</span></a>
+    <a href="#research"><span class="lang-en">Research</span><span class="lang-es">Investigación</span><span class="lang-de">Forschung</span><span class="lang-zh">研究</span></a>
+    <a href="#publications"><span class="lang-en">Publications</span><span class="lang-es">Publicaciones</span><span class="lang-de">Publikationen</span><span class="lang-zh">论文</span></a>
+    <a href="#conferences"><span class="lang-en">Talks</span><span class="lang-es">Congresos</span><span class="lang-de">Vorträge</span><span class="lang-zh">演讲</span></a>
+    <a href="#awards"><span class="lang-en">Awards</span><span class="lang-es">Premios</span><span class="lang-de">Auszeichnungen</span><span class="lang-zh">奖项</span></a>
+    <a href="#team"><span class="lang-en">Team</span><span class="lang-es">Equipo</span><span class="lang-de">Team</span><span class="lang-zh">团队</span></a>
+    <a href="#notes"><span class="lang-en">Notes</span><span class="lang-es">Apuntes</span><span class="lang-de">Skripte</span><span class="lang-zh">讲义</span></a>
+    <a href="#blog"><span class="lang-en">Blog</span><span class="lang-es">Blog</span><span class="lang-de">Blog</span><span class="lang-zh">博客</span></a>
+    <a href="#contact"><span class="lang-en">Contact</span><span class="lang-es">Contacto</span><span class="lang-de">Kontakt</span><span class="lang-zh">联系</span></a>
+  </div>
+    <button class="theme-toggle" aria-label="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <div class="lang-dd">
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" onclick="toggleLangMenu(this)"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
+      <ul class="lang-menu" role="listbox">
+        <li role="option" data-lang="en" onclick="pickLang('en')"><svg class="flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><rect x="25" width="10" height="30" fill="#fff"/><rect y="10" width="60" height="10" fill="#fff"/><rect x="27" width="6" height="30" fill="#C8102E"/><rect y="12" width="60" height="6" fill="#C8102E"/></svg> EN</li>
+        <li role="option" data-lang="es" onclick="pickLang('es')"><svg class="flag" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"><rect width="900" height="600" fill="#fff"/><rect y="300" width="900" height="300" fill="#D52B1E"/><rect width="300" height="300" fill="#0039A6"/><polygon points="150,55 172,119 240,120 186,162 206,227 150,188 94,227 114,162 60,120 128,119" fill="#fff"/></svg> ES</li>
+        <li role="option" data-lang="de" onclick="pickLang('de')"><svg class="flag" viewBox="0 0 5 3" xmlns="http://www.w3.org/2000/svg"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg> DE</li>
+        <li role="option" data-lang="zh" onclick="pickLang('zh')"><svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#DE2910"/><g fill="#FFDE00"><polygon points="5,2.5 6,5.5 9,5.5 6.6,7.4 7.5,10.4 5,8.6 2.5,10.4 3.4,7.4 1,5.5 4,5.5"/><circle cx="10.5" cy="2.2" r="0.7"/><circle cx="12.3" cy="4" r="0.7"/><circle cx="12.3" cy="6.5" r="0.7"/><circle cx="10.5" cy="8.3" r="0.7"/></g></svg> 中文</li>
+      </ul>
+    </div>
+    <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-role">
+        <span class="lang-en">PhD Candidate in Physics · UTFSM &amp; PUCV, Chile</span>
+        <span class="lang-es">Candidato a Doctor en Física · UTFSM y PUCV, Chile</span>
+        <span class="lang-de">Doktorand der Physik · UTFSM &amp; PUCV, Chile</span>
+        <span class="lang-zh">物理学博士研究生 · UTFSM 与 PUCV，智利</span>
+      </span>
+      <h1>Bastian Castorene</h1>
+      <p class="hero-sub">
+        <span class="lang-en">I study how energy, entanglement and criticality shape <b>quantum heat engines</b> — building thermodynamic cycles out of qubits, spins and low-dimensional quantum materials.</span>
+        <span class="lang-es">Estudio cómo la energía, el entrelazamiento y la criticalidad dan forma a los <b>motores térmicos cuánticos</b> — construyendo ciclos termodinámicos a partir de qubits, espines y materiales cuánticos de baja dimensión.</span>
+        <span class="lang-de">Ich erforsche, wie Energie, Verschränkung und Kritikalität <b>Quanten-Wärmekraftmaschinen</b> formen — thermodynamische Kreisprozesse aus Qubits, Spins und niederdimensionalen Quantenmaterialien.</span>
+        <span class="lang-zh">我研究能量、纠缠与临界性如何塑造<b>量子热机</b>——用量子比特、自旋和低维量子材料构建热力学循环。</span>
+      </p>
+      <div class="hero-tags">
+        <span class="tag"><span class="lang-en">Quantum thermodynamics</span><span class="lang-es">Termodinámica cuántica</span><span class="lang-de">Quantenthermodynamik</span><span class="lang-zh">量子热力学</span></span>
+        <span class="tag"><span class="lang-en">Quantum heat engines</span><span class="lang-es">Motores térmicos cuánticos</span><span class="lang-de">Quanten-Wärmekraftmaschinen</span><span class="lang-zh">量子热机</span></span>
+        <span class="tag"><span class="lang-en">Magnetic systems</span><span class="lang-es">Sistemas magnéticos</span><span class="lang-de">Magnetische Systeme</span><span class="lang-zh">磁性系统</span></span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#publications"><span class="lang-en">View publications</span><span class="lang-es">Ver publicaciones</span><span class="lang-de">Publikationen ansehen</span><span class="lang-zh">查看论文</span></a>
+        <a class="btn btn-ghost" href="CV_Bastian_Castorene_2026.pdf" download>↓ <span class="lang-en">Download CV</span><span class="lang-es">Descargar CV</span><span class="lang-de">CV herunterladen</span><span class="lang-zh">下载简历</span></a>
+        <a class="btn btn-ghost" href="mailto:bastian.castorene@gmail.com"><span class="lang-en">Get in touch</span><span class="lang-es">Escríbeme</span><span class="lang-de">Kontakt aufnehmen</span><span class="lang-zh">联系我</span></a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="profile.jpg" class="pf active" alt="Bastian Castorene" />
+      <img src="profile2.jpg" class="pf" alt="Bastian Castorene" />
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <span class="eyebrow"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span><span class="lang-de">Über mich</span><span class="lang-zh">关于</span></span>
+  <h2 class="section-title"><span class="lang-en">Engines built from quantum matter</span><span class="lang-es">Motores hechos de materia cuántica</span><span class="lang-de">Maschinen aus Quantenmaterie</span><span class="lang-zh">由量子物质构建的热机</span></h2>
+  <div class="about-grid">
+    <div>
+      <p class="lang-en">I am a PhD candidate in Physics within the joint program at <strong>Universidad Técnica Federico Santa María (UTFSM)</strong> and <strong>Pontificia Universidad Católica de Valparaíso (PUCV)</strong>, supported by the ANID National Doctoral Fellowship.</p>
+      <p class="lang-en">My research explores the intersection of quantum thermodynamics, statistical physics, and magnetism. I am driven by a fundamental question: how much useful work can a genuinely quantum system deliver? To answer this, I investigate how phenomena such as entanglement, anisotropy, and quantum phase transitions set the ultimate limits of that work — research I carry out together with my <a class="inlink" href="team.html">team</a>.</p>
+      <p class="lang-en">In my thesis, <em>“Qubit-based quantum heat engines,”</em> I study thermodynamic cycles. Driven by the challenge of reaching maximum efficiency, I developed the <strong>Castorene's Engine</strong>, a quasistatic engine that operates at maximum efficiency and produces work utilizing entropy, rather than energy, as “fuel”. Furthermore, I model Otto and Stirling cycles operating on qubits, spin dimers, and multilayer quantum materials, demonstrating how critical phenomena can enhance their performance. Prior to this, I earned my BSc in Physics <em>Summa Cum Laude</em> at UTFSM in 2023.</p>
+      <p class="lang-en">Beyond my research, I value academic community engagement. I currently serve as the <strong>PhD Student Representative</strong> for our joint program and regularly help organize scientific conferences across Chile. Additionally, my academic journey has been broadened by a research internship at the <strong>Universitat Autònoma de Barcelona</strong>.</p>
+
+      <p class="lang-es">Soy candidato a Doctor en Física en el programa conjunto de la <strong>Universidad Técnica Federico Santa María (UTFSM)</strong> y la <strong>Pontificia Universidad Católica de Valparaíso (PUCV)</strong>, con el apoyo de la Beca Doctorado Nacional ANID.</p>
+      <p class="lang-es">Mi investigación explora la intersección entre la termodinámica cuántica, la física estadística y el magnetismo. Me mueve una pregunta fundamental: ¿cuánto trabajo útil puede entregar un sistema genuinamente cuántico? Para responderla, investigo cómo fenómenos como el entrelazamiento, la anisotropía y las transiciones de fase cuánticas fijan los límites últimos de ese trabajo — una investigación que desarrollo junto a mi <a class="inlink" href="team.html">equipo</a>.</p>
+      <p class="lang-es">En mi tesis, <em>«Motores térmicos cuánticos basados en qubits»</em>, estudio ciclos termodinámicos. Impulsado por el desafío de alcanzar la máxima eficiencia, desarrollé el <strong>Motor de Castorene</strong>, un motor cuasiestático que opera a máxima eficiencia y produce trabajo utilizando la entropía, en lugar de la energía, como «combustible». Además, modelo ciclos de Otto y Stirling que operan sobre qubits, dímeros de espín y materiales cuánticos multicapa, demostrando cómo los fenómenos críticos pueden mejorar su rendimiento. Antes de esto, obtuve mi Licenciatura en Física <em>Summa Cum Laude</em> en la UTFSM en 2023.</p>
+      <p class="lang-es">Más allá de mi investigación, valoro el compromiso con la comunidad académica. Actualmente me desempeño como <strong>Representante de los estudiantes de Doctorado</strong> de nuestro programa conjunto y colaboro regularmente organizando congresos científicos en Chile. Además, mi trayectoria académica se ha enriquecido con una pasantía de investigación en la <strong>Universitat Autònoma de Barcelona</strong>.</p>
+
+      <p class="lang-de">Ich bin Doktorand der Physik im gemeinsamen Programm der <strong>Universidad Técnica Federico Santa María (UTFSM)</strong> und der <strong>Pontificia Universidad Católica de Valparaíso (PUCV)</strong>, gefördert durch das nationale Doktorandenstipendium der ANID.</p>
+      <p class="lang-de">Meine Forschung untersucht die Schnittstelle von Quantenthermodynamik, statistischer Physik und Magnetismus. Mich treibt eine grundlegende Frage an: Wie viel nutzbare Arbeit kann ein wirklich quantenmechanisches System liefern? Um sie zu beantworten, erforsche ich, wie Phänomene wie Verschränkung, Anisotropie und Quantenphasenübergänge die letztendlichen Grenzen dieser Arbeit setzen — Forschung, die ich gemeinsam mit meinem <a class="inlink" href="team.html">Team</a> betreibe.</p>
+      <p class="lang-de">In meiner Dissertation <em>„Qubit-basierte Quanten-Wärmekraftmaschinen“</em> untersuche ich thermodynamische Kreisprozesse. Angetrieben von der Herausforderung, maximale Effizienz zu erreichen, entwickelte ich die <strong>Castorene-Maschine</strong>, eine quasistatische Maschine, die mit maximaler Effizienz arbeitet und Arbeit erzeugt, indem sie Entropie statt Energie als „Brennstoff“ nutzt. Darüber hinaus modelliere ich Otto- und Stirling-Kreisprozesse mit Qubits, Spin-Dimeren und mehrlagigen Quantenmaterialien und zeige, wie kritische Phänomene ihre Leistung steigern können. Zuvor habe ich 2023 meinen Bachelor in Physik <em>Summa Cum Laude</em> an der UTFSM abgeschlossen.</p>
+      <p class="lang-de">Über meine Forschung hinaus schätze ich das Engagement in der akademischen Gemeinschaft. Derzeit bin ich <strong>Vertreter der Doktorierenden</strong> unseres gemeinsamen Programms und wirke regelmäßig an der Organisation wissenschaftlicher Tagungen in ganz Chile mit. Zudem wurde mein akademischer Werdegang durch einen Forschungsaufenthalt an der <strong>Universitat Autònoma de Barcelona</strong> bereichert.</p>
+
+      <p class="lang-zh">我是<strong>圣玛丽亚联邦理工大学（UTFSM）</strong>与<strong>瓦尔帕莱索天主教大学（PUCV）</strong>联合项目的物理学博士研究生，由智利 ANID 国家博士奖学金资助。</p>
+      <p class="lang-zh">我的研究探索量子热力学、统计物理与磁学的交叉领域。我被一个根本问题所驱动：一个真正的量子系统能提供多少有用功？为回答这一问题，我研究纠缠、各向异性和量子相变等现象如何设定这些功的终极极限——这是我与我的<a class="inlink" href="team.html">团队</a>共同开展的研究。</p>
+      <p class="lang-zh">在我的博士论文<em>《基于量子比特的量子热机》</em>中，我研究热力学循环。出于对实现最高效率的追求，我提出了<strong>Castorene 引擎</strong>——一种以最高效率运行的准静态引擎，它以熵而非能量作为“燃料”来产生功。此外，我建模了在量子比特、自旋二聚体和多层量子材料上运行的奥托与斯特林循环，展示了临界现象如何提升其性能。在此之前，我于 2023 年在 UTFSM 以<em>最优等成绩（Summa Cum Laude）</em>获得物理学学士学位。</p>
+      <p class="lang-zh">在研究之外，我重视对学术共同体的参与。我目前担任联合项目的<strong>博士生代表</strong>，并经常协助在智利各地组织学术会议。此外，我的学术历程也因在<strong>巴塞罗那自治大学</strong>的研究实习而更加丰富。</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="k"><span class="lang-en">Position</span><span class="lang-es">Posición</span><span class="lang-de">Position</span><span class="lang-zh">职位</span></div><div class="val"><span class="lang-en">PhD Candidate in Physics (2024–present)</span><span class="lang-es">Candidato a Doctor en Física (2024–presente)</span><span class="lang-de">Doktorand der Physik (seit 2024)</span><span class="lang-zh">物理学博士研究生（2024至今）</span></div></div>
+      <div class="fact"><div class="k"><span class="lang-en">Focus</span><span class="lang-es">Enfoque</span><span class="lang-de">Schwerpunkt</span><span class="lang-zh">研究方向</span></div><div class="val"><span class="lang-en">Quantum thermodynamics · magnetic systems</span><span class="lang-es">Termodinámica cuántica · sistemas magnéticos</span><span class="lang-de">Quantenthermodynamik · magnetische Systeme</span><span class="lang-zh">量子热力学 · 磁性系统</span></div></div>
+      <div class="fact"><div class="k"><span class="lang-en">Based in</span><span class="lang-es">Ubicación</span><span class="lang-de">Standort</span><span class="lang-zh">所在地</span></div><div class="val">Valparaíso, Chile</div></div>
+      <div class="fact"><div class="k"><span class="lang-en">Funding</span><span class="lang-es">Financiamiento</span><span class="lang-de">Förderung</span><span class="lang-zh">资助</span></div><div class="val">ANID Doctoral Fellowship · PIIC</div></div>
+      <div class="fact"><div class="k"><span class="lang-en">Languages</span><span class="lang-es">Idiomas</span><span class="lang-de">Sprachen</span><span class="lang-zh">语言</span></div><div class="val">ES (native) · EN (C1) · DE (B2) · 中文 (HSK 1)</div></div>
+      <a class="cvbox" href="CV_Bastian_Castorene_2026.pdf" download>
+        <img src="cv-thumb-2026.jpg" alt="Curriculum Vitae preview" />
+        <div class="cvmeta">
+          <div class="k">Curriculum Vitae</div>
+          <div class="cvdl"><span class="lang-en">↓ Download PDF</span><span class="lang-es">↓ Descargar PDF</span><span class="lang-de">↓ PDF herunterladen</span><span class="lang-zh">↓ 下载 PDF</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST & METRICS -->
+<section id="latest" class="reveal">
+  <div class="stats">
+    <div class="stat"><span class="num">10</span><span class="lbl"><span class="lang-en">Publications &amp; preprints</span><span class="lang-es">Publicaciones y preprints</span><span class="lang-de">Publikationen &amp; Preprints</span><span class="lang-zh">论文与预印本</span></span></div>
+    <div class="stat"><span class="num">18+</span><span class="lbl"><span class="lang-en">Talks &amp; conferences</span><span class="lang-es">Charlas y congresos</span><span class="lang-de">Vorträge &amp; Tagungen</span><span class="lang-zh">演讲与会议</span></span></div>
+  </div>
+  <span class="eyebrow"><span class="lang-en">Latest</span><span class="lang-es">Novedades</span><span class="lang-de">Aktuelles</span><span class="lang-zh">最新动态</span></span>
+  <h2 class="section-title"><span class="lang-en">What's new</span><span class="lang-es">Lo más reciente</span><span class="lang-de">Neuigkeiten</span><span class="lang-zh">近期动态</span></h2>
+  <div class="news">
+    <div class="news-item"><div class="when"><span class="date">Jul 2026</span><a class="kind" href="https://doi.org/10.1021/acs.nanolett.6c01000" target="_blank" rel="noopener"><span class="lang-en">Article</span><span class="lang-es">Artículo</span><span class="lang-de">Artikel</span><span class="lang-zh">论文</span></a></div><div class="what"><span class="lang-en"><em>Thermal Hofstadter Butterflies</em> — Nano Letters.</span><span class="lang-es"><em>Thermal Hofstadter Butterflies</em> — Nano Letters.</span><span class="lang-de"><em>Thermal Hofstadter Butterflies</em> — Nano Letters.</span><span class="lang-zh"><em>Thermal Hofstadter Butterflies</em> — Nano Letters。</span></div></div>
+    <div class="news-item"><div class="when"><span class="date">Jul 2026</span><a class="kind" href="https://journals.aps.org/pre/accepted/10.1103/msbk-z1mc" target="_blank" rel="noopener"><span class="lang-en">Accepted</span><span class="lang-es">Aceptado</span><span class="lang-de">Angenommen</span><span class="lang-zh">已接收</span></a></div><div class="what"><span class="lang-en"><em>Caloric phenomena and Stirling-cycle performance in Heisenberg–Kitaev magnon systems</em> — Phys. Rev. E.</span><span class="lang-es"><em>Caloric phenomena and Stirling-cycle performance in Heisenberg–Kitaev magnon systems</em> — Phys. Rev. E.</span><span class="lang-de"><em>Caloric phenomena and Stirling-cycle performance in Heisenberg–Kitaev magnon systems</em> — Phys. Rev. E.</span><span class="lang-zh"><em>Caloric phenomena and Stirling-cycle performance in Heisenberg–Kitaev magnon systems</em> — Phys. Rev. E。</span></div></div>
+    <div class="news-item"><div class="when"><span class="date">Jun 2026</span><span class="kind"><span class="lang-en">Talk</span><span class="lang-es">Charla</span><span class="lang-de">Vortrag</span><span class="lang-zh">报告</span></span></div><div class="what"><span class="lang-en"><em>Fundamental Work Scaling and Non-Extensivity in Critical Quantum Stirling Engines</em> — Panoramas 2026, PUCV.</span><span class="lang-es"><em>Fundamental Work Scaling and Non-Extensivity in Critical Quantum Stirling Engines</em> — Panoramas 2026, PUCV.</span><span class="lang-de"><em>Fundamental Work Scaling and Non-Extensivity in Critical Quantum Stirling Engines</em> — Panoramas 2026, PUCV.</span><span class="lang-zh"><em>Fundamental Work Scaling and Non-Extensivity in Critical Quantum Stirling Engines</em> — Panoramas 2026，PUCV。</span></div></div>
+    <div class="news-item"><div class="when"><span class="date">May 2026</span><span class="kind"><span class="lang-en">Talk</span><span class="lang-es">Charla</span><span class="lang-de">Vortrag</span><span class="lang-zh">报告</span></span></div><div class="what"><span class="lang-en">Talk and intensive course — XXIII TREFEMAC 2026, Instituto Balseiro (Bariloche, Argentina).</span><span class="lang-es">Charla y curso intensivo — XXIII TREFEMAC 2026, Instituto Balseiro (Bariloche, Argentina).</span><span class="lang-de">Vortrag und Intensivkurs — XXIII TREFEMAC 2026, Instituto Balseiro (Bariloche, Argentinien).</span><span class="lang-zh">报告与强化课程 — 第二十三届 TREFEMAC 2026，巴尔塞罗研究所（阿根廷巴里洛切）。</span></div></div>
+    <div class="news-item"><div class="when"><span class="date">Apr 2026</span><a class="kind" href="https://doi.org/10.1103/s59t-ygkq" target="_blank" rel="noopener"><span class="lang-en">Article</span><span class="lang-es">Artículo</span><span class="lang-de">Artikel</span><span class="lang-zh">论文</span></a></div><div class="what"><span class="lang-en"><em>Reaching maximum efficiency in quantum Stirling engines using multilayer graphene</em> — Phys. Rev. E 113, 044126.</span><span class="lang-es"><em>Reaching maximum efficiency in quantum Stirling engines using multilayer graphene</em> — Phys. Rev. E 113, 044126.</span><span class="lang-de"><em>Reaching maximum efficiency in quantum Stirling engines using multilayer graphene</em> — Phys. Rev. E 113, 044126.</span><span class="lang-zh"><em>Reaching maximum efficiency in quantum Stirling engines using multilayer graphene</em> — Phys. Rev. E 113, 044126。</span></div></div>
+    <div class="news-item"><div class="when"><span class="date">2026</span><span class="kind"><span class="lang-en">Grant</span><span class="lang-es">Fondo</span><span class="lang-de">Förderung</span><span class="lang-zh">基金</span></span></div><div class="what"><span class="lang-en">PIIC 2026 (UTFSM) — <em>Non-extensivity in quantum systems with applications in Stirling engines</em>.</span><span class="lang-es">PIIC 2026 (UTFSM) — <em>Non-extensivity in quantum systems with applications in Stirling engines</em>.</span><span class="lang-de">PIIC 2026 (UTFSM) — <em>Non-extensivity in quantum systems with applications in Stirling engines</em>.</span><span class="lang-zh">PIIC 2026（UTFSM）— <em>Non-extensivity in quantum systems with applications in Stirling engines</em>。</span></div></div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research" class="reveal">
+  <span class="eyebrow"><span class="lang-en">Research</span><span class="lang-es">Investigación</span><span class="lang-de">Forschung</span><span class="lang-zh">研究</span></span>
+  <h2 class="section-title"><span class="lang-en">Where energy meets the quantum world</span><span class="lang-es">Donde la energía se encuentra con lo cuántico</span><span class="lang-de">Wo Energie auf die Quantenwelt trifft</span><span class="lang-zh">当能量遇见量子世界</span></h2>
+  <p class="section-lead"><span class="lang-en">Three connected threads run through my work — each one about turning quantum structure into thermodynamic advantage.</span><span class="lang-es">Tres líneas conectadas atraviesan mi trabajo — cada una sobre convertir la estructura cuántica en ventaja termodinámica.</span><span class="lang-de">Drei verbundene Stränge durchziehen meine Arbeit — jeder darüber, wie sich Quantenstruktur in einen thermodynamischen Vorteil verwandeln lässt.</span><span class="lang-zh">三条相互关联的主线贯穿我的工作——每一条都关乎如何将量子结构转化为热力学优势。</span></p>
+  <div class="grid grid-3">
+    <div class="card"><span class="icon">♨️</span><h3><span class="lang-en">Quantum heat engines &amp; criticality</span><span class="lang-es">Motores térmicos cuánticos y criticalidad</span><span class="lang-de">Quanten-Wärmekraftmaschinen &amp; Kritikalität</span><span class="lang-zh">量子热机与临界性</span></h3><p><span class="lang-en">Otto and Stirling cycles on qubits and qutrits, and the exact conditions under which they reach Carnot efficiency near quantum critical points — including the non-extensive scaling of work.</span><span class="lang-es">Ciclos de Otto y Stirling sobre qubits y qutrits, y las condiciones exactas bajo las cuales alcanzan la eficiencia de Carnot cerca de puntos críticos cuánticos — incluyendo el escalamiento no extensivo del trabajo.</span><span class="lang-de">Otto- und Stirling-Kreisprozesse mit Qubits und Qutrits und die exakten Bedingungen, unter denen sie nahe quantenkritischen Punkten den Carnot-Wirkungsgrad erreichen — einschließlich der nicht-extensiven Skalierung der Arbeit.</span><span class="lang-zh">基于量子比特和量子三态的奥托与斯特林循环，以及它们在量子临界点附近达到卡诺效率的精确条件——包括功的非广延标度。</span></p></div>
+    <div class="card"><span class="icon">🧲</span><h3><span class="lang-en">Magnetism &amp; spin systems</span><span class="lang-es">Magnetismo y sistemas de espín</span><span class="lang-de">Magnetismus &amp; Spinsysteme</span><span class="lang-zh">磁学与自旋系统</span></h3><p><span class="lang-en">Heisenberg &amp; Heisenberg–Kitaev spin systems, level crossings and magnetic textures as thermodynamic resources.</span><span class="lang-es">Sistemas de espín Heisenberg y Heisenberg–Kitaev, cruces de niveles y texturas magnéticas como recursos termodinámicos.</span><span class="lang-de">Heisenberg- und Heisenberg–Kitaev-Spinsysteme, Niveaukreuzungen und magnetische Texturen als thermodynamische Ressourcen.</span><span class="lang-zh">海森堡与海森堡–北川自旋系统、能级交叉以及作为热力学资源的磁织构。</span></p></div>
+    <div class="card"><span class="icon">▦</span><h3><span class="lang-en">2D materials, bosons &amp; magnons</span><span class="lang-es">Materiales 2D, bosones y magnones</span><span class="lang-de">2D-Materialien, Bosonen &amp; Magnonen</span><span class="lang-zh">二维材料、玻色子与磁振子</span></h3><p><span class="lang-en">Multilayer graphene, Hofstadter spectra and bosonic systems such as magnons: using band structure and degeneracy to design efficient quantum Stirling engines.</span><span class="lang-es">Grafeno multicapa, espectros de Hofstadter y sistemas bosónicos como los magnones: usar la estructura de bandas y la degeneración para diseñar motores Stirling cuánticos eficientes.</span><span class="lang-de">Mehrlagiges Graphen, Hofstadter-Spektren und bosonische Systeme wie Magnonen: Bandstruktur und Entartung zur Konstruktion effizienter Quanten-Stirling-Maschinen nutzen.</span><span class="lang-zh">多层石墨烯、霍夫施塔特谱以及玻色子系统（如磁振子）：利用能带结构与简并度设计高效的量子斯特林热机。</span></p></div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="reveal">
+  <span class="eyebrow"><span class="lang-en">Publications</span><span class="lang-es">Publicaciones</span><span class="lang-de">Publikationen</span><span class="lang-zh">论文</span></span>
+  <h2 class="section-title"><span class="lang-en">Selected publications</span><span class="lang-es">Publicaciones seleccionadas</span><span class="lang-de">Ausgewählte Publikationen</span><span class="lang-zh">精选论文</span></h2>
+  <p class="section-lead"><span class="lang-en">Three highlighted works below; the full list of 7 peer-reviewed articles and 3 preprints follows.</span><span class="lang-es">Tres trabajos destacados abajo; a continuación la lista completa de 7 artículos revisados por pares y 3 preprints.</span><span class="lang-de">Unten drei hervorgehobene Arbeiten; es folgt die vollständige Liste von 7 begutachteten Artikeln und 3 Preprints.</span><span class="lang-zh">下方为三篇精选论文；随后是 7 篇同行评审文章与 3 篇预印本的完整列表。</span></p>
+
+  <div class="grid grid-3 pub-cards">
+    <div class="card">
+      <span class="yv">2026 · Nano Letters</span>
+      <h3>Thermal Hofstadter Butterflies</h3>
+      <p class="auth">N. Cortés, <b>B. Castorene</b>, F. J. Peña, D. Melo, S. E. Ulloa, P. Vargas</p>
+      <div class="cardlinks">
+        <a class="doi" href="https://pubs.acs.org/doi/10.1021/acs.nanolett.6c01000" target="_blank" rel="noopener">↓ PDF</a>
+        <a class="doi" href="https://doi.org/10.1021/acs.nanolett.6c01000" target="_blank" rel="noopener">DOI →</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="yv">2026 · Phys. Rev. E</span>
+      <h3>Reaching maximum efficiency in quantum Stirling engines using multilayer graphene</h3>
+      <p class="auth"><b>B. Castorene</b>, F. J. Peña, E. Suárez Morell, N. Cortés, P. Vargas</p>
+      <div class="cardlinks">
+        <a class="doi" href="https://arxiv.org/pdf/2510.18086" target="_blank" rel="noopener">↓ PDF</a>
+        <a class="doi" href="https://doi.org/10.1103/s59t-ygkq" target="_blank" rel="noopener">DOI →</a>
+      </div>
+    </div>
+    <div class="card">
+      <span class="yv">2025 · Adv. Quantum Technol.</span>
+      <h3>Quantum Level-Crossing Induced by Anisotropy in Spin-1 Heisenberg Dimers</h3>
+      <p class="auth"><b>B. Castorene</b>, V. G. de Paula, F. J. Peña, C. Cruz, M. Reis, P. Vargas</p>
+      <div class="cardlinks">
+        <a class="doi" href="https://arxiv.org/pdf/2502.19561" target="_blank" rel="noopener">↓ PDF</a>
+        <a class="doi" href="https://doi.org/10.1002/qute.202500204" target="_blank" rel="noopener">DOI →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="biglinks">
+    <a class="biglink" href="publications.html#articles">
+      <span class="bl-t"><span class="lang-en">All peer-reviewed articles</span><span class="lang-es">Todos los artículos revisados por pares</span><span class="lang-de">Alle begutachteten Artikel</span><span class="lang-zh">全部同行评审文章</span></span>
+      <span class="bl-s"><span class="lang-en">8 published articles</span><span class="lang-es">8 artículos publicados</span><span class="lang-de">8 veröffentlichte Artikel</span><span class="lang-zh">8 篇已发表文章</span></span>
+      <span class="bl-a"><span class="lang-en">View all &rarr;</span><span class="lang-es">Ver todos &rarr;</span><span class="lang-de">Alle ansehen &rarr;</span><span class="lang-zh">查看全部 &rarr;</span></span>
+    </a>
+    <a class="biglink" href="publications.html#preprints">
+      <span class="bl-t"><span class="lang-en">Manuscripts &amp; preprints</span><span class="lang-es">Manuscritos y preprints</span><span class="lang-de">Manuskripte &amp; Preprints</span><span class="lang-zh">手稿与预印本</span></span>
+      <span class="bl-s"><span class="lang-en">2 preprints under review</span><span class="lang-es">2 preprints en revisión</span><span class="lang-de">2 Preprints in Begutachtung</span><span class="lang-zh">2 篇审稿中的预印本</span></span>
+      <span class="bl-a"><span class="lang-en">View all &rarr;</span><span class="lang-es">Ver todos &rarr;</span><span class="lang-de">Alle ansehen &rarr;</span><span class="lang-zh">查看全部 &rarr;</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- CONFERENCES -->
+<section id="conferences" class="reveal">
+  <span class="eyebrow"><span class="lang-en">Talks &amp; Conferences</span><span class="lang-es">Charlas y Congresos</span><span class="lang-de">Vorträge &amp; Tagungen</span><span class="lang-zh">演讲与会议</span></span>
+  <h2 class="section-title"><span class="lang-en">Selected oral presentations</span><span class="lang-es">Presentaciones orales seleccionadas</span><span class="lang-de">Ausgewählte Vorträge</span><span class="lang-zh">精选口头报告</span></h2>
+  <p class="section-lead"><span class="lang-en">Over 18 invited and contributed talks across Chile, Argentina and Brazil.</span><span class="lang-es">Más de 18 charlas invitadas y contribuidas en Chile, Argentina y Brasil.</span><span class="lang-de">Über 18 eingeladene und beigetragene Vorträge in Chile, Argentinien und Brasilien.</span><span class="lang-zh">在智利、阿根廷和巴西作过 18 场以上受邀及投稿报告。</span></p>
+  <div class="talk-photos">
+    <figure>
+      <img src="talk1.jpg" alt="Bastian Castorene presenting at the VIII National Congress on Nanotechnology" />
+      <figcaption><span class="lang-en">VIII National Congress on Nanotechnology — La Serena, Chile</span><span class="lang-es">VIII Congreso Nacional de Nanotecnología — La Serena, Chile</span><span class="lang-de">VIII. Nationaler Kongress für Nanotechnologie — La Serena, Chile</span><span class="lang-zh">第八届全国纳米技术大会 — 智利拉塞雷纳</span></figcaption>
+    </figure>
+    <figure>
+      <img src="talk2.jpg" style="object-position:center 15%" alt="Bastian Castorene presenting at XXIII TREFEMAC 2026" />
+      <figcaption><span class="lang-en">XXIII TREFEMAC 2026 — Instituto Balseiro, Bariloche, Argentina</span><span class="lang-es">XXIII TREFEMAC 2026 — Instituto Balseiro, Bariloche, Argentina</span><span class="lang-de">XXIII. TREFEMAC 2026 — Instituto Balseiro, Bariloche, Argentinien</span><span class="lang-zh">第二十三届 TREFEMAC 2026 — 阿根廷巴里洛切巴尔塞罗研究所</span></figcaption>
+    </figure>
+  </div>
+  <div class="conf-list">
+    <div class="conf"><div class="when">Jun 2026</div><div><div class="what">Fundamental Work Scaling and Non-Extensivity in Critical Quantum Stirling Engines</div><div class="where">Panoramas 2026 · PUCV, Campus Curauma, Chile</div></div></div>
+    <div class="conf"><div class="when">Dec 2025</div><div><div class="what">Exact Conditions for Carnot Efficiency in Quantum Stirling Engines at Criticality</div><div class="where">IV International Workshop on Statistical Physics · Antofagasta, Chile</div></div></div>
+    <div class="conf"><div class="when">Oct 2025</div><div><div class="what">Quantum Level-Crossing Induced by Anisotropy in Spin-1 Heisenberg Dimers: Applications to Quantum Stirling Engines</div><div class="where">XXIII B-MRS Meeting · Salvador de Bahía, Brazil</div></div></div>
+    <div class="conf"><div class="when">Apr 2025</div><div><div class="what">Quantum Thermodynamic Cycles: Stirling &amp; Otto</div><div class="where">IV QUSantiago · Universidad de Santiago, Chile</div></div></div>
+    <div class="conf"><div class="when">Oct 2024</div><div><div class="what">Reduced Entropy and the Effective Temperature of a Three-Qubit System (Final Presenter)</div><div class="where">SOCHIFI 2024 · Universidad de La Frontera, Temuco, Chile</div></div></div>
+  </div>
+
+  <div class="biglinks one" style="margin-top:6px">
+    <a class="biglink" href="talks.html">
+      <span class="bl-t"><span class="lang-en">All talks &amp; conferences</span><span class="lang-es">Todos los congresos y charlas</span><span class="lang-de">Alle Vorträge &amp; Tagungen</span><span class="lang-zh">全部演讲与会议</span></span>
+      <span class="bl-s"><span class="lang-en">Full list of 18+ presentations across Chile, Argentina &amp; Brazil</span><span class="lang-es">Lista completa de más de 18 presentaciones en Chile, Argentina y Brasil</span><span class="lang-de">Vollständige Liste von über 18 Vorträgen in Chile, Argentinien &amp; Brasilien</span><span class="lang-zh">在智利、阿根廷和巴西的 18 场以上报告完整列表</span></span>
+      <span class="bl-a"><span class="lang-en">View all &rarr;</span><span class="lang-es">Ver todos &rarr;</span><span class="lang-de">Alle ansehen &rarr;</span><span class="lang-zh">查看全部 &rarr;</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" class="reveal">
+  <span class="eyebrow"><span class="lang-en">Awards &amp; Service</span><span class="lang-es">Premios y Servicio</span><span class="lang-de">Auszeichnungen &amp; Engagement</span><span class="lang-zh">奖项与服务</span></span>
+  <h2 class="section-title"><span class="lang-en">Fellowships, grants &amp; distinctions</span><span class="lang-es">Becas, fondos y distinciones</span><span class="lang-de">Stipendien, Förderungen &amp; Auszeichnungen</span><span class="lang-zh">奖学金、基金与荣誉</span></h2>
+  <div class="grid grid-2" style="align-items:start">
+    <div class="card">
+      <h3 style="margin-bottom:14px"><span class="lang-en">Grants &amp; Fellowships</span><span class="lang-es">Becas y Fondos</span><span class="lang-de">Förderungen &amp; Stipendien</span><span class="lang-zh">基金与奖学金</span></h3>
+      <div class="award-item"><div class="yr">2025–</div><div class="txt"><b>ANID National Doctoral Fellowship</b> (No. 21250015)</div></div>
+      <div class="award-item"><div class="yr">2026</div><div class="txt"><b>Research Internship Grant</b> · Universitat Autònoma de Barcelona, Spain</div></div>
+      <div class="award-item"><div class="yr">2025–26</div><div class="txt"><b>PIIC Research Initiation Program</b> (UTFSM) — Projects 004/2025 &amp; 005/2026</div></div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:14px"><span class="lang-en">Distinctions &amp; Service</span><span class="lang-es">Distinciones y Servicio</span><span class="lang-de">Auszeichnungen &amp; Engagement</span><span class="lang-zh">荣誉与服务</span></h3>
+      <div class="award-item"><div class="yr">2026–</div><div class="txt"><b><span class="lang-en">Representative of the PhD Students</span><span class="lang-es">Representante de los estudiantes de Doctorado</span><span class="lang-de">Vertreter der Doktorierenden</span><span class="lang-zh">博士生代表</span></b> · UTFSM &amp; PUCV</div></div>
+      <div class="award-item"><div class="yr">2025</div><div class="txt"><b>Wolfram Research Grant</b> <span class="lang-en">— Mathematica license awarded for published work</span><span class="lang-es">— licencia de Mathematica por trabajo publicado</span><span class="lang-de">— Mathematica-Lizenz für veröffentlichte Arbeit</span><span class="lang-zh">——因已发表工作获授 Mathematica 许可</span></div></div>
+      <div class="award-item"><div class="yr">2023</div><div class="txt"><b><span class="lang-en">BSc Physics, Summa Cum Laude</span><span class="lang-es">Lic. en Física, Summa Cum Laude</span><span class="lang-de">B.Sc. Physik, Summa Cum Laude</span><span class="lang-zh">物理学学士，最优等成绩</span></b> · UTFSM</div></div>
+      <div class="award-item"><div class="yr">2021</div><div class="txt"><b>Bronze Medal</b> · University Physics Competition</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="reveal">
+  <span class="eyebrow"><span class="lang-en">Team</span><span class="lang-es">Equipo</span><span class="lang-de">Team</span><span class="lang-zh">团队</span></span>
+  <h2 class="section-title"><span class="lang-en">My research team</span><span class="lang-es">Mi equipo de investigación</span><span class="lang-de">Mein Forschungsteam</span><span class="lang-zh">我的研究团队</span></h2>
+  <p class="section-lead"><span class="lang-en">The quantum thermodynamics group I work with at UTFSM &amp; PUCV.</span><span class="lang-es">El grupo de termodinámica cuántica con el que trabajo en la UTFSM y PUCV.</span><span class="lang-de">Die Gruppe für Quantenthermodynamik, mit der ich an der UTFSM &amp; PUCV arbeite.</span><span class="lang-zh">我在 UTFSM 与 PUCV 合作的量子热力学团队。</span></p>
+  <div class="team-banner carousel" style="max-width:860px;margin:0 auto 26px">
+    <img class="cslide active" src="group1.jpg" alt="Quantum thermodynamics group" loading="lazy" />
+    <img class="cslide" src="group2.jpg" alt="Quantum thermodynamics group" loading="lazy" />
+  </div>
+  <div style="text-align:center">
+    <a class="btn btn-primary" href="team.html"><span class="lang-en">Meet the team &rarr;</span><span class="lang-es">Conoce al equipo &rarr;</span><span class="lang-de">Das Team kennenlernen &rarr;</span><span class="lang-zh">了解团队 &rarr;</span></a>
+  </div>
+</section>
+
+<!-- NOTES & RESOURCES -->
+<section id="notes" class="reveal">
+  <span class="eyebrow"><span class="lang-en">Notes &amp; Resources</span><span class="lang-es">Apuntes y Recursos</span><span class="lang-de">Skripte &amp; Materialien</span><span class="lang-zh">讲义与资料</span></span>
+  <h2 class="section-title"><span class="lang-en">Notes, theses &amp; lecture material</span><span class="lang-es">Apuntes, tesis y material de clases</span><span class="lang-de">Skripte, Abschlussarbeiten &amp; Vorlesungsmaterial</span><span class="lang-zh">讲义、学位论文与课程资料</span></h2>
+  <p class="section-lead"><span class="lang-en">Open-access notes and documents I've written across thermodynamics, physics and mathematics. Click a category to browse the files on Google Drive.</span><span class="lang-es">Apuntes y documentos de acceso abierto que he escrito en termodinámica, física y matemáticas. Haz clic en una categoría para ver los archivos en Google Drive.</span><span class="lang-de">Frei zugängliche Skripte und Dokumente, die ich zu Thermodynamik, Physik und Mathematik verfasst habe. Klicke auf eine Kategorie, um die Dateien in Google Drive zu durchsuchen.</span><span class="lang-zh">我在热力学、物理与数学方面撰写的开放获取讲义与文档。点击任一类别即可在 Google Drive 中浏览文件。</span></p>
+  <div class="grid grid-2">
+    <a class="card" href="https://drive.google.com/drive/folders/1dVtwfA1cjRg1PWtwadWLppZZMvlZrUVA" target="_blank" rel="noopener">
+      <span class="icon">🎓</span>
+      <h3><span class="lang-en">Theses</span><span class="lang-es">Tesis</span><span class="lang-de">Abschlussarbeiten</span><span class="lang-zh">学位论文</span></h3>
+      <p><span class="lang-en">PhD thesis, Bachelor thesis (Summa Cum Laude) and defense slides.</span><span class="lang-es">Tesis de doctorado, tesina de licenciatura (Summa Cum Laude) y presentación de defensa.</span><span class="lang-de">Doktorarbeit, Bachelorarbeit (Summa Cum Laude) und Verteidigungsfolien.</span><span class="lang-zh">博士论文、学士论文（最优等成绩）及答辩幻灯片。</span></p>
+      <p style="color:var(--accent);margin-top:10px;font-weight:600"><span class="lang-en">Open in Drive →</span><span class="lang-es">Abrir en Drive →</span><span class="lang-de">In Drive öffnen →</span><span class="lang-zh">在 Drive 中打开 →</span></p>
+    </a>
+    <a class="card" href="https://drive.google.com/drive/folders/18nsrCbxVNHp9IyyOyV7ydHHVyO6nVxwH" target="_blank" rel="noopener">
+      <span class="icon">📐</span>
+      <h3><span class="lang-en">Study summaries</span><span class="lang-es">Resúmenes</span><span class="lang-de">Zusammenfassungen</span><span class="lang-zh">复习总结</span></h3>
+      <p><span class="lang-en">Thermodynamics (Balseiro school), Calculus I proofs and trigonometry.</span><span class="lang-es">Termodinámica (escuela Balseiro), demostraciones de Cálculo I y trigonometría.</span><span class="lang-de">Thermodynamik (Balseiro-Schule), Beweise zu Analysis I und Trigonometrie.</span><span class="lang-zh">热力学（Balseiro 学校）、微积分 I 证明与三角学。</span></p>
+      <p style="color:var(--accent);margin-top:10px;font-weight:600"><span class="lang-en">Open in Drive →</span><span class="lang-es">Abrir en Drive →</span><span class="lang-de">In Drive öffnen →</span><span class="lang-zh">在 Drive 中打开 →</span></p>
+    </a>
+    <a class="card" href="https://drive.google.com/drive/folders/1-rhWAmo243TA4tAGGbsI7_ad_JWvo0Ii" target="_blank" rel="noopener">
+      <span class="icon">📚</span>
+      <h3><span class="lang-en">Lecture notes &amp; teaching material</span><span class="lang-es">Apuntes y material de docencia</span><span class="lang-de">Skripte &amp; Lehrmaterial</span><span class="lang-zh">讲义与教学材料</span></h3>
+      <p><span class="lang-en">Course compilations (thermodynamics, mechanics, mathematical methods, solid state) plus teaching guides and tutorials.</span><span class="lang-es">Compilados de clases (termodinámica, mecánica, métodos matemáticos, estado sólido) y guías de docencia y ayudantías.</span><span class="lang-de">Kurszusammenstellungen (Thermodynamik, Mechanik, mathematische Methoden, Festkörperphysik) sowie Lehrmaterialien und Übungen.</span><span class="lang-zh">课程汇编（热力学、力学、数学方法、固体物理）以及教学指南与习题课。</span></p>
+      <p style="color:var(--accent);margin-top:10px;font-weight:600"><span class="lang-en">Open in Drive →</span><span class="lang-es">Abrir en Drive →</span><span class="lang-de">In Drive öffnen →</span><span class="lang-zh">在 Drive 中打开 →</span></p>
+    </a>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="reveal">
+  <span class="eyebrow"><span class="lang-en">Blog &amp; Vlogs</span><span class="lang-es">Blog y Vlogs</span><span class="lang-de">Blog &amp; Vlogs</span><span class="lang-zh">博客与视频</span></span>
+  <h2 class="section-title"><span class="lang-en">Notes, opinions &amp; videos</span><span class="lang-es">Notas, opiniones y videos</span><span class="lang-de">Notizen, Meinungen &amp; Videos</span><span class="lang-zh">笔记、观点与视频</span></h2>
+  <p class="section-lead"><span class="lang-en">Personal notes, opinion pieces and short videos on physics and science.</span><span class="lang-es">Notas personales, columnas de opinión y videos cortos sobre física y ciencia.</span><span class="lang-de">Persönliche Notizen, Meinungsbeiträge und kurze Videos über Physik und Wissenschaft.</span><span class="lang-zh">关于物理与科学的个人笔记、观点文章与短视频。</span></p>
+  <div class="empty"><span class="lang-en">Funny conference stories, photos and videos from the road.</span><span class="lang-es">Historias divertidas de congresos, fotos y videos de los viajes.</span><span class="lang-de">Lustige Konferenzgeschichten, Fotos und Videos von unterwegs.</span><span class="lang-zh">有趣的会议故事，以及旅途中的照片与视频。</span></div>
+  <div style="text-align:center;margin-top:22px">
+    <a class="btn btn-primary" href="blog.html"><span class="lang-en">Go to the blog &rarr;</span><span class="lang-es">Ir al blog &rarr;</span><span class="lang-de">Zum Blog &rarr;</span><span class="lang-zh">前往博客 &rarr;</span></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+  <div class="contact-box">
+    <span class="eyebrow"><span class="lang-en">Contact</span><span class="lang-es">Contacto</span><span class="lang-de">Kontakt</span><span class="lang-zh">联系</span></span>
+    <h2 class="section-title"><span class="lang-en">Let's collaborate</span><span class="lang-es">Colaboremos</span><span class="lang-de">Lassen Sie uns zusammenarbeiten</span><span class="lang-zh">让我们合作</span></h2>
+    <p><span class="lang-en">Open to collaborations, student projects and invited talks on quantum thermodynamics, heat engines and magnetic systems.</span><span class="lang-es">Abierto a colaboraciones, proyectos estudiantiles y charlas invitadas sobre termodinámica cuántica, motores térmicos y sistemas magnéticos.</span><span class="lang-de">Offen für Kooperationen, studentische Projekte und eingeladene Vorträge zu Quantenthermodynamik, Wärmekraftmaschinen und magnetischen Systemen.</span><span class="lang-zh">欢迎在量子热力学、热机与磁性系统方面的合作、学生项目及受邀报告。</span></p>
+    <div class="social">
+      <a class="btn btn-primary" href="mailto:bastian.castorene@gmail.com">✉ <span class="lang-en">Email me</span><span class="lang-es">Escríbeme</span><span class="lang-de">Schreib mir</span><span class="lang-zh">邮件联系</span></a>
+      <a class="btn btn-ghost" href="https://scholar.google.com/citations?hl=es&user=NQpSh18AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+      <a class="btn btn-ghost" href="https://orcid.org/0009-0002-9075-5716" target="_blank" rel="noopener">ORCID</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/bastiancastorene/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; <span id="yr"></span> Bastian Castorene</p>
+  <p style="margin-top:6px;opacity:.7">Ph.D. (C) in Physics &middot; UTFSM &amp; PUCV &middot; Quantum thermodynamics</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

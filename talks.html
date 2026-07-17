@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0713" />
+<title>Talks &amp; Conferences — Bastian Castorene</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='0.5' stop-color='%23d946ef'/%3E%3Cstop offset='1' stop-color='%234f46e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3EBC%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="bg-glow"></div>
+<canvas id="energy"></canvas>
+<nav>
+  <a href="index.html#top" class="brand">Bastian Castorene</a>
+  <div class="nav-right">
+  <div class="nav-links">
+    <a class="backhome" href="index.html">&larr; <span class="lang-en">Home</span><span class="lang-es">Inicio</span><span class="lang-de">Start</span><span class="lang-zh">主页</span></a>
+    <a href="index.html#about"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span><span class="lang-de">Über mich</span><span class="lang-zh">关于</span></a>
+    <a href="index.html#research"><span class="lang-en">Research</span><span class="lang-es">Investigación</span><span class="lang-de">Forschung</span><span class="lang-zh">研究</span></a>
+    <a href="publications.html"><span class="lang-en">Publications</span><span class="lang-es">Publicaciones</span><span class="lang-de">Publikationen</span><span class="lang-zh">论文</span></a>
+    <a href="talks.html"><span class="lang-en">Talks</span><span class="lang-es">Congresos</span><span class="lang-de">Vorträge</span><span class="lang-zh">演讲</span></a>
+    <a href="index.html#notes"><span class="lang-en">Notes</span><span class="lang-es">Apuntes</span><span class="lang-de">Skripte</span><span class="lang-zh">讲义</span></a>
+        <a href="index.html#team"><span class="lang-en">Team</span><span class="lang-es">Equipo</span><span class="lang-de">Team</span><span class="lang-zh">团队</span></a>
+    <a href="index.html#blog"><span class="lang-en">Blog</span><span class="lang-es">Blog</span><span class="lang-de">Blog</span><span class="lang-zh">博客</span></a>
+    <a href="index.html#contact"><span class="lang-en">Contact</span><span class="lang-es">Contacto</span><span class="lang-de">Kontakt</span><span class="lang-zh">联系</span></a>
+  </div>
+    <button class="theme-toggle" aria-label="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <div class="lang-dd">
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" onclick="toggleLangMenu(this)"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
+      <ul class="lang-menu" role="listbox">
+        <li role="option" data-lang="en" onclick="pickLang('en')"><svg class="flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><rect x="25" width="10" height="30" fill="#fff"/><rect y="10" width="60" height="10" fill="#fff"/><rect x="27" width="6" height="30" fill="#C8102E"/><rect y="12" width="60" height="6" fill="#C8102E"/></svg> EN</li>
+        <li role="option" data-lang="es" onclick="pickLang('es')"><svg class="flag" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"><rect width="900" height="600" fill="#fff"/><rect y="300" width="900" height="300" fill="#D52B1E"/><rect width="300" height="300" fill="#0039A6"/><polygon points="150,55 172,119 240,120 186,162 206,227 150,188 94,227 114,162 60,120 128,119" fill="#fff"/></svg> ES</li>
+        <li role="option" data-lang="de" onclick="pickLang('de')"><svg class="flag" viewBox="0 0 5 3" xmlns="http://www.w3.org/2000/svg"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg> DE</li>
+        <li role="option" data-lang="zh" onclick="pickLang('zh')"><svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#DE2910"/><g fill="#FFDE00"><polygon points="5,2.5 6,5.5 9,5.5 6.6,7.4 7.5,10.4 5,8.6 2.5,10.4 3.4,7.4 1,5.5 4,5.5"/><circle cx="10.5" cy="2.2" r="0.7"/><circle cx="12.3" cy="4" r="0.7"/><circle cx="12.3" cy="6.5" r="0.7"/><circle cx="10.5" cy="8.3" r="0.7"/></g></svg> 中文</li>
+      </ul>
+    </div>
+    <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  </div>
+</nav>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
+  </div>
+<section class="reveal">
+  <span class="eyebrow"><span class="lang-en">Talks &amp; Conferences</span><span class="lang-es">Charlas y Congresos</span><span class="lang-de">Vorträge &amp; Tagungen</span><span class="lang-zh">演讲与会议</span></span>
+  <h2 class="section-title"><span class="lang-en">All talks &amp; conferences</span><span class="lang-es">Todos los congresos y charlas</span><span class="lang-de">Alle Vorträge &amp; Tagungen</span><span class="lang-zh">全部演讲与会议</span></h2>
+  <p class="section-lead"><span class="lang-en">Complete list of invited and contributed oral presentations across Chile, Argentina and Brazil.</span><span class="lang-es">Lista completa de presentaciones orales invitadas y contribuidas en Chile, Argentina y Brasil.</span><span class="lang-de">Vollständige Liste eingeladener und beigetragener Vorträge in Chile, Argentinien und Brasilien.</span><span class="lang-zh">在智利、阿根廷和巴西的受邀及投稿口头报告完整列表。</span></p>
+  <div class="conf-list">
+    <div class="conf"><div class="when">Jun 2026</div><div><div class="what">Fundamental Work Scaling and Non-Extensivity in Critical Quantum Stirling Engines</div><div class="where">Panoramas 2026 · PUCV, Campus Curauma, Chile</div></div></div>
+    <div class="conf"><div class="when">May 2026</div><div><div class="what">Fundamental Work Scaling and Non-Extensivity in Critical Quantum Stirling Engines</div><div class="where">XXIII TREFEMAC 2026 · Centro Atómico Bariloche – Instituto Balseiro, Argentina</div></div></div>
+    <div class="conf"><div class="when">Mar 2026</div><div><div class="what">Qubit-based quantum heat engines: Maximum quantum work at criticality</div><div class="where">MARCh 2026 · UTFSM, Valparaíso, Chile</div></div></div>
+    <div class="conf"><div class="when">Dec 2025</div><div><div class="what">Exact Conditions for Carnot Efficiency in Quantum Stirling Engines at Criticality</div><div class="where">IV International Workshop on Statistical Physics · Antofagasta, Chile</div></div></div>
+    <div class="conf"><div class="when">Dec 2025</div><div><div class="what">On the Maximum Quantum Work in Critical Stirling Engines: Applications to Fibonacci–Lucas Degeneracies</div><div class="where">SIMAFE 2025 · Temuco, Chile</div></div></div>
+    <div class="conf"><div class="when">Nov 2025</div><div><div class="what">Qubit vs. Qutrit: Efficiency and Entanglement in Stirling Cycles</div><div class="where">VIII National Congress on Nanotechnology · La Serena, Chile</div></div></div>
+    <div class="conf"><div class="when">Oct 2025</div><div><div class="what">Quantum Level-Crossing Induced by Anisotropy in Spin-1 Heisenberg Dimers: Applications to Quantum Stirling Engines</div><div class="where">XXIII B-MRS Meeting · Salvador de Bahía, Brazil</div></div></div>
+    <div class="conf"><div class="when">Sep 2025</div><div><div class="what">Quantum Thermal Machines in Two-Dimensional Materials (co-speaker)</div><div class="where">Café de Investigación V20 · UTFSM, Valparaíso, Chile</div></div></div>
+    <div class="conf"><div class="when">Jun 2025</div><div><div class="what">Quantum Thermodynamic Cycles: Otto &amp; Stirling (co-speaker)</div><div class="where">DFI Seminar · Universidad de Chile, Santiago</div></div></div>
+    <div class="conf"><div class="when">May 2025</div><div><div class="what">Spin-1/2 vs. Spin-1: A Quantum Thermodynamic Study of Anisotropic XXX Heisenberg Models</div><div class="where">Panoramas 2025 · PUCV, Campus Curauma, Chile</div></div></div>
+    <div class="conf"><div class="when">Apr 2025</div><div><div class="what">Quantum Thermodynamic Cycles: Stirling &amp; Otto</div><div class="where">IV QUSantiago · Universidad de Santiago, Chile</div></div></div>
+    <div class="conf"><div class="when">Mar 2025</div><div><div class="what">Spin-1/2 vs Spin-1: Comparisons of Stirling Engines</div><div class="where">MARCh 2025 · Universidad de Mendoza, Argentina</div></div></div>
+    <div class="conf"><div class="when">Jan 2025</div><div><div class="what">Spin-1/2 vs Spin-1: A Quantum Thermodynamic Study</div><div class="where">XIII Escuela de Nanoestructuras · UTFSM, Casa Central, Chile</div></div></div>
+    <div class="conf"><div class="when">Oct 2024</div><div><div class="what">Reduced Entropy and the Effective Temperature of a Three-Qubit System (Final Presenter)</div><div class="where">SOCHIFI 2024 · Universidad de La Frontera, Temuco, Chile</div></div></div>
+    <div class="conf"><div class="when">May 2024</div><div><div class="what">Effects of Magnetic Anisotropy on Three-Qubit Antiferromagnetic Thermal Machines</div><div class="where">Panoramas 2024 · PUCV, Campus Curauma, Chile</div></div></div>
+    <div class="conf"><div class="when">Jan 2024</div><div><div class="what">Otto and Stirling Engines in a System of Three Entangled Qubits in a Ring Topology</div><div class="where">XII Escuela de Nanoestructuras · UTFSM, Casa Central, Chile</div></div></div>
+    <div class="conf"><div class="when">Oct 2023</div><div><div class="what">Magnetic Stirling Cycle for Qubits with Anisotropy near the Quantum Critical Point</div><div class="where">LAW3M · Puerto Varas, Chile</div></div></div>
+  </div>
+</section>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
+  </div>
+<footer>
+  <p>&copy; <span id="yr"></span> Bastian Castorene</p>
+  <p style="margin-top:6px;opacity:.7">Ph.D. (C) in Physics &middot; UTFSM &amp; PUCV &middot; Quantum thermodynamics</p>
+  <p style="margin-top:6px"><a href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
