@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0713" />
+<title>Lecture notes &mdash; Bastian Castorene</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='0.5' stop-color='%23d946ef'/%3E%3Cstop offset='1' stop-color='%234f46e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3EBC%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="bg-glow"></div>
+<canvas id="energy"></canvas>
+<nav>
+  <a href="index.html#top" class="brand">Bastian Castorene</a>
+  <div class="nav-right">
+  <div class="nav-links">
+    <a class="backhome" href="index.html">&larr; <span class="lang-en">Home</span><span class="lang-es">Inicio</span><span class="lang-de">Start</span><span class="lang-zh">主页</span></a>
+    <a href="index.html#about"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span><span class="lang-de">Über mich</span><span class="lang-zh">关于</span></a>
+    <a href="index.html#research"><span class="lang-en">Research</span><span class="lang-es">Investigación</span><span class="lang-de">Forschung</span><span class="lang-zh">研究</span></a>
+    <a href="publications.html"><span class="lang-en">Publications</span><span class="lang-es">Publicaciones</span><span class="lang-de">Publikationen</span><span class="lang-zh">论文</span></a>
+    <a href="talks.html"><span class="lang-en">Talks</span><span class="lang-es">Congresos</span><span class="lang-de">Vorträge</span><span class="lang-zh">演讲</span></a>
+    <a href="index.html#notes"><span class="lang-en">Notes</span><span class="lang-es">Apuntes</span><span class="lang-de">Skripte</span><span class="lang-zh">讲义</span></a>
+        <a href="index.html#team"><span class="lang-en">Team</span><span class="lang-es">Equipo</span><span class="lang-de">Team</span><span class="lang-zh">团队</span></a>
+    <a href="index.html#blog"><span class="lang-en">Blog</span><span class="lang-es">Blog</span><span class="lang-de">Blog</span><span class="lang-zh">博客</span></a>
+    <a href="index.html#contact"><span class="lang-en">Contact</span><span class="lang-es">Contacto</span><span class="lang-de">Kontakt</span><span class="lang-zh">联系</span></a>
+  </div>
+    <button class="theme-toggle" aria-label="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <div class="lang-dd">
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" onclick="toggleLangMenu(this)"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
+      <ul class="lang-menu" role="listbox">
+        <li role="option" data-lang="en" onclick="pickLang('en')"><svg class="flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><rect x="25" width="10" height="30" fill="#fff"/><rect y="10" width="60" height="10" fill="#fff"/><rect x="27" width="6" height="30" fill="#C8102E"/><rect y="12" width="60" height="6" fill="#C8102E"/></svg> EN</li>
+        <li role="option" data-lang="es" onclick="pickLang('es')"><svg class="flag" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"><rect width="900" height="600" fill="#fff"/><rect y="300" width="900" height="300" fill="#D52B1E"/><rect width="300" height="300" fill="#0039A6"/><polygon points="150,55 172,119 240,120 186,162 206,227 150,188 94,227 114,162 60,120 128,119" fill="#fff"/></svg> ES</li>
+        <li role="option" data-lang="de" onclick="pickLang('de')"><svg class="flag" viewBox="0 0 5 3" xmlns="http://www.w3.org/2000/svg"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg> DE</li>
+        <li role="option" data-lang="zh" onclick="pickLang('zh')"><svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#DE2910"/><g fill="#FFDE00"><polygon points="5,2.5 6,5.5 9,5.5 6.6,7.4 7.5,10.4 5,8.6 2.5,10.4 3.4,7.4 1,5.5 4,5.5"/><circle cx="10.5" cy="2.2" r="0.7"/><circle cx="12.3" cy="4" r="0.7"/><circle cx="12.3" cy="6.5" r="0.7"/><circle cx="10.5" cy="8.3" r="0.7"/></g></svg> 中文</li>
+      </ul>
+    </div>
+    <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  </div>
+</nav>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
+  </div>
+<section class="reveal">
+  <span class="eyebrow"><span class="lang-en">Lecture notes</span><span class="lang-es">Apuntes de cátedra</span><span class="lang-de">Vorlesungsskripte</span><span class="lang-zh">课程讲义</span></span>
+  <h2 class="section-title"><span class="lang-en">Lecture notes</span><span class="lang-es">Apuntes de cátedra</span><span class="lang-de">Vorlesungsskripte</span><span class="lang-zh">课程讲义</span></h2>
+  <div class="doclist">
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1oxvkHV9d35fkKVa3gQtCdaJ3OIB9J7l_/view">
+        <span class="docnum">01</span>
+        <span class="docdate">Jul 2026</span>
+        <span class="doctitle">Cátedra · Campos Electromagnéticos II</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1oxvkHV9d35fkKVa3gQtCdaJ3OIB9J7l_&amp;sz=w300" alt="Cátedra · Campos Electromagnéticos II" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Second course in electromagnetic fields: time-dependent Maxwell equations, electromagnetic waves and their propagation in matter, radiation from accelerated charges, and waveguides.</span><span class="lang-es">Segundo curso de campos electromagnéticos: ecuaciones de Maxwell dependientes del tiempo, ondas electromagnéticas y su propagación en medios materiales, radiación de cargas aceleradas y guías de onda.</span><span class="lang-de">Zweiter Kurs zu elektromagnetischen Feldern: zeitabhängige Maxwell-Gleichungen, elektromagnetische Wellen und ihre Ausbreitung in Materie, Strahlung beschleunigter Ladungen und Wellenleiter.</span><span class="lang-zh">电磁场第二门课程：含时麦克斯韦方程组、电磁波及其在介质中的传播、加速电荷的辐射与波导。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1oxvkHV9d35fkKVa3gQtCdaJ3OIB9J7l_/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1FXNlBLL1k5o9j6v5q01Xgnpr7RZsdkSA/view">
+        <span class="docnum">02</span>
+        <span class="docdate">May 2024</span>
+        <span class="doctitle">Cátedra · Mecánica Estadística</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1FXNlBLL1k5o9j6v5q01Xgnpr7RZsdkSA&amp;sz=w300" alt="Cátedra · Mecánica Estadística" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Full statistical mechanics course: thermodynamic laws and potentials, the microcanonical, canonical and grand canonical ensembles, partition functions, and quantum statistics for bosons and fermions.</span><span class="lang-es">Curso completo de mecánica estadística: leyes y potenciales termodinámicos, los ensambles microcanónico, canónico y gran canónico, funciones de partición y estadística cuántica de bosones y fermiones.</span><span class="lang-de">Vollständiger Kurs zur statistischen Mechanik: thermodynamische Gesetze und Potentiale, mikrokanonisches, kanonisches und großkanonisches Ensemble, Zustandssummen sowie Quantenstatistik für Bosonen und Fermionen.</span><span class="lang-zh">统计力学完整课程：热力学定律与势函数，微正则、正则与巨正则系综，配分函数，以及玻色子与费米子的量子统计。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1FXNlBLL1k5o9j6v5q01Xgnpr7RZsdkSA/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1uAilKdD0EYubKmKxoNAbfveCXdidca2F/view">
+        <span class="docnum">03</span>
+        <span class="docdate">Nov 2023</span>
+        <span class="doctitle">Cátedra · Métodos Matemáticos Avanzados</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1uAilKdD0EYubKmKxoNAbfveCXdidca2F&amp;sz=w300" alt="Cátedra · Métodos Matemáticos Avanzados" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Advanced mathematical methods for physics: complex analysis and residues, integral transforms, Green's functions, special functions and an introduction to group theory.</span><span class="lang-es">Métodos matemáticos avanzados para la física: análisis complejo y residuos, transformadas integrales, funciones de Green, funciones especiales e introducción a la teoría de grupos.</span><span class="lang-de">Fortgeschrittene mathematische Methoden der Physik: komplexe Analysis und Residuen, Integraltransformationen, Greensche Funktionen, spezielle Funktionen und eine Einführung in die Gruppentheorie.</span><span class="lang-zh">物理学高等数学方法：复分析与留数、积分变换、格林函数、特殊函数，以及群论导论。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1uAilKdD0EYubKmKxoNAbfveCXdidca2F/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/13ULg0dEZxrhhG4p5i3Cf7CfXCY9cREij/view">
+        <span class="docnum">04</span>
+        <span class="docdate">Apr 2023</span>
+        <span class="doctitle">Cátedra · Métodos Matemáticos</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=13ULg0dEZxrhhG4p5i3Cf7CfXCY9cREij&amp;sz=w300" alt="Cátedra · Métodos Matemáticos" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">First course in mathematical methods: vector calculus, ordinary and partial differential equations, series solutions, Fourier analysis and orthogonal function expansions.</span><span class="lang-es">Primer curso de métodos matemáticos: cálculo vectorial, ecuaciones diferenciales ordinarias y parciales, soluciones en serie, análisis de Fourier y desarrollos en funciones ortogonales.</span><span class="lang-de">Erster Kurs zu mathematischen Methoden: Vektoranalysis, gewöhnliche und partielle Differentialgleichungen, Reihenlösungen, Fourier-Analysis und Entwicklungen nach orthogonalen Funktionen.</span><span class="lang-zh">数学方法第一门课程：矢量分析、常微分与偏微分方程、级数解、傅里叶分析与正交函数展开。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/13ULg0dEZxrhhG4p5i3Cf7CfXCY9cREij/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1rnhgBwD2xdEHmQhmMLVQJuBkbiT5syoG/view">
+        <span class="docnum">05</span>
+        <span class="docdate">Feb 2023</span>
+        <span class="doctitle">Clases · Mecánica II</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1rnhgBwD2xdEHmQhmMLVQJuBkbiT5syoG&amp;sz=w300" alt="Clases · Mecánica II" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Second course in classical mechanics: rigid-body dynamics, non-inertial reference frames, coupled oscillations and normal modes, and central-force motion.</span><span class="lang-es">Segundo curso de mecánica clásica: dinámica del cuerpo rígido, sistemas de referencia no inerciales, oscilaciones acopladas y modos normales, y movimiento bajo fuerzas centrales.</span><span class="lang-de">Zweiter Kurs zur klassischen Mechanik: Starrkörperdynamik, Nicht-Inertialsysteme, gekoppelte Schwingungen und Normalmoden sowie Bewegung im Zentralkraftfeld.</span><span class="lang-zh">经典力学第二门课程：刚体动力学、非惯性参考系、耦合振动与简正模，以及有心力运动。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1rnhgBwD2xdEHmQhmMLVQJuBkbiT5syoG/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1rAA2ZQHa7-wAz6YcuXhTGX_7152lRNUo/view">
+        <span class="docnum">06</span>
+        <span class="docdate">Jun 2022</span>
+        <span class="doctitle">Mecánica Hamiltoniana</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1rAA2ZQHa7-wAz6YcuXhTGX_7152lRNUo&amp;sz=w300" alt="Mecánica Hamiltoniana" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Analytical mechanics in the Hamiltonian formulation: Legendre transformations, Hamilton's canonical equations, Poisson brackets, canonical transformations and Liouville's theorem in phase space.</span><span class="lang-es">Mecánica analítica en la formulación hamiltoniana: transformadas de Legendre, ecuaciones canónicas de Hamilton, corchetes de Poisson, transformaciones canónicas y el teorema de Liouville en el espacio de fase.</span><span class="lang-de">Analytische Mechanik in der Hamiltonschen Formulierung: Legendre-Transformationen, kanonische Hamilton-Gleichungen, Poisson-Klammern, kanonische Transformationen und der Satz von Liouville im Phasenraum.</span><span class="lang-zh">哈密顿形式的分析力学：勒让德变换、哈密顿正则方程、泊松括号、正则变换与相空间中的刘维尔定理。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1rAA2ZQHa7-wAz6YcuXhTGX_7152lRNUo/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/12SgwDkRPTvPZXbjf9XgFatw_jXYo7WzE/view">
+        <span class="docnum">07</span>
+        <span class="docdate">Apr 2022</span>
+        <span class="doctitle">Clases · Campos Electromagnéticos I</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=12SgwDkRPTvPZXbjf9XgFatw_jXYo7WzE&amp;sz=w300" alt="Clases · Campos Electromagnéticos I" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">First course in electromagnetic fields: electrostatics and Gauss's law, electric potential and boundary-value problems, dielectrics, magnetostatics and magnetic materials.</span><span class="lang-es">Primer curso de campos electromagnéticos: electrostática y ley de Gauss, potencial eléctrico y problemas de contorno, dieléctricos, magnetostática y materiales magnéticos.</span><span class="lang-de">Erster Kurs zu elektromagnetischen Feldern: Elektrostatik und Gaußsches Gesetz, elektrisches Potential und Randwertprobleme, Dielektrika, Magnetostatik und magnetische Materialien.</span><span class="lang-zh">电磁场第一门课程：静电学与高斯定律、电势与边值问题、电介质、静磁学与磁性材料。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/12SgwDkRPTvPZXbjf9XgFatw_jXYo7WzE/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:30px">
+    <a class="btn btn-ghost" href="https://drive.google.com/drive/folders/1-rhWAmo243TA4tAGGbsI7_ad_JWvo0Ii" target="_blank" rel="noopener"><span class="lang-en">Open the whole folder in Google Drive &rarr;</span><span class="lang-es">Abrir la carpeta completa en Google Drive &rarr;</span><span class="lang-de">Ganzen Ordner in Google Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Google Drive &#20013;&#25171;&#24320;&#25972;&#20010;&#25991;&#20214;&#22841; &rarr;</span></a>
+  </div>
+</section>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zur&uuml;ck zur Startseite</span><span class="lang-zh">&#36820;&#22238;&#20027;&#39029;</span></a>
+  </div>
+<footer>
+  <p>&copy; <span id="yr"></span> Bastian Castorene</p>
+  <p style="margin-top:6px;opacity:.7">Ph.D. (C) in Physics &middot; UTFSM &amp; PUCV &middot; Quantum thermodynamics</p>
+  <p style="margin-top:6px"><a href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zur&uuml;ck zur Startseite</span><span class="lang-zh">&#36820;&#22238;&#20027;&#39029;</span></a></p>
+</footer>
+<script src="app.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.dochead').forEach(function(h){
+    h.addEventListener('click', function(e){
+      var it = h.parentNode;
+      if(!it.classList.contains('open')){
+        document.querySelectorAll('.docitem.open').forEach(function(o){ if(o!==it) o.classList.remove('open'); });
+        it.classList.add('open');
+      } else if (e.target.closest('.docchev')) {
+        it.classList.remove('open');
+      } else {
+        window.open(h.getAttribute('data-url'), '_blank', 'noopener');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

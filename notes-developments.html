@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0713" />
+<title>Developments & summaries &mdash; Bastian Castorene</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='0.5' stop-color='%23d946ef'/%3E%3Cstop offset='1' stop-color='%234f46e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3EBC%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="bg-glow"></div>
+<canvas id="energy"></canvas>
+<nav>
+  <a href="index.html#top" class="brand">Bastian Castorene</a>
+  <div class="nav-right">
+  <div class="nav-links">
+    <a class="backhome" href="index.html">&larr; <span class="lang-en">Home</span><span class="lang-es">Inicio</span><span class="lang-de">Start</span><span class="lang-zh">主页</span></a>
+    <a href="index.html#about"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span><span class="lang-de">Über mich</span><span class="lang-zh">关于</span></a>
+    <a href="index.html#research"><span class="lang-en">Research</span><span class="lang-es">Investigación</span><span class="lang-de">Forschung</span><span class="lang-zh">研究</span></a>
+    <a href="publications.html"><span class="lang-en">Publications</span><span class="lang-es">Publicaciones</span><span class="lang-de">Publikationen</span><span class="lang-zh">论文</span></a>
+    <a href="talks.html"><span class="lang-en">Talks</span><span class="lang-es">Congresos</span><span class="lang-de">Vorträge</span><span class="lang-zh">演讲</span></a>
+    <a href="index.html#notes"><span class="lang-en">Notes</span><span class="lang-es">Apuntes</span><span class="lang-de">Skripte</span><span class="lang-zh">讲义</span></a>
+        <a href="index.html#team"><span class="lang-en">Team</span><span class="lang-es">Equipo</span><span class="lang-de">Team</span><span class="lang-zh">团队</span></a>
+    <a href="index.html#blog"><span class="lang-en">Blog</span><span class="lang-es">Blog</span><span class="lang-de">Blog</span><span class="lang-zh">博客</span></a>
+    <a href="index.html#contact"><span class="lang-en">Contact</span><span class="lang-es">Contacto</span><span class="lang-de">Kontakt</span><span class="lang-zh">联系</span></a>
+  </div>
+    <button class="theme-toggle" aria-label="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <div class="lang-dd">
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" onclick="toggleLangMenu(this)"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
+      <ul class="lang-menu" role="listbox">
+        <li role="option" data-lang="en" onclick="pickLang('en')"><svg class="flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><rect x="25" width="10" height="30" fill="#fff"/><rect y="10" width="60" height="10" fill="#fff"/><rect x="27" width="6" height="30" fill="#C8102E"/><rect y="12" width="60" height="6" fill="#C8102E"/></svg> EN</li>
+        <li role="option" data-lang="es" onclick="pickLang('es')"><svg class="flag" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"><rect width="900" height="600" fill="#fff"/><rect y="300" width="900" height="300" fill="#D52B1E"/><rect width="300" height="300" fill="#0039A6"/><polygon points="150,55 172,119 240,120 186,162 206,227 150,188 94,227 114,162 60,120 128,119" fill="#fff"/></svg> ES</li>
+        <li role="option" data-lang="de" onclick="pickLang('de')"><svg class="flag" viewBox="0 0 5 3" xmlns="http://www.w3.org/2000/svg"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg> DE</li>
+        <li role="option" data-lang="zh" onclick="pickLang('zh')"><svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#DE2910"/><g fill="#FFDE00"><polygon points="5,2.5 6,5.5 9,5.5 6.6,7.4 7.5,10.4 5,8.6 2.5,10.4 3.4,7.4 1,5.5 4,5.5"/><circle cx="10.5" cy="2.2" r="0.7"/><circle cx="12.3" cy="4" r="0.7"/><circle cx="12.3" cy="6.5" r="0.7"/><circle cx="10.5" cy="8.3" r="0.7"/></g></svg> 中文</li>
+      </ul>
+    </div>
+    <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  </div>
+</nav>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
+  </div>
+<section class="reveal">
+  <span class="eyebrow"><span class="lang-en">Developments &amp; summaries</span><span class="lang-es">Desarrollos y resúmenes</span><span class="lang-de">Herleitungen &amp; Zusammenfassungen</span><span class="lang-zh">推导与总结</span></span>
+  <h2 class="section-title"><span class="lang-en">Developments &amp; summaries</span><span class="lang-es">Desarrollos y resúmenes</span><span class="lang-de">Herleitungen &amp; Zusammenfassungen</span><span class="lang-zh">推导与总结</span></h2>
+  <div class="doclist">
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1KBSn0Yuc3R8-gtq_Ir5Ol1nYPxtDR-rc/view">
+        <span class="docnum">01</span>
+        <span class="docdate">Jan 2026</span>
+        <span class="doctitle">Teorema maestro de Ramanujan</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1KBSn0Yuc3R8-gtq_Ir5Ol1nYPxtDR-rc&amp;sz=w300" alt="Teorema maestro de Ramanujan" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Ramanujan's master theorem: the identity that turns the coefficients of a power-series expansion into a Mellin transform, together with the conditions for its validity and worked examples of the definite integrals it evaluates almost immediately.</span><span class="lang-es">El teorema maestro de Ramanujan: la identidad que convierte los coeficientes de un desarrollo en serie de potencias en una transformada de Mellin, junto con sus condiciones de validez y ejemplos de las integrales definidas que resuelve casi de inmediato.</span><span class="lang-de">Ramanujans Master-Theorem: die Identität, die die Koeffizienten einer Potenzreihenentwicklung in eine Mellin-Transformation überführt, mit Gültigkeitsbedingungen und Beispielen bestimmter Integrale, die sich damit fast unmittelbar lösen lassen.</span><span class="lang-zh">拉马努金主定理：将幂级数展开系数转化为梅林变换的恒等式，含成立条件与可借此迅速求解的定积分示例。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1KBSn0Yuc3R8-gtq_Ir5Ol1nYPxtDR-rc/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1U_Clig22ib1BN__634yqNmzzIcBvky9d/view">
+        <span class="docnum">02</span>
+        <span class="docdate">Dec 2025</span>
+        <span class="doctitle">Integral de sin(x)/x</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1U_Clig22ib1BN__634yqNmzzIcBvky9d&amp;sz=w300" alt="Integral de sin(x)/x" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Several independent evaluations of the Dirichlet integral of sin(x)/x over the positive real line — via Feynman's trick of differentiation under the integral sign, Laplace transforms and contour integration in the complex plane.</span><span class="lang-es">Varias evaluaciones independientes de la integral de Dirichlet de sin(x)/x sobre la recta real positiva: mediante el truco de Feynman de derivar bajo el signo integral, transformadas de Laplace e integración de contorno en el plano complejo.</span><span class="lang-de">Mehrere unabhängige Berechnungen des Dirichlet-Integrals von sin(x)/x über die positive reelle Achse — mit Feynmans Trick der Differentiation unter dem Integral, Laplace-Transformationen und Konturintegration in der komplexen Ebene.</span><span class="lang-zh">对正实轴上 sin(x)/x 的狄利克雷积分的多种独立求法：费曼的积分号下求导技巧、拉普拉斯变换与复平面围道积分。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1U_Clig22ib1BN__634yqNmzzIcBvky9d/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1dZbfKkH7yif5cU-Iv0_3SHNKrV6j-b8k/view">
+        <span class="docnum">03</span>
+        <span class="docdate">Feb 2025</span>
+        <span class="doctitle">Funciones de Green</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1dZbfKkH7yif5cU-Iv0_3SHNKrV6j-b8k&amp;sz=w300" alt="Funciones de Green" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Green's functions as the response of a linear differential operator to a point source: construction, boundary conditions, the connection with the Dirac delta and their use in solving inhomogeneous problems in electrostatics and quantum mechanics.</span><span class="lang-es">Funciones de Green como la respuesta de un operador diferencial lineal a una fuente puntual: construcción, condiciones de borde, la conexión con la delta de Dirac y su uso para resolver problemas inhomogéneos en electrostática y mecánica cuántica.</span><span class="lang-de">Greensche Funktionen als Antwort eines linearen Differentialoperators auf eine Punktquelle: Konstruktion, Randbedingungen, Zusammenhang mit der Dirac-Delta-Funktion und Anwendung auf inhomogene Probleme in Elektrostatik und Quantenmechanik.</span><span class="lang-zh">格林函数作为线性微分算子对点源的响应：构造方法、边界条件、与狄拉克 δ 函数的联系，及其在静电学与量子力学非齐次问题中的应用。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1dZbfKkH7yif5cU-Iv0_3SHNKrV6j-b8k/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1q0ZBfFJ5OVerSvtv0ZH58Jg-ULczgccC/view">
+        <span class="docnum">04</span>
+        <span class="docdate">Nov 2024</span>
+        <span class="doctitle">Formulario de Campos Electromagnéticos</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1q0ZBfFJ5OVerSvtv0ZH58Jg-ULczgccC&amp;sz=w300" alt="Formulario de Campos Electromagnéticos" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">A compact formulary for electromagnetic fields: Maxwell's equations in integral and differential form, potentials and gauges, vector identities, and the operators in Cartesian, cylindrical and spherical coordinates.</span><span class="lang-es">Formulario compacto de campos electromagnéticos: ecuaciones de Maxwell en forma integral y diferencial, potenciales y gauges, identidades vectoriales y los operadores en coordenadas cartesianas, cilíndricas y esféricas.</span><span class="lang-de">Kompakte Formelsammlung zu elektromagnetischen Feldern: Maxwell-Gleichungen in Integral- und Differentialform, Potentiale und Eichungen, Vektoridentitäten sowie die Operatoren in kartesischen, Zylinder- und Kugelkoordinaten.</span><span class="lang-zh">电磁场简明公式集：麦克斯韦方程组的积分与微分形式、势与规范、矢量恒等式，以及直角、柱、球坐标下的各类算符。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1q0ZBfFJ5OVerSvtv0ZH58Jg-ULczgccC/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1Xb8IX7TYD3ZYBdpZ8syfLdgPqQBgfBTD/view">
+        <span class="docnum">05</span>
+        <span class="docdate">Sep 2024</span>
+        <span class="doctitle">Mecánica Cuántica</span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1Xb8IX7TYD3ZYBdpZ8syfLdgPqQBgfBTD&amp;sz=w300" alt="Mecánica Cuántica" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">A study summary of quantum mechanics: the postulates and Hilbert-space formalism, the Schrödinger equation and its exactly solvable problems, angular momentum and spin, and time-independent perturbation theory.</span><span class="lang-es">Resumen de estudio de mecánica cuántica: los postulados y el formalismo del espacio de Hilbert, la ecuación de Schrödinger y sus problemas exactamente solubles, momento angular y espín, y teoría de perturbaciones independiente del tiempo.</span><span class="lang-de">Studienzusammenfassung zur Quantenmechanik: Postulate und Hilbertraum-Formalismus, Schrödinger-Gleichung und ihre exakt lösbaren Probleme, Drehimpuls und Spin sowie zeitunabhängige Störungstheorie.</span><span class="lang-zh">量子力学复习总结：公设与希尔伯特空间形式体系、薛定谔方程及其可精确求解的问题、角动量与自旋，以及不含时微扰论。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1Xb8IX7TYD3ZYBdpZ8syfLdgPqQBgfBTD/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:30px">
+    <a class="btn btn-ghost" href="https://drive.google.com/drive/folders/18nsrCbxVNHp9IyyOyV7ydHHVyO6nVxwH" target="_blank" rel="noopener"><span class="lang-en">Open the whole folder in Google Drive &rarr;</span><span class="lang-es">Abrir la carpeta completa en Google Drive &rarr;</span><span class="lang-de">Ganzen Ordner in Google Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Google Drive &#20013;&#25171;&#24320;&#25972;&#20010;&#25991;&#20214;&#22841; &rarr;</span></a>
+  </div>
+</section>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zur&uuml;ck zur Startseite</span><span class="lang-zh">&#36820;&#22238;&#20027;&#39029;</span></a>
+  </div>
+<footer>
+  <p>&copy; <span id="yr"></span> Bastian Castorene</p>
+  <p style="margin-top:6px;opacity:.7">Ph.D. (C) in Physics &middot; UTFSM &amp; PUCV &middot; Quantum thermodynamics</p>
+  <p style="margin-top:6px"><a href="index.html">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zur&uuml;ck zur Startseite</span><span class="lang-zh">&#36820;&#22238;&#20027;&#39029;</span></a></p>
+</footer>
+<script src="app.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.dochead').forEach(function(h){
+    h.addEventListener('click', function(e){
+      var it = h.parentNode;
+      if(!it.classList.contains('open')){
+        document.querySelectorAll('.docitem.open').forEach(function(o){ if(o!==it) o.classList.remove('open'); });
+        it.classList.add('open');
+      } else if (e.target.closest('.docchev')) {
+        it.classList.remove('open');
+      } else {
+        window.open(h.getAttribute('data-url'), '_blank', 'noopener');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
