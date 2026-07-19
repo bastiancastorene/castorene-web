@@ -120,3 +120,15 @@ document.querySelectorAll('.nav-links a').forEach(function(a){
 document.querySelectorAll('.hero-cta .btn').forEach(function(b){
   b.addEventListener('pointerdown',function(){b.classList.remove('pulse'); void b.offsetWidth; b.classList.add('pulse'); setTimeout(function(){b.classList.remove('pulse');},560);});
 });
+
+/* ---------- nav submenus ---------- */
+function toggleSub(btn){
+  var g = btn.parentNode.parentNode, was = g.classList.contains('open');
+  document.querySelectorAll('.navgroup.open').forEach(function(o){ o.classList.remove('open'); });
+  if(!was) g.classList.add('open');
+}
+document.addEventListener('click', function(e){
+  if(!e.target.closest || !e.target.closest('.navgroup')){
+    document.querySelectorAll('.navgroup.open').forEach(function(o){ o.classList.remove('open'); });
+  }
+});

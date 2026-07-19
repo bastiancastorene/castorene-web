@@ -452,3 +452,92 @@ html[data-theme="light"] .dochead:hover .doctitle{color:var(--v3)}
   .docbody{flex-direction:column;padding:2px 14px 18px;gap:14px}
   .docthumb{width:96px;align-self:flex-start}
 }
+
+/* ===== Nav dropdowns (section anchor + subpage) ===== */
+.nav-links .navgroup{position:relative;display:flex;align-items:center}
+.navgroup .navrow{display:flex;align-items:center;gap:1px}
+.subcaret{background:none;border:0;padding:2px 3px;cursor:pointer;line-height:1;font-size:.6rem;
+  color:var(--muted);opacity:.7;transition:transform .32s cubic-bezier(.2,.8,.2,1), color .25s ease, opacity .25s ease}
+.navgroup:hover .subcaret,.navgroup.open .subcaret{color:var(--accent);opacity:1}
+.navgroup:hover .subcaret{transform:rotate(180deg)}
+.submenu{position:absolute;top:100%;left:-10px;margin-top:12px;min-width:200px;z-index:70;
+  padding:8px;border-radius:14px;background:rgba(10,7,19,.97);border:1px solid var(--panel-brd);
+  box-shadow:0 26px 54px -20px rgba(0,0,0,.7);
+  opacity:0;transform:translateY(-8px) scale(.98);pointer-events:none;
+  transition:opacity .26s ease, transform .3s cubic-bezier(.2,.8,.2,1)}
+.submenu::before{content:"";position:absolute;top:-14px;left:0;right:0;height:14px}
+html[data-theme="light"] .submenu{background:rgba(255,255,255,.98)}
+.navgroup:hover .submenu,.navgroup.open .submenu{opacity:1;transform:none;pointer-events:auto}
+.submenu .subinner{display:flex;flex-direction:column;gap:2px}
+.submenu a{display:block;padding:8px 12px;border-radius:9px;font-size:.84rem;font-weight:500;
+  color:var(--muted);white-space:nowrap;
+  transition:background .22s ease, color .22s ease, transform .18s ease}
+.submenu a::after{display:none}
+.submenu a:hover{background:linear-gradient(100deg,rgba(124,58,237,.20),rgba(217,70,239,.12));
+  color:var(--txt);transform:translateX(3px);text-shadow:none}
+@media(max-width:760px){
+  .nav-links .navgroup{flex-direction:column;align-items:flex-start;width:100%}
+  .navgroup .navrow{width:100%;justify-content:space-between}
+  .subcaret{font-size:.72rem;padding:4px 6px}
+  .navgroup:hover .subcaret{transform:none}
+  .navgroup.open .subcaret{transform:rotate(180deg)}
+  .submenu{position:static;margin:0;min-width:0;padding:0 0 0 12px;border:0;background:none;box-shadow:none;
+    opacity:1;transform:none;pointer-events:auto;
+    display:grid;grid-template-rows:0fr;transition:grid-template-rows .36s cubic-bezier(.2,.8,.2,1)}
+  .navgroup:hover .submenu{grid-template-rows:0fr}
+  .navgroup.open .submenu{grid-template-rows:1fr;padding-top:6px}
+  .submenu .subinner{overflow:hidden}
+  .submenu a{padding:7px 10px;font-size:.82rem;border-left:2px solid rgba(168,120,255,.28);border-radius:0 8px 8px 0}
+}
+
+/* ===== Nav dropdowns · gradient + entry animation ===== */
+.submenu{background:linear-gradient(150deg,rgba(124,58,237,.20),rgba(217,70,239,.10) 55%,rgba(79,70,229,.17)),rgba(10,7,19,.97);
+  border-color:rgba(168,120,255,.32)}
+html[data-theme="light"] .submenu{background:linear-gradient(150deg,rgba(124,58,237,.11),rgba(217,70,239,.06) 55%,rgba(79,70,229,.10)),rgba(255,255,255,.98)}
+.submenu::after{content:"";position:absolute;left:14px;right:14px;top:0;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--v1),var(--v2),var(--v3));
+  opacity:0;transform:scaleX(.35);transform-origin:left center;
+  transition:opacity .3s ease .06s, transform .44s cubic-bezier(.2,.8,.2,1) .06s}
+.navgroup:hover .submenu::after,.navgroup.open .submenu::after{opacity:.95;transform:scaleX(1)}
+
+.submenu a{padding-left:22px;
+  transition:background .22s ease, color .22s ease, padding-left .22s cubic-bezier(.2,.8,.2,1)}
+.submenu a::before{content:"";position:absolute;left:9px;top:50%;width:5px;height:5px;margin-top:-2.5px;
+  border-radius:50%;background:linear-gradient(135deg,var(--v1),var(--v2));opacity:.38;transform:scale(.7);
+  transition:opacity .25s ease, transform .32s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease}
+.submenu a:hover{transform:none;padding-left:26px;color:#fff;
+  background:linear-gradient(100deg,rgba(124,58,237,.26),rgba(217,70,239,.15))}
+html[data-theme="light"] .submenu a:hover{color:var(--v3)}
+.submenu a:hover::before{opacity:1;transform:scale(1.2);box-shadow:0 0 10px rgba(217,70,239,.9)}
+
+@keyframes subin{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:none}}
+.navgroup:hover .submenu a,.navgroup.open .submenu a{animation:subin .34s cubic-bezier(.2,.8,.2,1) both}
+.submenu a:nth-child(1){animation-delay:.04s}
+.submenu a:nth-child(2){animation-delay:.09s}
+.submenu a:nth-child(3){animation-delay:.14s}
+.submenu a:nth-child(4){animation-delay:.19s}
+
+/* caret picks up the gradient, parent link lights up */
+.navgroup:hover .subcaret,.navgroup.open .subcaret{color:transparent;
+  background:linear-gradient(100deg,var(--v1),var(--v2),var(--v3));
+  -webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 0 6px rgba(217,70,239,.65))}
+.navgroup:hover>.navrow>a,.navgroup.open>.navrow>a{color:#fff;
+  text-shadow:0 0 18px rgba(217,70,239,.75),0 0 8px rgba(124,58,237,.55),0 0 2px rgba(255,255,255,.5)}
+.navgroup:hover>.navrow>a::after,.navgroup.open>.navrow>a::after{transform:scaleX(1)}
+html[data-theme="light"] .navgroup:hover>.navrow>a,
+html[data-theme="light"] .navgroup.open>.navrow>a{color:var(--v3);text-shadow:none}
+
+@media(max-width:760px){
+  .submenu{position:relative}
+  .submenu::after{left:0;right:auto;top:6px;bottom:2px;width:2px;height:auto;
+    transform:scaleY(.2);transform-origin:top center;
+    transition:opacity .3s ease .06s, transform .44s cubic-bezier(.2,.8,.2,1) .06s;
+    background:linear-gradient(180deg,var(--v1),var(--v2),var(--v3))}
+  .navgroup:hover .submenu::after{opacity:0;transform:scaleY(.2)}
+  .navgroup.open .submenu::after{opacity:.95;transform:scaleY(1)}
+  .submenu a{border-left:0;border-radius:8px;padding-left:20px}
+  .submenu a:hover{padding-left:24px}
+  .navgroup:hover .submenu a{animation:none}
+  .navgroup.open .submenu a{animation:subin .34s cubic-bezier(.2,.8,.2,1) both}
+}
