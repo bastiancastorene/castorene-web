@@ -6,42 +6,42 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.castorene.cl/publications.html</loc>
+    <loc>https://www.castorene.cl/publications</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.castorene.cl/talks.html</loc>
+    <loc>https://www.castorene.cl/talks</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.castorene.cl/team.html</loc>
+    <loc>https://www.castorene.cl/team</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.castorene.cl/blog.html</loc>
+    <loc>https://www.castorene.cl/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.castorene.cl/notes-theses.html</loc>
+    <loc>https://www.castorene.cl/notes-theses</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.castorene.cl/notes-developments.html</loc>
+    <loc>https://www.castorene.cl/notes-developments</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.castorene.cl/notes-lectures.html</loc>
+    <loc>https://www.castorene.cl/notes-lectures</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.castorene.cl/notes-teaching.html</loc>
+    <loc>https://www.castorene.cl/notes-teaching</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
