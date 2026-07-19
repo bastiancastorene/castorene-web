@@ -541,3 +541,6 @@ html[data-theme="light"] .navgroup.open>.navrow>a{color:var(--v3);text-shadow:no
   .navgroup:hover .submenu a{animation:none}
   .navgroup.open .submenu a{animation:subin .34s cubic-bezier(.2,.8,.2,1) both}
 }
+.docopen.alt{background:none;border:1px solid var(--panel-brd);color:var(--muted);box-shadow:none;margin-left:8px}
+.docopen.alt:hover{border-color:rgba(168,120,255,.45);color:var(--txt);
+  background:linear-gradient(100deg,rgba(124,58,237,.14),rgba(217,70,239,.08));box-shadow:0 8px 22px -12px rgba(217,70,239,.5)}
