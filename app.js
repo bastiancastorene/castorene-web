@@ -132,3 +132,56 @@ document.addEventListener('click', function(e){
     document.querySelectorAll('.navgroup.open').forEach(function(o){ o.classList.remove('open'); });
   }
 });
+
+/* ---------- scroll peek: fade + double chevron, hidden when text is in the way ---------- */
+(function(){
+  var secs=[].slice.call(document.querySelectorAll('section[id]')).map(function(s){
+    var t=s.querySelector('.section-title');
+    return t?{el:s}:null;
+  }).filter(Boolean);
+  if(secs.length<3) return;               /* only on the long home page */
+
+  var peek=document.createElement('div');
+  peek.className='peek';
+  peek.innerHTML='<button class="peek-in" type="button" aria-label="Scroll down">'+
+    '<svg class="peek-svg" viewBox="0 0 56 46" aria-hidden="true">'+
+    '<defs><linearGradient id="pkgrad" x1="0" y1="0" x2="1" y2="0">'+
+    '<stop offset="0" stop-color="#7c3aed"/><stop offset=".5" stop-color="#d946ef"/>'+
+    '<stop offset="1" stop-color="#4f46e5"/></linearGradient></defs>'+
+    '<path class="pk1" d="M6 8 L28 26 L50 8"/>'+
+    '<path class="pk2" d="M6 22 L28 40 L50 22"/>'+
+    '</svg></button>';
+  document.body.appendChild(peek);
+  var btn=peek.querySelector('.peek-in'), target=null;
+
+  /* elements that count as "text in the way" */
+  var textEls=[].slice.call(document.querySelectorAll(
+    'p,h1,h2,h3,h4,li,.tag,.btn,.qlink,.stat,.news-item,.conf,.pub,.award-item,.card,.member,.docitem,figcaption,footer'));
+
+  function bandBusy(){
+    var band=innerHeight-(innerWidth<=760?108:132), bottom=innerHeight;
+    for(var i=0;i<textEls.length;i++){
+      var r=textEls[i].getBoundingClientRect();
+      if(r.height===0&&r.width===0) continue;
+      if(r.bottom>band+8 && r.top<bottom-6) return true;
+    }
+    return false;
+  }
+
+  var tick=false;
+  function upd(){
+    tick=false;
+    var mid=scrollY+innerHeight*0.6, next=null;
+    for(var i=0;i<secs.length;i++){
+      if(secs[i].el.offsetTop>mid){ next=secs[i]; break; }
+    }
+    target=next;
+    var atEnd=(innerHeight+scrollY)>=document.body.scrollHeight-90;
+    peek.classList.toggle('on', !!next && !atEnd && !bandBusy());
+  }
+  function onScroll(){ if(!tick){ tick=true; requestAnimationFrame(upd); } }
+  btn.addEventListener('click',function(){ if(target) target.el.scrollIntoView({behavior:'smooth',block:'start'}); });
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll);
+  upd();
+})();
