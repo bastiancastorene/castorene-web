@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es" data-mode="pop">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0713" />
+<title>El número áureo escondido dentro de un imán &mdash; Bastian Castorene</title>
+<meta name="description" content="Explicación del paper 'Exact Combinatorial Density of States for the Critical 1D Ising Model' (Entropy 2026, 28, 821) en dos capas: divulgación y resumen técnico." />
+<link rel="canonical" href="https://www.castorene.cl/paper-entropy-ising" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='0.5' stop-color='%23d946ef'/%3E%3Cstop offset='1' stop-color='%234f46e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3EBC%3C/text%3E%3C/svg%3E" />
+<link rel="canonical" href="https://www.castorene.cl/talks" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="bg-glow"></div>
+<canvas id="energy"></canvas>
+<nav>
+  <a href="/#top" class="brand">Bastian Castorene</a>
+  <div class="nav-right">
+  <div class="nav-links">
+    <a class="backhome" href="/">&larr; <span class="lang-en">Home</span><span class="lang-es">Inicio</span><span class="lang-de">Start</span><span class="lang-zh">主页</span></a>
+    <a href="/#about"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span><span class="lang-de">Über mich</span><span class="lang-zh">关于</span></a>
+    <a href="/#research"><span class="lang-en">Research</span><span class="lang-es">Investigación</span><span class="lang-de">Forschung</span><span class="lang-zh">研究</span></a>
+    <div class="navgroup">
+      <div class="navrow"><a href="/#publications"><span class="lang-en">Publications</span><span class="lang-es">Publicaciones</span><span class="lang-de">Publikationen</span><span class="lang-zh">论文</span></a><button class="subcaret" type="button" aria-label="Submenu" onclick="toggleSub(this)">&#9662;</button></div>
+      <div class="submenu"><div class="subinner">
+        <a href="/publications"><span class="lang-en">All articles</span><span class="lang-es">Todos los artículos</span><span class="lang-de">Alle Artikel</span><span class="lang-zh">全部论文</span></a>
+      </div></div>
+    </div>
+    <div class="navgroup">
+      <div class="navrow"><a href="/#conferences"><span class="lang-en">Talks</span><span class="lang-es">Congresos</span><span class="lang-de">Vorträge</span><span class="lang-zh">演讲</span></a><button class="subcaret" type="button" aria-label="Submenu" onclick="toggleSub(this)">&#9662;</button></div>
+      <div class="submenu"><div class="subinner">
+        <a href="/talks"><span class="lang-en">All talks</span><span class="lang-es">Todas las charlas</span><span class="lang-de">Alle Vorträge</span><span class="lang-zh">全部演讲</span></a>
+      </div></div>
+    </div>
+    <a href="/#awards"><span class="lang-en">Awards</span><span class="lang-es">Premios</span><span class="lang-de">Auszeichnungen</span><span class="lang-zh">奖项</span></a>
+    <div class="navgroup">
+      <div class="navrow"><a href="/#team"><span class="lang-en">Team</span><span class="lang-es">Equipo</span><span class="lang-de">Team</span><span class="lang-zh">团队</span></a><button class="subcaret" type="button" aria-label="Submenu" onclick="toggleSub(this)">&#9662;</button></div>
+      <div class="submenu"><div class="subinner">
+        <a href="/team"><span class="lang-en">Meet the team</span><span class="lang-es">Conoce al equipo</span><span class="lang-de">Team ansehen</span><span class="lang-zh">了解团队</span></a>
+      </div></div>
+    </div>
+    <div class="navgroup">
+      <div class="navrow"><a href="/#notes"><span class="lang-en">Notes</span><span class="lang-es">Apuntes</span><span class="lang-de">Skripte</span><span class="lang-zh">讲义</span></a><button class="subcaret" type="button" aria-label="Submenu" onclick="toggleSub(this)">&#9662;</button></div>
+      <div class="submenu"><div class="subinner">
+        <a href="/notes-theses"><span class="lang-en">Theses &amp; papers</span><span class="lang-es">Tesis y papers</span><span class="lang-de">Abschlussarbeiten &amp; Artikel</span><span class="lang-zh">学位论文与文章</span></a>
+        <a href="/notes-developments"><span class="lang-en">Developments</span><span class="lang-es">Desarrollos</span><span class="lang-de">Herleitungen</span><span class="lang-zh">推导与总结</span></a>
+        <a href="/notes-lectures"><span class="lang-en">Lecture notes</span><span class="lang-es">Apuntes de cátedra</span><span class="lang-de">Vorlesungsskripte</span><span class="lang-zh">课程讲义</span></a>
+        <a href="/notes-teaching"><span class="lang-en">Teaching</span><span class="lang-es">Docencia</span><span class="lang-de">Lehre</span><span class="lang-zh">教学材料</span></a>
+      </div></div>
+    </div>
+    <div class="navgroup">
+      <div class="navrow"><a href="/#blog"><span class="lang-en">Blog</span><span class="lang-es">Blog</span><span class="lang-de">Blog</span><span class="lang-zh">博客</span></a><button class="subcaret" type="button" aria-label="Submenu" onclick="toggleSub(this)">&#9662;</button></div>
+      <div class="submenu"><div class="subinner">
+        <a href="/blog"><span class="lang-en">All posts</span><span class="lang-es">Todas las entradas</span><span class="lang-de">Alle Beiträge</span><span class="lang-zh">全部文章</span></a>
+      </div></div>
+    </div>
+    <a href="/#contact"><span class="lang-en">Contact</span><span class="lang-es">Contacto</span><span class="lang-de">Kontakt</span><span class="lang-zh">联系</span></a>
+  </div>
+    <button class="theme-toggle" aria-label="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <div class="lang-dd">
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" onclick="toggleLangMenu(this)"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
+      <ul class="lang-menu" role="listbox">
+        <li role="option" data-lang="en" onclick="pickLang('en')"><svg class="flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><rect x="25" width="10" height="30" fill="#fff"/><rect y="10" width="60" height="10" fill="#fff"/><rect x="27" width="6" height="30" fill="#C8102E"/><rect y="12" width="60" height="6" fill="#C8102E"/></svg> EN</li>
+        <li role="option" data-lang="es" onclick="pickLang('es')"><svg class="flag" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"><rect width="900" height="600" fill="#fff"/><rect y="300" width="900" height="300" fill="#D52B1E"/><rect width="300" height="300" fill="#0039A6"/><polygon points="150,55 172,119 240,120 186,162 206,227 150,188 94,227 114,162 60,120 128,119" fill="#fff"/></svg> ES</li>
+        <li role="option" data-lang="de" onclick="pickLang('de')"><svg class="flag" viewBox="0 0 5 3" xmlns="http://www.w3.org/2000/svg"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg> DE</li>
+        <li role="option" data-lang="zh" onclick="pickLang('zh')"><svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#DE2910"/><g fill="#FFDE00"><polygon points="5,2.5 6,5.5 9,5.5 6.6,7.4 7.5,10.4 5,8.6 2.5,10.4 3.4,7.4 1,5.5 4,5.5"/><circle cx="10.5" cy="2.2" r="0.7"/><circle cx="12.3" cy="4" r="0.7"/><circle cx="12.3" cy="6.5" r="0.7"/><circle cx="10.5" cy="8.3" r="0.7"/></g></svg> 中文</li>
+      </ul>
+    </div>
+    <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  </div>
+</nav>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="/">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
+  </div>
+<div class="modewash"></div><div class="modedark"></div>
+<section class="reveal">
+  <span class="eyebrow">Entropy 28, 821 (2026)</span>
+  <h2 class="section-title">El número áureo escondido dentro de un imán</h2>
+  <p class="papermeta">B. Castorene, F. J. Peña, M. HvE Groves, P. Vargas &middot;
+    <a href="https://doi.org/10.3390/e28070821" target="_blank" rel="noopener">DOI</a> &middot;
+    <a href="/Castorene_2026_Entropy_Ising.pdf" target="_blank" rel="noopener">PDF</a> &middot; Open Access</p>
+
+  <div class="ms-sentinel" id="mssent"></div>
+  <div class="modeswitch" id="ms">
+    <span class="ms-glow" id="msglow"></span>
+    <button class="ms-btn active" type="button" data-mode="pop">Divulgación</button>
+    <button class="ms-btn" type="button" data-mode="tech">Especialista</button>
+  </div>
+  <span class="ms-hint">Desliza o toca para cambiar de versión</span>
+
+  <div class="mspanel on" id="p-pop">
+<p>Imagina una fila de monedas sobre la mesa, una al lado de la otra. Cada una solo puede mostrar <b>cara</b> o <b>sello</b>. Eso es, esencialmente, un imán visto de muy cerca: el modelo de Ising unidimensional, el caballo de batalla más simple del magnetismo y una de las ideas más reutilizadas de toda la física.</p>
+<p>Nuestras monedas son unas divas entre sí: cada una prefiere mostrar lo contrario que su vecina, y ojalá alternando. Cara, sello, cara, sello. A eso se le llama estado antiferromagnético, y si las dejáramos solas la fila entera se ordenaría de forma alternada.</p>
+<p>Pero ahora aparece una segunda regla que las tienta a todas por igual: <b>cada moneda que muestre cara suma puntos</b>. Esa regla es el campo magnético longitudinal externo, y no le importa lo que hagan las vecinas: premia la cara y punto.</p>
+<p>Aparece un tira y afloja. Con el premio chico ganan las vecinas y la fila se alterna; con el premio grande gana la regla y todas terminan mostrando cara. Pero existe <b>un valor exacto del premio en que ambas fuerzas empatan</b>.</p>
+<p>Y ahí pasa algo raro y hermoso: de golpe, muchísimas maneras distintas de dar vuelta las monedas cuestan exactamente lo mismo. No hay una única "mejor jugada": hay una enorme cantidad de jugadas igual de buenas. El sistema queda indeciso.</p>
+<p class="analogy">Es como una carta de restaurante donde todos los platos valen lo mismo. No hay ninguna razón para elegir uno u otro. Y la pregunta natural pasa a ser: ¿cuántos platos tiene exactamente el menú?</p>
+
+<h3>La pregunta que respondimos</h3>
+<p>Contar cuántas jugadas distintas tienen cada energía se llama, en física, obtener la <b>densidad de estados</b>. Es la información más básica que uno puede querer de un sistema: si la conoces, conoces su entropía exacta y su comportamiento termodinámico.</p>
+<p>El problema es que el número de jugadas crece de forma explosiva. Con solo 100 monedas hay 2<sup>100</sup> combinaciones posibles de caras y sellos: ¡más de un quintillón, un millón de veces más que estrellas hay en el universo observable! Revisarlas una por una a mano o con un computador tradicional es combinatoriamente imposible. Nosotros las contamos <b>exactamente, con una fórmula cerrada, sin aproximar ni simular nada</b>.</p>
+
+<h3>La sorpresa: aparecen los números de Fibonacci</h3>
+<p>Al hacer la cuenta analítica en el punto de empate salieron los números de Fibonacci: 1, 1, 2, 3, 5, 8, 13, 21… Es la misma sucesión donde cada número es la suma de los dos anteriores y que aparece en las espirales de los girasoles.</p>
+<p>No es coincidencia mística, y la razón es sorprendentemente concreta: en el punto crítico, las únicas jugadas válidas son aquellas en que <b>no hay dos caras juntas</b>. Nunca dos monedas vecinas mostrando cara; está prohibido fundamentalmente para alcanzar la mínima energía.</p>
+<p>Contar filas donde ciertos elementos tienen prohibido ser vecinos es, literalmente, el problema que define a la secuencia de Fibonacci.</p>
+<p class="analogy">Piénsalo como una fila de butacas de cine donde dos personas no pueden sentarse juntas. Nuestro imán, en su punto crítico, es exactamente ese problema disfrazado de monedas.</p>
+
+<h3>Fila o círculo: la topología cambia los números</h3>
+<p>Después cerramos la fila de monedas en un círculo, imponiendo condiciones de contorno periódicas. El resultado cambia: ya no salen los números de Fibonacci sino los <b>números de Lucas</b>, su sucesión hermana (2, 1, 3, 4, 7, 11, 18…). Misma regla de formación, distinto punto de partida. ¿Por qué?</p>
+<p>En una hilera abierta, las dos monedas de los extremos son privilegiadas: tienen una sola vecina a la que contradecir, no dos. En un círculo cerrado no hay extremos y todas juegan con las mismas reglas. Esa diferencia mínima cambia toda la contabilidad.</p>
+<p>Y no cambia solo la mejor jugada. Las monedas del extremo de la cadena abierta se comportan como <b>defectos topológicos fraccionarios</b>: dar vuelta una de la punta cuesta exactamente la mitad de la energía que alterar un par en el medio de la fila. El resultado es que la hilera tiene una escalera de energías con el doble de escalones (pasos de 2J) que el círculo (pasos de 4J). La forma del objeto reorganiza su espectro completo.</p>
+
+<h3>Escalones prohibidos</h3>
+<p>El hallazgo matemático que más nos sorprendió: hay peldaños de esa escalera que están <b>estrictamente vacíos</b>. Cerca del extremo donde casi todas las monedas muestran cara, hay niveles donde nuestra fórmula da exactamente cero. No es que sean improbables o difíciles de alcanzar: es que el sistema tiene estrictamente prohibido ocupar ese estado.</p>
+<p class="analogy">Es una escalera perfectamente regular a la que, justo antes del final, le faltan peldaños: uno si la fila está cerrada en círculo, dos si está abierta. Una brecha no trivial de 8J. La razón es puramente geométrica y estructural de los enlaces.</p>
+
+<h3>En resumen</h3>
+<ul>
+<li>En el punto de cruce de niveles, un imán unidimensional tiene tantas jugadas equivalentes que su conteo sigue la sucesión de <b>Fibonacci</b> si es una hilera abierta.</li>
+<li>El conteo sigue la sucesión de <b>Lucas</b> para anillos periódicos cerrados.</li>
+<li>El espectro de excitaciones completo hereda esta misma arquitectura matemática recursiva.</li>
+<li>Existen niveles de energía estrictamente prohibidos, con degeneración nula, por razones puramente topológicas.</li>
+<li>Al derivar estas degeneraciones de forma exacta, la entropía total se obtiene directamente.</li>
+<li>Esto permite eludir por completo las aproximaciones numéricas.</li>
+</ul>
+</div>
+  <div class="mspanel" id="p-tech">
+<h3>La arquitectura combinatoria del cruce de niveles</h3>
+<p>Todos sabemos que el modelo de Ising 1D ya está archirresuelto en el ensamble canónico, ¿verdad? Es el ejemplo clásico de la matriz de transferencia. El problema es que cuando te paras a mirar el cruce de niveles a campo fijo y te preguntas por la degeneración exacta nivel a nivel en el microcanónico, la cosa se pone sorprendentemente fea.</p>
+<p>Si intentas la ruta termodinámica de siempre —invertir la función de partición de Laplace usando el canónico para sacar la densidad de estados del microcanónico— te topas con un muro. Los autovalores de la matriz de transferencia están llenos de radicales que te meten cortes de rama espantosos en el plano complejo, imposibilitando la integral de contorno usual y sepultando cualquier interpretación microscópica bonita de los niveles.</p>
+<p>Existen trabajos recientes que sacan esto numéricamente o con métodos iterativos para sistemas finitos, pero nuestro punto no era competir en músculo computacional. Queríamos saber analíticamente la <i>arquitectura combinatoria exacta</i> que gobierna el manifold crítico en el cruce de niveles antiferromagnético (<b>B/J = 2</b>).</p>
+
+<h3>El setup y la herramienta</h3>
+<p>El sistema es el clásico: una cadena 1D de <b>N</b> espines con interacción antiferromagnética a primeros vecinos y un campo magnético longitudinal. Evaluamos las dos topologías de siempre, la cadena abierta y el anillo periódico. Nos plantamos justo en el cruce de niveles primario (<b>B/J = 2</b>), donde el <i>ground state</i> transiciona y se vuelve macroscópicamente degenerado.</p>
+<p>¿Nuestra navaja suiza para abrir este problema? La combinatoria analítica. Terminamos descubriendo que las excitaciones se pueden mapear a una simple ecuación diofántica lineal (<b>m = b + 2k</b>, es decir, una ecuación con soluciones de números enteros) y que las degeneraciones se arman a punta de convoluciones de Fibonacci: sumas combinatorias que multiplican números de Fibonacci según cómo se particione el sistema.</p>
+
+<h3>Lo que encontramos (sin rodeos)</h3>
+<ul>
+<li><b>Fibonacci y Lucas dictan el <i>ground state</i>.</b> Las degeneraciones del manifold fundamental no son números aleatorios; encajan perfecto con la secuencia de Fibonacci (cadena abierta) y la de Lucas (anillo). Y no es casualidad: es la consecuencia geométrica directa de minimizar la energía, lo que impone una restricción de no adyacencia estricta (<b>N<sub>↑↑</sub> = 0</b>). Es decir, no hay dos espines up-up consecutivos.</li>
+<li><b>La recursividad infecta todo el espectro.</b> Esta estructura no se queda solo en el estado base. El espectro excitado completo es básicamente una aglomeración de defectos topológicos, pesados matemáticamente por convoluciones de Fibonacci. El anillo usa convoluciones estándar, pero la cadena abierta nos obligó a usar convoluciones extendidas para lidiar con los colapsos de los bordes.</li>
+<li><b>Los bordes actúan como defectos fraccionarios.</b> Ojo, hablo de "fraccionarios" estrictamente en la contabilidad de energía, nada de cuasipartículas exóticas. Resulta que dar vuelta un espín en el extremo de la cadena abierta cuesta exactamente la mitad de energía que alterar un par en el <i>bulk</i>. Esto densifica el espectro de la cadena, metiéndole escalones finos de <b>2J</b>, en contraste con la cuantización súper rígida de <b>4J</b> del anillo periódico.</li>
+<li><b>Hay gaps prohibidos.</b> Esto fue de lo más genial que encontramos: predecimos niveles con degeneración estrictamente nula. El penúltimo nivel del anillo y los dos niveles justo debajo del estado totalmente polarizado en la cadena están literalmente vacíos, algo análogo al salto de masa no trivial de física fundamental. No es un tema de probabilidad: es que es topológicamente imposible romper los enlaces adyacentes para acomodarse en esas combinaciones específicas.</li>
+</ul>
+
+<h3>¿Por qué importa esto?</h3>
+<p>Más allá de lo bonito que es matemáticamente, tener estas fórmulas cerradas nos permite calcular la entropía residual y a temperatura finita del manifold crítico de forma exacta, sin depender de reconstrucciones numéricas. Esto sirve como el <i>benchmark</i> definitivo —el <i>ground truth</i>— para calibrar algoritmos de Monte Carlo, Wang–Landau y rutinas de matriz de transferencia. O, en nuestro caso, para diseñar un motor sin pérdidas calóricas: conocer la degeneración exacta del estado fundamental es un requisito, no un lujo, y ahí es donde este trabajo se enchufa directamente con nuestra línea de motores Stirling cuánticos.</p>
+<p>Además, nos sugiere que si miramos sistemas frustrados u otras topologías, podríamos encontrar organizaciones espectrales similares dictadas por los bordes.</p>
+<p>En el fondo, lo que demostramos es que la arquitectura de teoría de números de estos manifolds críticos cuánticos sale a la luz en todo su esplendor cuando decides <i>contar</i> microestados exactos en lugar de conformarte con promediarlos térmicamente.</p>
+</div>
+
+  <p class="aidisc">Versión divulgativa redactada con asistencia de IA y revisada por los autores. Para precisión técnica, consulta el paper original.</p>
+</section>
+<div class="backbar">
+  <a class="btn btn-ghost" href="/">&larr; Volver al inicio</a>
+</div>
+<footer>
+  <p>&copy; <span id="yr"></span> Bastian Castorene</p>
+  <p style="margin-top:6px;opacity:.7">Ph.D. (C) in Physics &middot; UTFSM &amp; PUCV &middot; Quantum thermodynamics</p>
+</footer>
+<script src="app.js"></script>
+<script>
+(function(){
+  var ms=document.getElementById('ms'), glow=document.getElementById('msglow');
+  var btns=[].slice.call(ms.querySelectorAll('.ms-btn'));
+  var panels={pop:document.getElementById('p-pop'),tech:document.getElementById('p-tech')};
+  var mode='pop', dragging=false, startX=0, moved=0, w=0;
+
+  function paint(m,animate){
+    mode=m;
+    document.documentElement.setAttribute('data-mode',m);
+    glow.style.transform='translateX('+(m==='tech'?'100%':'0%')+')';
+    btns.forEach(function(b){ b.classList.toggle('active', b.dataset.mode===m); });
+    for(var k in panels){ panels[k].classList.remove('on'); }
+    panels[m].classList.add('on');
+    if(animate){ panels[m].style.animation='none'; void panels[m].offsetWidth; panels[m].style.animation=''; }
+  }
+  btns.forEach(function(b){ b.addEventListener('click',function(){ if(b.dataset.mode!==mode) paint(b.dataset.mode,true); }); });
+
+  /* drag / swipe the pill */
+  ms.addEventListener('pointerdown',function(e){
+    dragging=true; moved=0; startX=e.clientX; w=ms.clientWidth/2;
+    ms.classList.add('dragging'); ms.setPointerCapture(e.pointerId);
+  });
+  ms.addEventListener('pointermove',function(e){
+    if(!dragging) return;
+    moved=e.clientX-startX;
+    var base=(mode==='tech')?w:0;
+    var x=Math.max(0,Math.min(w,base+moved));
+    glow.style.transform='translateX('+(x/w*100)+'%)';
+  });
+  function release(e){
+    if(!dragging) return;
+    dragging=false; ms.classList.remove('dragging');
+    var target;
+    if(Math.abs(moved)<6){
+      /* treated as a plain tap: switch to whichever half was pressed */
+      var r=ms.getBoundingClientRect();
+      var cx=(e && e.clientX!=null)?e.clientX:(r.left+r.width/2);
+      target=((cx-r.left)>r.width/2)?'tech':'pop';
+    } else {
+      var base=(mode==='tech')?w:0;
+      var x=Math.max(0,Math.min(w,base+moved));
+      target=(x>w/2)?'tech':'pop';
+    }
+    if(target!==mode){ paint(target,true); }
+    else { glow.style.transform='translateX('+(mode==='tech'?'100%':'0%')+')'; }
+  }
+  ms.addEventListener('pointerup',release);
+  ms.addEventListener('pointercancel',release);
+
+  /* dock to the bottom on mobile once the switch scrolls out of view */
+  var sent=document.getElementById('mssent');
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(en){
+      ms.classList.toggle('docked', !en[0].isIntersecting && en[0].boundingClientRect.top < 0);
+    },{threshold:0}).observe(sent);
+  }
+})();
+</script>
+</body>
+</html>
