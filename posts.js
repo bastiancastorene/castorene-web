@@ -18,7 +18,7 @@ window.POSTS = [
       zh: "想象桌上排成一行的硬币，每枚只能显示正面或反面：这本质上就是近距离观察的磁体。在两种相反倾向恰好势均力敌的场强下，有多少种排布共享同一能量？答案是斐波那契数列——而能量阶梯上的某些台阶被严格禁止。\n完整解读分为两层，一层面向所有人，一层面向专业读者，轻点即可切换。"
     },
     link: {
-      url: "/paper-entropy-ising",
+      url: "/blog/paper-entropy-ising",
       label: { en:"Read the explainer", es:"Leer la explicación", de:"Erklärung lesen", zh:"阅读解读" }
     },
     images: [],
