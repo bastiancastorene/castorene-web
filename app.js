@@ -185,3 +185,34 @@ document.addEventListener('click', function(e){
   addEventListener('resize',onScroll);
   upd();
 })();
+
+/* ---------- último post del blog en la portada ---------- */
+(function(){
+  var box=document.getElementById('homeblog');
+  if(!box || !window.POSTS || !window.POSTS.length) return;
+  var L=['en','es','de','zh'];
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function ml(o){ if(!o) return ''; if(typeof o==='string') return esc(o);
+    return L.map(function(l){return '<span class="lang-'+l+'">'+esc(o[l]||o.en||'')+'</span>';}).join(''); }
+  var p=window.POSTS.slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));})[0];
+  var first={}; L.forEach(function(l){ first[l]=String((p.body&&(p.body[l]||p.body.en))||'').split('\n')[0]; });
+  var go=p.link?p.link.label:{en:'Read more',es:'Leer más',de:'Mehr lesen',zh:'阅读更多'};
+  box.innerHTML='<a class="hbpost" href="'+(p.link?p.link.url:'/blog')+'">'+
+    '<div class="pmeta"><span class="pdate">'+ml(p.dateLabel||p.date)+'</span>'+
+    (p.category?'<span class="pcat">'+ml(p.category)+'</span>':'')+'</div>'+
+    '<h3>'+ml(p.title)+'</h3><p>'+ml(first)+'</p>'+
+    '<span class="hbgo">'+ml(go)+' &rarr;</span></a>';
+})();
+
+/* ---------- "What's new": 4 items, or the whole month if it has more ---------- */
+(function(){
+  var wrap=document.querySelector('.news');
+  if(!wrap) return;
+  var items=[].slice.call(wrap.querySelectorAll('.news-item'));
+  if(items.length<=4) return;
+  function when(el){ var d=el.querySelector('.date'); return d?d.textContent.trim():''; }
+  var keep=4;
+  /* if item #5 onwards still belongs to the same month as #4, keep them too */
+  while(keep<items.length && when(items[keep])===when(items[3])) keep++;
+  for(var i=keep;i<items.length;i++) items[i].style.display='none';
+})();
