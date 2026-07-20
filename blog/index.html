@@ -146,7 +146,7 @@
   function card(p,feat){
     return '<article class="post'+(feat?' post-feat':'')+'">'+
       '<div class="pmeta"><span class="pdate">'+ml(p.dateLabel||p.date)+'</span>'+(p.category?'<span class="pcat">'+ml(p.category)+'</span>':'')+'</div>'+
-      '<h3>'+ml(p.title)+'</h3>'+bodyHtml(p.body)+media(p)+(p.link?'<a class="plink" href="/'+p.link.url+'">'+ml(p.link.label)+' &rarr;</a>':'')+'</article>';
+      '<h3>'+ml(p.title)+'</h3>'+bodyHtml(p.body)+media(p)+(p.link?'<a class="plink" href="'+p.link.url+'">'+ml(p.link.label)+' &rarr;</a>':'')+'</article>';
   }
   var posts=(window.POSTS||[]).slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
   if(!posts.length){var e=document.getElementById('bempty'); if(e)e.style.display='block'; return;}
