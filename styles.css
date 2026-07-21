@@ -686,3 +686,21 @@ html[data-theme="light"] .peek{background:linear-gradient(to top,var(--bg) 10%,r
 .hbpost p{color:var(--muted);font-size:.94rem;line-height:1.65;margin:0}
 .hbpost .hbgo{display:inline-block;margin-top:14px;color:var(--accent);font-weight:600;font-size:.88rem}
 .hbpost:hover .hbgo{text-shadow:0 0 14px rgba(217,70,239,.6)}
+
+/* ===== Botón "Explicación" en publicaciones con blog asociado ===== */
+.pub .links a.explain{border-color:transparent;color:#fff;font-weight:600;
+  background:linear-gradient(100deg,var(--v1),var(--v2));
+  box-shadow:0 8px 20px -10px rgba(217,70,239,.7);
+  display:inline-flex;align-items:center;gap:6px}
+.pub .links a.explain:hover{background:linear-gradient(100deg,var(--v1),var(--v2));
+  filter:brightness(1.12);transform:translateY(-1px);
+  box-shadow:0 12px 26px -10px rgba(217,70,239,.95)}
+.pub .links a.explain .exar{display:inline-block;font-size:.9em;line-height:1;
+  transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.pub .links a.explain:hover .exar{transform:translate(2px,2px)}
+@media(max-width:560px){
+  .pub .links{gap:8px}
+  .pub .links a{font-size:.75rem;padding:3px 10px}
+  .pub .links a.explain{flex:0 0 auto}
+}
+.pub .links a.explain{font-variant-numeric:tabular-nums;letter-spacing:.2px}
