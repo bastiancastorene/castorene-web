@@ -205,9 +205,12 @@
   ms.addEventListener('pointercancel',release);
 
   /* dock to the bottom on mobile once the switch scrolls out of view */
+  /* En móvil el interruptor ya está fijo abajo por CSS. En escritorio se ancla
+     al salir de pantalla, sin afectar el flujo del texto. */
   var sent=document.getElementById('mssent');
-  if('IntersectionObserver' in window){
+  if(sent && 'IntersectionObserver' in window){
     new IntersectionObserver(function(en){
+      if(innerWidth<=760){ ms.classList.remove('docked'); return; }
       ms.classList.toggle('docked', !en[0].isIntersecting && en[0].boundingClientRect.top < 0);
     },{threshold:0}).observe(sent);
   }
