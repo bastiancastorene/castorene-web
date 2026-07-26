@@ -704,3 +704,7 @@ html[data-theme="light"] .peek{background:linear-gradient(to top,var(--bg) 10%,r
   .pub .links a.explain{flex:0 0 auto}
 }
 .pub .links a.explain{font-variant-numeric:tabular-nums;letter-spacing:.2px}
+
+/* título original del paper, bajo el título divulgativo */
+.paperorig{text-align:center;font-size:.8rem;line-height:1.5;color:var(--muted);opacity:.62;
+  font-style:italic;margin:-4px auto 12px;max-width:62ch}
