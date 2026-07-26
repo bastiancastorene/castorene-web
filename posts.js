@@ -1,6 +1,30 @@
 /* Posts del blog · editar aquí; lo usan /blog y la portada */
 window.POSTS = [
   {
+    date: "2026-07-26",
+    dateLabel: "Jul 2026",
+    category: { en:"Physics notes", es:"Notas de f\u00edsica", de:"Physik-Notizen", zh:"\u7269\u7406\u7b14\u8bb0" },
+    featured: true,
+    title: {
+      en: "The charges are not quite on the surface",
+      es: "Las cargas no est\u00e1n en la superficie (del todo)",
+      de: "Die Ladungen sitzen nicht ganz auf der Oberfl\u00e4che",
+      zh: "\u7535\u8377\u5e76\u4e0d\u5b8c\u5168\u4f4d\u4e8e\u8868\u9762"
+    },
+    body: {
+      en: "Every electromagnetism course makes you prove that extra charge on a metal goes entirely to the surface, because that arrangement has the lowest energy. But energy is not the only thing that matters: entropy pushes the charges back into the bulk. Redo the calculation honestly and the surface turns out to have thickness.\nWhy the textbook is still right, and what happens when you turn up the heat.",
+      es: "Todo curso de electromagnetismo te hace demostrar que la carga extra en un metal se va entera a la superficie, porque ese arreglo tiene la menor energ\u00eda. Pero la energ\u00eda no es lo \u00fanico que importa: la entrop\u00eda empuja las cargas de vuelta al interior. Rehaz el c\u00e1lculo honestamente y resulta que la superficie tiene grosor.\nPor qu\u00e9 el libro igual tiene raz\u00f3n, y qu\u00e9 pasa cuando subes la temperatura.",
+      de: "Jeder Elektrodynamik-Kurs l\u00e4sst dich beweisen, dass zus\u00e4tzliche Ladung auf einem Metall vollst\u00e4ndig an die Oberfl\u00e4che geht, weil diese Anordnung die geringste Energie hat. Doch Energie ist nicht alles: Die Entropie dr\u00e4ngt die Ladungen zur\u00fcck ins Innere. Rechnet man ehrlich nach, hat die Oberfl\u00e4che eine Dicke.\nWarum das Lehrbuch trotzdem recht hat \u2014 und was bei hohen Temperaturen passiert.",
+      zh: "\u6bcf\u4e00\u95e8\u7535\u78c1\u5b66\u8bfe\u90fd\u4f1a\u8ba9\u4f60\u8bc1\u660e\uff1a\u91d1\u5c5e\u4e0a\u7684\u989d\u5916\u7535\u8377\u4f1a\u5168\u90e8\u8dd1\u5230\u8868\u9762\uff0c\u56e0\u4e3a\u8fd9\u79cd\u6392\u5e03\u80fd\u91cf\u6700\u4f4e\u3002\u4f46\u80fd\u91cf\u5e76\u975e\u552f\u4e00\u91cd\u8981\u7684\u4e1c\u897f\uff1a\u71b5\u4f1a\u628a\u7535\u8377\u63a8\u56de\u5185\u90e8\u3002\u8bda\u5b9e\u5730\u91cd\u505a\u8ba1\u7b97\uff0c\u4f60\u4f1a\u53d1\u73b0\u8868\u9762\u662f\u6709\u539a\u5ea6\u7684\u3002\n\u4e3a\u4ec0\u4e48\u8bfe\u672c\u4f9d\u7136\u6b63\u786e\uff0c\u4ee5\u53ca\u5347\u9ad8\u6e29\u5ea6\u65f6\u4f1a\u53d1\u751f\u4ec0\u4e48\u3002"
+    },
+    link: {
+      url: "/blog/surface-charge",
+      label: { en:"Read it in \u03c0 min", es:"L\u00e9elo en \u03c0 min", de:"In \u03c0 Min lesen", zh:"\u03c0 \u5206\u949f\u8bfb\u61c2" }
+    },
+    images: [],
+    video: null
+  },
+  {
     date: "2025-03-14",
     dateLabel: "Mar 2025",
     category: { en:"Papers explained", es:"Papers explicados", de:"Papers erklärt", zh:"论文解读" },
