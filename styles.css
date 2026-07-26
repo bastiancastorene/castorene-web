@@ -708,3 +708,26 @@ html[data-theme="light"] .peek{background:linear-gradient(to top,var(--bg) 10%,r
 /* título original del paper, bajo el título divulgativo */
 .paperorig{text-align:center;font-size:.8rem;line-height:1.5;color:var(--muted);opacity:.62;
   font-style:italic;margin:-4px auto 12px;max-width:62ch}
+
+/* ===== Nav en una sola línea también en subpáginas ===== */
+.brand{white-space:nowrap;flex:none}
+.nav-links{flex-wrap:nowrap}
+/* en escritorio el "← Inicio" del nav es redundante: la marca ya lleva al home
+   y cada subpágina tiene su botón "Volver al inicio". Se mantiene en el menú móvil. */
+@media(min-width:761px){
+  .nav-links .backhome{display:none}
+}
+/* holgura progresiva para que nunca se parta la línea */
+@media(max-width:1180px){
+  .nav-links{gap:16px}
+  .nav-links a{font-size:.86rem}
+}
+@media(max-width:1000px){
+  .nav-links{gap:12px}
+  .nav-links a{font-size:.82rem}
+  .brand{font-size:1.05rem}
+}
+@media(max-width:760px){
+  .nav-links{flex-wrap:wrap}
+  .nav-links a{font-size:.9rem}
+}
