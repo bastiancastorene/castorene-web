@@ -10,3 +10,9 @@ cv-thumb.jpg
 research-fig.jpg
 og-image.svg
 borrador-blog-entropy-ising.md
+
+# Borradores de trabajo: NUNCA se publican
+borrador-*.md
+borradores/
+*.draft.md
+*_borrador.*
