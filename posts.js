@@ -6,10 +6,10 @@ window.POSTS = [
     category: { en:"Physics notes", es:"Notas de f\u00edsica", de:"Physik-Notizen", zh:"\u7269\u7406\u7b14\u8bb0" },
     featured: true,
     title: {
-      en: "The charges are not quite on the surface",
-      es: "Las cargas no est\u00e1n en la superficie (del todo)",
-      de: "Die Ladungen sitzen nicht ganz auf der Oberfl\u00e4che",
-      zh: "\u7535\u8377\u5e76\u4e0d\u5b8c\u5168\u4f4d\u4e8e\u8868\u9762"
+      en: "The charges in a conductor are not where you were told",
+      es: "Las cargas en un conductor no est\u00e1n donde te dijeron",
+      de: "Die Ladungen in einem Leiter sitzen nicht dort, wo man es dir gesagt hat",
+      zh: "\u5bfc\u4f53\u4e2d\u7684\u7535\u8377\u5e76\u4e0d\u5728\u4ed6\u4eec\u544a\u8bc9\u4f60\u7684\u5730\u65b9"
     },
     body: {
       en: "Every electromagnetism course makes you prove that extra charge on a metal goes entirely to the surface, because that arrangement has the lowest energy. But energy is not the only thing that matters: entropy pushes the charges back into the bulk. Redo the calculation honestly and the surface turns out to have thickness.\nWhy the textbook is still right, and what happens when you turn up the heat.",
