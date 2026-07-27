@@ -94,31 +94,51 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
     return {x:px,y:py,
             vx:(Math.random()-.5)*.35*DPR, vy:(Math.random()-.5)*.35*DPR,
             r:(Math.random()*0.9+1.1)*DPR, col:COLORS[ci], rgb:RGB[ci],
-            flash:0, near:0, heat:0};
+            flash:0, near:0, heat:0,
+            /* fade: envolvente de opacidad. Nada aparece ni desaparece de golpe:
+               al nacer sube de 0 a 1 y al morir baja a 0. Sin esto, una fusión o
+               fisión hacía saltar varias líneas de una sola vez en un solo frame. */
+            fade:1, dying:false};
   }
   function seed(n){
     while(parts.length<n) parts.push(make(Math.random()*w,Math.random()*h));
     if(parts.length>n) parts.length=n;
   }
 
+  var cssW=0, cssH=0;
   function resize(){
-    var nw=Math.round(innerWidth*DPR), nh=Math.round(innerHeight*DPR);
-    if(nw===w && nh===h) return;
+    var iw=innerWidth, ih=innerHeight;
+    /* En el móvil la barra de URL se oculta y reaparece al hacer scroll, y eso sólo
+       cambia el alto del viewport. Reescalar las posiciones por ese cambio movía todas
+       las partículas de golpe (hasta ~60 px en un frame): es el salto discreto vertical
+       que se veía al desplazarse. Ante un cambio de sólo-alto no se reescala nada. */
+    if(iw===cssW){
+      if(ih<=cssH) return;                       /* el viewport se encogió: no tocar nada */
+      cssH=ih; h=Math.round(ih*DPR);             /* creció: ampliar el lienzo, sin mover partículas */
+      c.height=h; c.width=w;
+      c.style.width=iw+'px'; c.style.height=ih+'px';
+      seed(target());
+      return;
+    }
+    /* cambio real de ancho (rotación o ventana de escritorio): sí se reescala */
+    var nw=Math.round(iw*DPR), nh=Math.round(ih*DPR);
+    if(nw===w && nh===h){ cssW=iw; cssH=ih; return; }
     var sx=w?nw/w:1, sy=h?nh/h:1;
     w=c.width=nw; h=c.height=nh;                 /* fijar width/height limpia el lienzo */
-    c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px';
+    c.style.width=iw+'px'; c.style.height=ih+'px';
     for(var i=0;i<parts.length;i++){
       parts[i].x=Math.min(w,Math.max(0,parts[i].x*sx));
       parts[i].y=Math.min(h,Math.max(0,parts[i].y*sy));
     }
+    cssW=iw; cssH=ih;
     seed(target());
   }
 
   function coalesce(){
     for(var i=0;i<parts.length;i++){
-      var p=parts[i]; if(p.dead) continue;
+      var p=parts[i]; if(p.dying) continue;
       for(var j=i+1;j<parts.length;j++){
-        var q=parts[j]; if(q.dead) continue;
+        var q=parts[j]; if(q.dying) continue;
         var dx=p.x-q.x, dy=p.y-q.y, d=Math.sqrt(dx*dx+dy*dy);
         if(d < (p.r+q.r)*MERGE_SLACK){
           var nr=Math.sqrt(p.r*p.r+q.r*q.r);
@@ -127,18 +147,20 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
           if(!ok(mt)||mt<=0) continue;
           p.x=(p.x*mp+q.x*mq)/mt; p.y=(p.y*mp+q.y*mq)/mt;
           p.vx=(p.vx*mp+q.vx*mq)/mt; p.vy=(p.vy*mp+q.vy*mq)/mt;
-          p.r=nr; p.flash=1; q.dead=true;
+          p.r=nr; p.flash=1;
+          /* q no se borra en el acto: se marca y se apaga en ~15 frames, así sus
+             líneas hacia los vecinos se desvanecen en vez de cortarse de golpe. */
+          q.dying=true;
         }
       }
     }
-    for(var k=parts.length-1;k>=0;k--) if(parts[k].dead) parts.splice(k,1);
   }
 
   function fission(){
     if(parts.length>=target()) return;
     if(Math.random()>SPLIT_RATE) return;
     var big=[],i;
-    for(i=0;i<parts.length;i++) if(parts[i].r>RBASE) big.push(parts[i]);
+    for(i=0;i<parts.length;i++) if(parts[i].r>RBASE && !parts[i].dying) big.push(parts[i]);
     if(!big.length) return;
     var p=big[(Math.random()*big.length)|0];
     var nr=p.r/Math.SQRT2;
@@ -146,6 +168,7 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
     var ang=Math.random()*Math.PI*2, push=0.16*DPR;
     var q=make(p.x,p.y);
     q.r=nr; var qi=(Math.random()*COLORS.length)|0; q.col=COLORS[qi]; q.rgb=RGB[qi];
+    q.fade=0;                                   /* la partícula nueva entra desvanecida */
     q.vx=p.vx-Math.cos(ang)*push; q.vy=p.vy-Math.sin(ang)*push; q.flash=1;
     p.r=nr; p.vx+=Math.cos(ang)*push; p.vy+=Math.sin(ang)*push; p.flash=1;
     var sep=(p.r+q.r)*0.9;
@@ -165,7 +188,10 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
     for(i=parts.length-1;i>=0;i--){
       p=parts[i];
       /* una partícula con valores corruptos se reemplaza en vez de dibujarse */
-      if(!ok(p.x)||!ok(p.y)||!ok(p.r)||!ok(p.vx)||!ok(p.vy)||p.r<=0){ parts[i]=make(Math.random()*w,Math.random()*h); continue; }
+      if(!ok(p.x)||!ok(p.y)||!ok(p.r)||!ok(p.vx)||!ok(p.vy)||p.r<=0){ var np=make(Math.random()*w,Math.random()*h); np.fade=0; parts[i]=np; continue; }
+      /* envolvente de opacidad: nacer y morir toma ~15 frames (0.25 s) */
+      if(p.dying){ p.fade-=0.07; if(p.fade<=0.02){ parts.splice(i,1); continue; } }
+      else if(p.fade<1){ p.fade+=0.07; if(p.fade>1) p.fade=1; }
       p.x+=p.vx; p.y+=p.vy;
       if(p.x<0){p.x=0;p.vx=Math.abs(p.vx);} else if(p.x>w){p.x=w;p.vx=-Math.abs(p.vx);}
       if(p.y<0){p.y=0;p.vy=Math.abs(p.vy);} else if(p.y>h){p.y=h;p.vy=-Math.abs(p.vy);}
@@ -187,7 +213,7 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
           g=x.createLinearGradient(p.x,p.y,q.x,q.y);
           g.addColorStop(0,tint(p)); g.addColorStop(1,tint(q));
         }catch(e){ continue; }                   /* si el degradado falla, se omite la línea */
-        var al=f*(.40+p.heat*0.08);
+        var al=f*(.40+p.heat*0.08)*(p.fade<q.fade?p.fade:q.fade);
         x.strokeStyle=g; x.globalAlpha=al>0?(al<1?al:1):0; x.lineWidth=(1.1+p.heat*0.14)*DPR;
         x.beginPath(); x.moveTo(p.x,p.y); x.lineTo(q.x,q.y); x.stroke();
       }
@@ -202,14 +228,14 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
       if(!ok(p.flash)||p.flash<0) p.flash=0; else if(p.flash>1) p.flash=1;
       var col=tint(p);
       if(p.heat>0.05){
-        x.globalAlpha=p.heat*0.07;
+        x.globalAlpha=p.heat*0.07*p.fade;
         x.beginPath(); x.arc(p.x,p.y,p.r*(1.5+p.heat*0.8),0,6.2832); x.fillStyle=col; x.fill();
       }
       if(p.flash>0.02){
-        x.globalAlpha=p.flash*0.32;
+        x.globalAlpha=p.flash*0.32*p.fade;
         x.beginPath(); x.arc(p.x,p.y,p.r*(1+(1-p.flash)*2.6),0,6.2832); x.fillStyle=col; x.fill();
       }
-      x.globalAlpha=.95;
+      x.globalAlpha=.95*p.fade;
       x.beginPath(); x.arc(p.x,p.y,p.r*(1+p.heat*0.05),0,6.2832); x.fillStyle=col; x.fill();
     }
     x.globalAlpha=1;
