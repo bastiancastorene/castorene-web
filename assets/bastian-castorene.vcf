@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Castorene;Bastian;;;
+FN:Bastian Castorene
+TITLE:PhD Candidate in Physics
+ORG:UTFSM & PUCV
+EMAIL;TYPE=INTERNET:bastian.castorene@gmail.com
+URL:https://castorene.cl
+URL;TYPE=ORCID:https://orcid.org/0009-0002-9075-5716
+X-SOCIALPROFILE;TYPE=linkedin:https://www.linkedin.com/in/bastiancastorene/
+NOTE:Quantum thermodynamics - quantum heat engines. castorene.cl
+END:VCARD

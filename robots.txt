@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# /card se sirve solo a quien tenga el enlace:
+# lleva <meta robots="noindex">, por eso NO se bloquea aqui
+# (bloquearlo impediria que el buscador lea el noindex).
+
 Sitemap: https://www.castorene.cl/sitemap.xml

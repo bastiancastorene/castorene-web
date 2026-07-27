@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Bastian Castorene — Digital Card</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Bastian Castorene · PhD Candidate in Physics · UTFSM & PUCV · Quantum thermodynamics">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Bastian Castorene — Digital Card">
+<meta property="og:description" content="PhD Candidate in Physics · Quantum thermodynamics">
+<meta property="og:image" content="https://www.castorene.cl/og-image.jpg">
+<meta property="og:url" content="https://www.castorene.cl/card">
+<meta property="og:type" content="profile">
+
+<link rel="canonical" href="https://www.castorene.cl/card">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='0.5' stop-color='%23d946ef'/%3E%3Cstop offset='1' stop-color='%234f46e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3EBC%3C/text%3E%3C/svg%3E" />
+<link rel="canonical" href="https://www.castorene.cl/talks" />
+
+
+<!-- Guardar en pantalla de inicio: abre a pantalla completa, sin barra de Safari -->
+<link rel="manifest" href="/assets/card.webmanifest">
+<link rel="apple-touch-icon" href="/assets/card-icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bastian Castorene">
+
+<!-- Estilos compartidos del sitio -->
+<link rel="stylesheet" href="/styles.css">
+
+<style>
+/* ==========================================================================
+   Estilos propios de la tarjeta digital (/card)
+   Usan las variables de la paleta ya definidas en styles.css:
+   --v1 --v2 --v3 --bg --txt --muted --accent --radius
+   ========================================================================== */
+.card-wrap{
+  min-height:100vh; min-height:100dvh;
+  display:flex; align-items:center; justify-content:center;
+  padding:24px 16px calc(24px + env(safe-area-inset-bottom));
+}
+.card{
+  width:100%; max-width:420px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:calc(var(--radius) + 6px);
+  padding:32px 26px 28px;
+  text-align:center;
+  backdrop-filter:blur(10px);
+  box-shadow:0 24px 60px -20px rgba(0,0,0,.6);
+}
+html[data-theme="light"] .card{
+  background:rgba(0,0,0,.02);
+  border-color:rgba(0,0,0,.08);
+  box-shadow:0 24px 60px -24px rgba(80,60,140,.28);
+}
+
+/* Foto */
+.card-photo{
+  width:150px; height:150px; margin:0 auto 18px;
+  border-radius:50%; overflow:hidden;
+  border:2px solid transparent;
+  background:
+    linear-gradient(var(--bg),var(--bg)) padding-box,
+    linear-gradient(100deg,var(--v1),var(--v2),var(--v3)) border-box;
+  box-shadow:0 0 0 6px rgba(124,58,237,.10);
+}
+.card-photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Nombre y cargo */
+.card-name{
+  font-family:Georgia,serif;
+  font-size:1.7rem; line-height:1.15; margin:0 0 6px;
+  background:linear-gradient(100deg,var(--v1),var(--v2),var(--v3));
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.card-role{font-size:.98rem; color:var(--muted); margin:0 0 2px}
+.card-org{font-size:.86rem; color:var(--muted); opacity:.8; margin:0 0 22px}
+
+/* Botones de acción */
+.card-actions{display:flex; flex-direction:column; gap:11px; margin-bottom:22px}
+.card-actions a{
+  display:flex; align-items:center; justify-content:center; gap:9px;
+  padding:13px 18px; border-radius:var(--radius);
+  font-size:.96rem; font-weight:600; text-decoration:none;
+  transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+.card-actions a:active{transform:scale(.98)}
+.card-actions a svg{width:19px;height:19px;flex:none}
+
+/* boton principal = descargar contacto (jerarquia .qlink del sitio) */
+.act-save{
+  color:#fff;
+  background:linear-gradient(100deg,var(--v1),var(--v2),var(--v3));
+  box-shadow:0 10px 26px -8px rgba(124,58,237,.55);
+}
+.act-save:hover{box-shadow:0 14px 32px -8px rgba(124,58,237,.7)}
+/* secundarios */
+.act{
+  color:var(--txt);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.10);
+}
+.act:hover{background:rgba(255,255,255,.09)}
+html[data-theme="light"] .act{
+  background:rgba(0,0,0,.03); border-color:rgba(0,0,0,.09);
+}
+html[data-theme="light"] .act:hover{background:rgba(0,0,0,.06)}
+
+/* QR */
+.card-qr{
+  margin:4px auto 0; padding:16px;
+  background:#fff; border-radius:var(--radius);
+  width:max-content;
+}
+.card-qr img{width:160px;height:160px;display:block}
+.card-qr-cap{font-size:.78rem;color:var(--muted);margin:12px 0 0}
+
+/* separador */
+.card-sep{
+  height:1px; margin:22px 0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);
+}
+html[data-theme="light"] .card-sep{
+  background:linear-gradient(90deg,transparent,rgba(0,0,0,.12),transparent);
+}
+
+/* volver al sitio */
+.card-home{
+  display:inline-block; margin-top:20px;
+  font-size:.85rem; color:var(--muted); text-decoration:none;
+}
+.card-home:hover{color:var(--accent)}
+
+@media (max-width:380px){
+  .card{padding:26px 18px 24px}
+  .card-name{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<canvas id="energy"></canvas>
+
+<div class="card-wrap">
+  <main class="card">
+
+    <div class="card-photo">
+      <img src="/assets/bastian-card.png" alt="Bastian Castorene"
+           width="600" height="600">
+    </div>
+
+    <h1 class="card-name">Bastian Castorene</h1>
+
+    <p class="card-role">
+      <span class="lang-en">PhD Candidate in Physics</span><span class="lang-es">Candidato a Doctor en Física</span><span class="lang-de">Doktorand der Physik</span><span class="lang-zh">物理学博士候选人</span>
+    </p>
+    <p class="card-org">UTFSM &amp; PUCV · Chile</p>
+
+    <nav class="card-actions">
+
+      <!-- Guardar contacto (vCard) -->
+      <a class="act-save" href="/assets/bastian-castorene.vcf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        <span class="lang-en">Save contact</span><span class="lang-es">Guardar contacto</span><span class="lang-de">Kontakt speichern</span><span class="lang-zh">保存联系人</span>
+      </a>
+
+      <!-- Email -->
+      <a class="act" href="mailto:bastian.castorene@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+        <span class="lang-en">Email</span><span class="lang-es">Correo</span><span class="lang-de">E-Mail</span><span class="lang-zh">电子邮件</span>
+      </a>
+
+      <!-- ORCID -->
+      <a class="act" href="https://orcid.org/0009-0002-9075-5716" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.37 18.4h-1.5V7.87h1.5V18.4zm-.75-12a.96.96 0 1 1 0-1.92.96.96 0 0 1 0 1.92zM18.13 18.4h-3.9V7.87h3.74c3.56 0 5.12 2.54 5.12 5.27 0 2.97-2.32 5.26-4.96 5.26zm-.16-9.16h-2.24v7.79h2.13c2.4 0 3.68-1.6 3.68-3.9 0-2.11-1.34-3.89-3.57-3.89z"/></svg>
+        ORCID
+      </a>
+
+      <!-- LinkedIn -->
+      <a class="act" href="https://www.linkedin.com/in/bastiancastorene/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+
+      <!-- Sitio web -->
+      <a class="act" href="/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span class="lang-en">Website</span><span class="lang-es">Sitio web</span><span class="lang-de">Webseite</span><span class="lang-zh">网站</span>
+      </a>
+
+    </nav>
+
+    <div class="card-sep"></div>
+
+    <div class="card-qr">
+      <img src="/assets/qr-castorene.png" alt="QR castorene.cl/card" width="160" height="160">
+    </div>
+    <p class="card-qr-cap">
+      <span class="lang-en">Scan to open this card</span><span class="lang-es">Escanea para abrir esta tarjeta</span><span class="lang-de">Scannen, um diese Karte zu öffnen</span><span class="lang-zh">扫描以打开此名片</span>
+    </p>
+
+    <a class="card-home" href="/">castorene.cl ↗</a>
+
+  </main>
+</div>
+
+<!-- Motor de idiomas y tema, compartido con el resto del sitio -->
+<script src="/app.js"></script>
+</body>
+</html>

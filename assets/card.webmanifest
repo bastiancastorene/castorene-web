@@ -1,0 +1,14 @@
+{
+  "name": "Bastian Castorene",
+  "short_name": "Mi tarjeta",
+  "description": "PhD Candidate in Physics · Quantum thermodynamics",
+  "start_url": "/card",
+  "scope": "/card",
+  "display": "standalone",
+  "background_color": "#0a0713",
+  "theme_color": "#0a0713",
+  "icons": [
+    { "src": "/assets/card-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/card-icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
