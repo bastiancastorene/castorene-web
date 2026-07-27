@@ -81,15 +81,19 @@ html[data-theme="light"] .card{
 .card-org{font-size:.86rem; color:var(--muted); opacity:.8; margin:0 0 22px}
 
 /* Botones de acción */
-.card-actions{display:flex; flex-direction:column; gap:11px; margin-bottom:22px}
+.card-actions{display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-bottom:22px}
+/* "Guardar contacto" ocupa el ancho completo; los otros cuatro van 2 x 2 */
+.act-save{grid-column:1 / -1}
 .card-actions a{
   display:flex; align-items:center; justify-content:center; gap:9px;
-  padding:13px 18px; border-radius:var(--radius);
+  padding:13px 12px; border-radius:var(--radius); min-width:0;
   font-size:.96rem; font-weight:600; text-decoration:none;
   transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
 }
 .card-actions a:active{transform:scale(.98)}
 .card-actions a svg{width:19px;height:19px;flex:none}
+.card-actions a span,.card-actions a{white-space:nowrap}
+@media(max-width:360px){.card-actions a{padding:12px 8px;font-size:.84rem;gap:7px}}
 
 /* boton principal = descargar contacto (jerarquia .qlink del sitio) */
 .act-save{
