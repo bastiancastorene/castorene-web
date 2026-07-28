@@ -88,6 +88,18 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
 
   /* sobre la caja del lienzo, no sobre innerHeight: así el número de partículas
      tampoco fluctúa cuando la barra de URL aparece o se oculta */
+  /* color de la línea entre dos partículas: la media de sus tintes, ya resuelta a un
+     rgb() sólido. Sustituye al degradado por pareja; ver el bucle de líneas en step(). */
+  function mix(p,q){
+    var tp=p.heat*0.50, tq=q.heat*0.50, a=p.rgb, b=q.rgb;
+    if(!a||!b||!ok(tp)||!ok(tq)) return 'rgb(124,58,237)';
+    if(tp<0)tp=0; else if(tp>1)tp=1;
+    if(tq<0)tq=0; else if(tq>1)tq=1;
+    return 'rgb('+ch((a[0]+(NEAR[0]-a[0])*tp + b[0]+(NEAR[0]-b[0])*tq)/2)+','
+                 +ch((a[1]+(NEAR[1]-a[1])*tp + b[1]+(NEAR[1]-b[1])*tq)/2)+','
+                 +ch((a[2]+(NEAR[2]-a[2])*tp + b[2]+(NEAR[2]-b[2])*tq)/2)+')';
+  }
+
   function target(){ var a=(cssW||innerWidth)*(cssH||innerHeight); return Math.max(30,Math.min(95,Math.round(a/11000))); }
   function mass(p){ return p.r*p.r; }
 
@@ -202,13 +214,16 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
         var dx=p.x-q.x, dy=p.y-q.y, d=Math.sqrt(dx*dx+dy*dy);
         if(!(d<max) || d<=1.5) continue;         /* descarta NaN y segmentos degenerados */
         var f=1-d/max; p.near+=f*f; q.near+=f*f;
-        var g;
-        try{
-          g=x.createLinearGradient(p.x,p.y,q.x,q.y);
-          g.addColorStop(0,tint(p)); g.addColorStop(1,tint(q));
-        }catch(e){ continue; }                   /* si el degradado falla, se omite la línea */
         var al=f*(.40+p.heat*0.08)*(p.fade<q.fade?p.fade:q.fade);
-        x.strokeStyle=g; x.globalAlpha=al>0?(al<1?al:1):0; x.lineWidth=(1.1+p.heat*0.14)*DPR;
+        /* Umbral de visibilidad. Justo por debajo del corte de conexión la opacidad pedida
+           baja a ~0.01: invisible, pero iOS rasterizaba a veces ese caso extremo como una
+           línea BLANCA y opaca durante un frame. Es el "rayo". Si no se ve, no se dibuja. */
+        if(al<0.02) continue;
+        /* Color sólido en lugar de un CanvasGradient nuevo por pareja y por frame. A 2 px
+           de grosor el degradado no se distingue, y así se dejan de crear ~1800 gradientes
+           por segundo — la presión de recursos que acompañaba al fallo. */
+        x.strokeStyle=mix(p,q);
+        x.globalAlpha=al<1?al:1; x.lineWidth=(1.1+p.heat*0.14)*DPR;
         x.beginPath(); x.moveTo(p.x,p.y); x.lineTo(q.x,q.y); x.stroke();
       }
     }
