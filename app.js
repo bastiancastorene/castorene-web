@@ -86,7 +86,9 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
     return 'rgb('+ch(c[0]+(NEAR[0]-c[0])*t)+','+ch(c[1]+(NEAR[1]-c[1])*t)+','+ch(c[2]+(NEAR[2]-c[2])*t)+')';
   }
 
-  function target(){ return Math.max(30,Math.min(95,Math.round(innerWidth*innerHeight/11000))); }
+  /* sobre la caja del lienzo, no sobre innerHeight: así el número de partículas
+     tampoco fluctúa cuando la barra de URL aparece o se oculta */
+  function target(){ var a=(cssW||innerWidth)*(cssH||innerHeight); return Math.max(30,Math.min(95,Math.round(a/11000))); }
   function mass(p){ return p.r*p.r; }
 
   function make(px,py){
@@ -107,25 +109,17 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
 
   var cssW=0, cssH=0;
   function resize(){
-    var iw=innerWidth, ih=innerHeight;
-    /* En el móvil la barra de URL se oculta y reaparece al hacer scroll, y eso sólo
-       cambia el alto del viewport. Reescalar las posiciones por ese cambio movía todas
-       las partículas de golpe (hasta ~60 px en un frame): es el salto discreto vertical
-       que se veía al desplazarse. Ante un cambio de sólo-alto no se reescala nada. */
-    if(iw===cssW){
-      if(ih<=cssH) return;                       /* el viewport se encogió: no tocar nada */
-      cssH=ih; h=Math.round(ih*DPR);             /* creció: ampliar el lienzo, sin mover partículas */
-      c.height=h; c.width=w;
-      c.style.width=iw+'px'; c.style.height=ih+'px';
-      seed(target());
-      return;
-    }
-    /* cambio real de ancho (rotación o ventana de escritorio): sí se reescala */
+    /* Se mide la caja REAL del lienzo, nunca innerHeight. El CSS lo fija en 100lvh, que
+       no cambia cuando la barra de URL del móvil se oculta o reaparece al hacer scroll,
+       así que aquí no se toca nada durante el scroll: ni el tamaño del elemento, ni el
+       búfer, ni las posiciones. Sólo una rotación o una ventana de escritorio cambian
+       estas medidas, y ahí sí toca reescalar. */
+    var iw=c.clientWidth||innerWidth, ih=c.clientHeight||innerHeight;
+    if(iw===cssW && ih===cssH) return;
     var nw=Math.round(iw*DPR), nh=Math.round(ih*DPR);
     if(nw===w && nh===h){ cssW=iw; cssH=ih; return; }
     var sx=w?nw/w:1, sy=h?nh/h:1;
     w=c.width=nw; h=c.height=nh;                 /* fijar width/height limpia el lienzo */
-    c.style.width=iw+'px'; c.style.height=ih+'px';
     for(var i=0;i<parts.length;i++){
       parts[i].x=Math.min(w,Math.max(0,parts[i].x*sx));
       parts[i].y=Math.min(h,Math.max(0,parts[i].y*sy));
