@@ -1,6 +1,30 @@
 /* Posts del blog · editar aquí; lo usan /blog y la portada */
 window.POSTS = [
   {
+    date: "2026-07-30",
+    dateLabel: "Jul 2026",
+    category: { en:"Papers explained", es:"Papers explicados", de:"Papers erkl\u00e4rt", zh:"\u8bba\u6587\u89e3\u8bfb" },
+    featured: true,
+    title: {
+      en: "The butterfly you can see with heat",
+      es: "La mariposa que se ve con calor",
+      de: "Der Schmetterling, den man mit W\u00e4rme sieht",
+      zh: "\u7528\u70ed\u5c31\u80fd\u770b\u89c1\u7684\u8774\u8776"
+    },
+    body: {
+      en: "Look closely at a romanesco broccoli and each cone is made of smaller cones, forever. That is a fractal. There is one that lives in the quantum world, shaped like a butterfly, born from the fight between a crystal lattice and a magnet. It was predicted in 1976 with pencil and paper, and only caught in an experiment four decades later.\nOur paper in Nano Letters shows it can also be seen with heat, and that when you do, it comes out shaped like hearts.",
+      es: "Mira de cerca un br\u00f3coli romanesco y cada cono est\u00e1 hecho de conos m\u00e1s chicos, para siempre. Eso es un fractal. Hay uno que vive en el mundo cu\u00e1ntico, con forma de mariposa, nacido de la pelea entre una red cristalina y un im\u00e1n. Se predijo en 1976 con l\u00e1piz y papel, y reci\u00e9n lo atraparon en un experimento cuatro d\u00e9cadas despu\u00e9s.\nNuestro paper en Nano Letters muestra que tambi\u00e9n se puede ver con calor, y que cuando lo haces, aparece con forma de corazones.",
+      de: "Schau dir einen Romanesco-Brokkoli genau an: Jeder Kegel besteht aus kleineren Kegeln, immer weiter. Das ist ein Fraktal. Eines lebt in der Quantenwelt, in Schmetterlingsform, geboren aus dem Streit zwischen Kristallgitter und Magnet. 1976 mit Bleistift und Papier vorhergesagt und erst vier Jahrzehnte sp\u00e4ter im Experiment eingefangen.\nUnser Paper in Nano Letters zeigt, dass man ihn auch mit W\u00e4rme sehen kann \u2014 und dass er dabei in Herzform erscheint.",
+      zh: "\u8fd1\u770b\u4e00\u9897\u7f57\u9a6c\u82b1\u6930\u83dc\uff0c\u6bcf\u4e2a\u9525\u4f53\u90fd\u7531\u66f4\u5c0f\u7684\u9525\u4f53\u7ec4\u6210\uff0c\u65e0\u7a77\u65e0\u5c3d\u3002\u8fd9\u5c31\u662f\u5206\u5f62\u3002\u6709\u4e00\u4e2a\u5206\u5f62\u6d3b\u5728\u91cf\u5b50\u4e16\u754c\u91cc\uff0c\u5f62\u5982\u8774\u8776\uff0c\u8bde\u751f\u4e8e\u6676\u683c\u4e0e\u78c1\u94c1\u7684\u4e89\u6597\u3002\u5b83\u4e8e 1976 \u5e74\u7528\u94c5\u7b14\u548c\u7eb8\u9884\u8a00\uff0c\u56db\u5341\u5e74\u540e\u624d\u5728\u5b9e\u9a8c\u4e2d\u88ab\u6355\u83b7\u3002\n\u6211\u4eec\u53d1\u8868\u5728 Nano Letters \u7684\u8bba\u6587\u8868\u660e\uff0c\u5b83\u4e5f\u53ef\u4ee5\u7528\u70ed\u770b\u89c1\u2014\u2014\u800c\u4e14\u90a3\u65f6\u5b83\u4f1a\u4ee5\u5fc3\u5f62\u73b0\u8eab\u3002"
+    },
+    link: {
+      url: "/blog/butterfly",
+      label: { en:"Read it in \u03c0 min", es:"L\u00e9elo en \u03c0 min", de:"In \u03c0 Min lesen", zh:"\u03c0 \u5206\u949f\u8bfb\u61c2" }
+    },
+    images: [],
+    video: null
+  },
+  {
     date: "2026-07-26",
     dateLabel: "Jul 2026",
     category: { en:"Physics notes", es:"Notas de f\u00edsica", de:"Physik-Notizen", zh:"\u7269\u7406\u7b14\u8bb0" },
