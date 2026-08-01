@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a0713" />
+<title>Papers &amp; theses &mdash; Bastian Castorene</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='0.5' stop-color='%23d946ef'/%3E%3Cstop offset='1' stop-color='%234f46e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3EBC%3C/text%3E%3C/svg%3E" />
+<link rel="canonical" href="https://www.castorene.cl/papers-theses" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="bg-glow"></div>
+<canvas id="energy"></canvas>
+<nav>
+  <a href="/#top" class="brand">Bastian Castorene</a>
+  <div class="nav-right">
+  <div class="nav-links">
+    <a class="backhome" href="/">&larr; <span class="lang-en">Home</span><span class="lang-es">Inicio</span><span class="lang-de">Start</span><span class="lang-zh">主页</span></a>
+    <a href="/#about"><span class="lang-en">About</span><span class="lang-es">Sobre mí</span><span class="lang-de">Über mich</span><span class="lang-zh">关于</span></a>
+    <div class="navgroup">
+      <div class="navrow"><a href="/#blog"><span class="lang-en">Blog</span><span class="lang-es">Blog</span><span class="lang-de">Blog</span><span class="lang-zh">博客</span></a><button class="subcaret" type="button" aria-label="Submenu" onclick="toggleSub(this)">&#9662;</button></div>
+      <div class="submenu"><div class="subinner">
+        <a href="/blog"><span class="lang-en">All posts</span><span class="lang-es">Todas las entradas</span><span class="lang-de">Alle Beiträge</span><span class="lang-zh">全部文章</span></a>
+      </div></div>
+    </div>
+    <div class="navgroup">
+      <div class="navrow"><a href="/#notes"><span class="lang-en">Material</span><span class="lang-es">Material</span><span class="lang-de">Material</span><span class="lang-zh">资料</span></a><button class="subcaret" type="button" aria-label="Submenu" onclick="toggleSub(this)">&#9662;</button></div>
+      <div class="submenu"><div class="subinner">
+        <a href="/papers-theses"><span class="lang-en">Theses &amp; papers</span><span class="lang-es">Tesis y papers</span><span class="lang-de">Abschlussarbeiten &amp; Artikel</span><span class="lang-zh">学位论文与文章</span></a>
+        <a href="/notes-lectures"><span class="lang-en">Notes</span><span class="lang-es">Apuntes</span><span class="lang-de">Skripte</span><span class="lang-zh">讲义</span></a>
+        <a href="/notes-teaching"><span class="lang-en">Teaching</span><span class="lang-es">Docencia</span><span class="lang-de">Lehre</span><span class="lang-zh">教学材料</span></a>
+      </div></div>
+    </div>
+    <a href="/#research"><span class="lang-en">Research</span><span class="lang-es">Investigación</span><span class="lang-de">Forschung</span><span class="lang-zh">研究</span></a>
+    <div class="navgroup">
+      <div class="navrow"><a href="/#publications"><span class="lang-en">Publications</span><span class="lang-es">Publicaciones</span><span class="lang-de">Publikationen</span><span class="lang-zh">论文</span></a><button class="subcaret" type="button" aria-label="Submenu" onclick="toggleSub(this)">&#9662;</button></div>
+      <div class="submenu"><div class="subinner">
+        <a href="/publications"><span class="lang-en">All articles</span><span class="lang-es">Todos los artículos</span><span class="lang-de">Alle Artikel</span><span class="lang-zh">全部论文</span></a>
+      </div></div>
+    </div>
+    <div class="navgroup">
+      <div class="navrow"><a href="/#conferences"><span class="lang-en">Talks</span><span class="lang-es">Congresos</span><span class="lang-de">Vorträge</span><span class="lang-zh">演讲</span></a><button class="subcaret" type="button" aria-label="Submenu" onclick="toggleSub(this)">&#9662;</button></div>
+      <div class="submenu"><div class="subinner">
+        <a href="/talks"><span class="lang-en">All talks</span><span class="lang-es">Todas las charlas</span><span class="lang-de">Alle Vorträge</span><span class="lang-zh">全部演讲</span></a>
+      </div></div>
+    </div>
+    <a href="/#awards"><span class="lang-en">Awards</span><span class="lang-es">Premios</span><span class="lang-de">Auszeichnungen</span><span class="lang-zh">奖项</span></a>
+    <div class="navgroup">
+      <div class="navrow"><a href="/#team"><span class="lang-en">Team</span><span class="lang-es">Equipo</span><span class="lang-de">Team</span><span class="lang-zh">团队</span></a><button class="subcaret" type="button" aria-label="Submenu" onclick="toggleSub(this)">&#9662;</button></div>
+      <div class="submenu"><div class="subinner">
+        <a href="/team"><span class="lang-en">Meet the team</span><span class="lang-es">Conoce al equipo</span><span class="lang-de">Team ansehen</span><span class="lang-zh">了解团队</span></a>
+      </div></div>
+    </div>
+    <a href="/#contact"><span class="lang-en">Contact</span><span class="lang-es">Contacto</span><span class="lang-de">Kontakt</span><span class="lang-zh">联系</span></a>
+  </div>
+    <button class="theme-toggle" aria-label="Toggle light/dark theme" onclick="toggleTheme()"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+    <div class="lang-dd">
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Change language" onclick="toggleLangMenu(this)"><span class="lang-cur"></span><span class="caret">&#9662;</span></button>
+      <ul class="lang-menu" role="listbox">
+        <li role="option" data-lang="en" onclick="pickLang('en')"><svg class="flag" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><rect x="25" width="10" height="30" fill="#fff"/><rect y="10" width="60" height="10" fill="#fff"/><rect x="27" width="6" height="30" fill="#C8102E"/><rect y="12" width="60" height="6" fill="#C8102E"/></svg> EN</li>
+        <li role="option" data-lang="es" onclick="pickLang('es')"><svg class="flag" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg"><rect width="900" height="600" fill="#fff"/><rect y="300" width="900" height="300" fill="#D52B1E"/><rect width="300" height="300" fill="#0039A6"/><polygon points="150,55 172,119 240,120 186,162 206,227 150,188 94,227 114,162 60,120 128,119" fill="#fff"/></svg> ES</li>
+        <li role="option" data-lang="de" onclick="pickLang('de')"><svg class="flag" viewBox="0 0 5 3" xmlns="http://www.w3.org/2000/svg"><rect width="5" height="3" fill="#FFCE00"/><rect width="5" height="2" fill="#DD0000"/><rect width="5" height="1" fill="#000"/></svg> DE</li>
+        <li role="option" data-lang="zh" onclick="pickLang('zh')"><svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#DE2910"/><g fill="#FFDE00"><polygon points="5,2.5 6,5.5 9,5.5 6.6,7.4 7.5,10.4 5,8.6 2.5,10.4 3.4,7.4 1,5.5 4,5.5"/><circle cx="10.5" cy="2.2" r="0.7"/><circle cx="12.3" cy="4" r="0.7"/><circle cx="12.3" cy="6.5" r="0.7"/><circle cx="10.5" cy="8.3" r="0.7"/></g></svg> 中文</li>
+      </ul>
+    </div>
+    <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  </div>
+</nav>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="/">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zurück zur Startseite</span><span class="lang-zh">返回主页</span></a>
+  </div>
+<section class="reveal">
+  <span class="eyebrow"><span class="lang-en">Theses &amp; papers</span><span class="lang-es">Tesis y papers</span><span class="lang-de">Abschlussarbeiten &amp; Artikel</span><span class="lang-zh">学位论文与文章</span></span>
+  <h2 class="section-title"><span class="lang-en">Theses &amp; papers</span><span class="lang-es">Tesis y papers</span><span class="lang-de">Abschlussarbeiten &amp; Artikel</span><span class="lang-zh">学位论文与文章</span></h2>
+  <div class="doclist">
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://arxiv.org/pdf/2603.07424">
+        <span class="docnum">01</span>
+        <span class="docdate">Jul 2026</span>
+        <span class="doctitle"><span class="lang-en">Paper &middot; Thermal Hofstadter Butterflies</span><span class="lang-es">Artículo &middot; Thermal Hofstadter Butterflies</span><span class="lang-de">Artikel &middot; Thermal Hofstadter Butterflies</span><span class="lang-zh">论文 &middot; Thermal Hofstadter Butterflies</span></span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="badge-nano.jpg" alt="Thermal Hofstadter Butterflies paper" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Published in Nano Letters (2026), this paper shows that the Hofstadter butterfly can be read through thermal observables, not only electrical transport. Entropy and specific heat reproduce the fractal structure and reveal its characteristic gaps.</span><span class="lang-es">Publicado en Nano Letters (2026), este trabajo muestra que la mariposa de Hofstadter puede leerse mediante observables térmicos, no solo a través del transporte eléctrico. La entropía y el calor específico reproducen la estructura fractal y revelan sus brechas características.</span><span class="lang-de">Diese in Nano Letters (2026) veröffentlichte Arbeit zeigt, dass sich der Hofstadter-Schmetterling über thermische Observablen und nicht nur über elektrischen Transport untersuchen lässt. Entropie und spezifische Wärme reproduzieren die fraktale Struktur und machen ihre charakteristischen Lücken sichtbar.</span><span class="lang-zh">这篇发表于 Nano Letters（2026）的论文表明，霍夫施塔特蝴蝶不仅可以通过电输运来观察，也可以通过热学观测量来读取。熵与比热重现了分形结构，并揭示其特征能隙。</span></p>
+          <a class="docopen" href="https://arxiv.org/pdf/2603.07424" target="_blank" rel="noopener"><span class="lang-en">Open the paper PDF &rarr;</span><span class="lang-es">Abrir el PDF del artículo &rarr;</span><span class="lang-de">Paper-PDF öffnen &rarr;</span><span class="lang-zh">打开论文 PDF &rarr;</span></a>
+          <a class="docopen" href="https://doi.org/10.1021/acs.nanolett.6c01000" target="_blank" rel="noopener">DOI &rarr;</a>
+          <a class="docopen alt" href="/blog/butterfly"><span class="lang-en">Read the associated blog article &#8600;</span><span class="lang-es">Leer el artículo asociado del blog &#8600;</span><span class="lang-de">Zugehörigen Blogartikel lesen &#8600;</span><span class="lang-zh">阅读相关博客文章 &#8600;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1x1serkYo1xnPmRJcSM92OEJdkI12wazF/view">
+        <span class="docnum">02</span>
+        <span class="docdate">Jul 2026</span>
+        <span class="doctitle"><span class="lang-en">Paper &middot; Exact Combinatorial Density of States for the Critical 1D Ising Model</span><span class="lang-es">Artículo &middot; Exact Combinatorial Density of States for the Critical 1D Ising Model</span><span class="lang-de">Artikel &middot; Exact Combinatorial Density of States for the Critical 1D Ising Model</span><span class="lang-zh">论文 &middot; Exact Combinatorial Density of States for the Critical 1D Ising Model</span></span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1x1serkYo1xnPmRJcSM92OEJdkI12wazF&amp;sz=w300" alt="Entropy 2026 paper" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Published open access in Entropy 28, 821 (2026), with F. J. Peña, M. H. Groves and P. Vargas. A closed combinatorial form for the density of states of the one-dimensional Ising model at its primary ground-state level crossing, where the degeneracies turn out to follow the Fibonacci and Lucas sequences — recovered independently through the transfer-matrix method and applied to the thermodynamics of quantum Stirling cycles.</span><span class="lang-es">Publicado en acceso abierto en Entropy 28, 821 (2026), junto a F. J. Peña, M. H. Groves y P. Vargas. Una forma combinatoria cerrada para la densidad de estados del modelo de Ising unidimensional en su primer cruce de niveles del estado fundamental, donde las degeneraciones resultan seguir las sucesiones de Fibonacci y Lucas — recuperadas de forma independiente mediante el método de la matriz de transferencia y aplicadas a la termodinámica de ciclos de Stirling cuánticos.</span><span class="lang-de">Open Access veröffentlicht in Entropy 28, 821 (2026), gemeinsam mit F. J. Peña, M. H. Groves und P. Vargas. Eine geschlossene kombinatorische Form für die Zustandsdichte des eindimensionalen Ising-Modells an seiner primären Grundzustands-Niveaukreuzung, wo die Entartungen den Fibonacci- und Lucas-Folgen folgen — unabhängig über die Transfermatrix-Methode bestätigt und auf die Thermodynamik quantenmechanischer Stirling-Zyklen angewandt.</span><span class="lang-zh">以开放获取形式发表于 Entropy 28, 821 (2026)，合作者为 F. J. Peña、M. H. Groves 与 P. Vargas。给出一维伊辛模型在其基态首次能级交叉处态密度的闭式组合表达，其简并度恰好遵循斐波那契与卢卡斯数列——并通过转移矩阵方法独立验证，进而应用于量子斯特林循环的热力学。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1x1serkYo1xnPmRJcSM92OEJdkI12wazF/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">在 Drive 中打开 PDF &rarr;</span></a>
+          <a class="docopen" href="https://doi.org/10.3390/e28070821" target="_blank" rel="noopener">DOI &rarr;</a>
+          <a class="docopen alt" href="https://drive.google.com/file/d/1ES6OZ1d8EwfcyFPi-xb5mZkxQyM2j0kr/view" target="_blank" rel="noopener"><span class="lang-en">Supplementary materials</span><span class="lang-es">Materiales suplementarios</span><span class="lang-de">Ergänzendes Material</span><span class="lang-zh">补充材料</span></a>
+          <a class="docopen alt" href="/blog/paper-entropy-ising"><span class="lang-en">Read the associated blog article &#8600;</span><span class="lang-es">Leer el artículo asociado del blog &#8600;</span><span class="lang-de">Zugehörigen Blogartikel lesen &#8600;</span><span class="lang-zh">阅读相关博客文章 &#8600;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://arxiv.org/pdf/2410.16133">
+        <span class="docnum">03</span>
+        <span class="docdate">Mar 2025</span>
+        <span class="doctitle"><span class="lang-en">Paper &middot; Entropy, entanglement, and susceptibility of three qubits near quantum criticality</span><span class="lang-es">Artículo &middot; Entropy, entanglement, and susceptibility of three qubits near quantum criticality</span><span class="lang-de">Artikel &middot; Entropy, entanglement, and susceptibility of three qubits near quantum criticality</span><span class="lang-zh">论文 &middot; Entropy, entanglement, and susceptibility of three qubits near quantum criticality</span></span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="badge-p4.jpg" alt="Three-qubit entanglement paper" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Published in Physical Review E 111, 034118 (2025), this paper studies how entanglement in three qubits generates an effective temperature for a subsystem at absolute zero. It also shows how anisotropy stabilizes the entanglement and how magnetic susceptibility can witness it.</span><span class="lang-es">Publicado en Physical Review E 111, 034118 (2025), este trabajo estudia cómo el entrelazamiento de tres qubits genera una temperatura efectiva para un subsistema en el cero absoluto. También muestra cómo la anisotropía estabiliza el entrelazamiento y cómo la susceptibilidad magnética puede detectarlo.</span><span class="lang-de">Die in Physical Review E 111, 034118 (2025) veröffentlichte Arbeit untersucht, wie Verschränkung in drei Qubits für ein Teilsystem am absoluten Nullpunkt eine effektive Temperatur erzeugt. Außerdem zeigt sie, wie Anisotropie die Verschränkung stabilisiert und wie magnetische Suszeptibilität als Zeuge dafür dienen kann.</span><span class="lang-zh">这篇发表于 Physical Review E 111, 034118（2025）的论文研究了三个量子比特中的纠缠如何在绝对零度下为子系统产生有效温度。论文还展示了各向异性如何稳定纠缠，以及如何通过磁化率对其进行见证。</span></p>
+          <a class="docopen" href="https://arxiv.org/pdf/2410.16133" target="_blank" rel="noopener"><span class="lang-en">Open the paper PDF &rarr;</span><span class="lang-es">Abrir el PDF del artículo &rarr;</span><span class="lang-de">Paper-PDF öffnen &rarr;</span><span class="lang-zh">打开论文 PDF &rarr;</span></a>
+          <a class="docopen" href="https://doi.org/10.1103/PhysRevE.111.034118" target="_blank" rel="noopener">DOI &rarr;</a>
+          <a class="docopen alt" href="/blog/paper-3qubits"><span class="lang-en">Read the associated blog article &#8600;</span><span class="lang-es">Leer el artículo asociado del blog &#8600;</span><span class="lang-de">Zugehörigen Blogartikel lesen &#8600;</span><span class="lang-zh">阅读相关博客文章 &#8600;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="docitem">
+      <button class="dochead" type="button" data-url="https://drive.google.com/file/d/1GH_RLJpFurvnWzvJyO1P2ZJyAnV2m0Pk/view">
+        <span class="docnum">04</span>
+        <span class="docdate">Jan 2024</span>
+        <span class="doctitle"><span class="lang-en">Bachelor Thesis in Physics</span><span class="lang-es">Tesina de Licenciatura en Física</span><span class="lang-de">Bachelorarbeit in Physik</span><span class="lang-zh">物理学学士论文</span></span>
+        <span class="docchev">&#9662;</span>
+      </button>
+      <div class="docpanel"><div class="docinner"><div class="docbody">
+        <img class="docthumb" src="https://drive.google.com/thumbnail?id=1GH_RLJpFurvnWzvJyO1P2ZJyAnV2m0Pk&amp;sz=w300" alt="Bachelor Thesis in Physics" loading="lazy" />
+        <div class="docsum">
+          <p><span class="lang-en">Undergraduate thesis in Physics, submitted at UTFSM and awarded the Summa Cum Laude distinction. The full manuscript, including the theoretical framework, calculations and conclusions of the work.</span><span class="lang-es">Tesina de licenciatura en Física, presentada en la UTFSM y distinguida con la mención Summa Cum Laude. El manuscrito completo, con el marco teórico, los cálculos y las conclusiones del trabajo.</span><span class="lang-de">Bachelorarbeit in Physik, eingereicht an der UTFSM und mit der Auszeichnung Summa Cum Laude bewertet. Das vollständige Manuskript mit theoretischem Rahmen, Rechnungen und Schlussfolgerungen.</span><span class="lang-zh">物理学学士论文，提交于 UTFSM 并获最优等成绩（Summa Cum Laude）。完整稿件，包含理论框架、计算过程与结论。</span></p>
+          <a class="docopen" href="https://drive.google.com/file/d/1GH_RLJpFurvnWzvJyO1P2ZJyAnV2m0Pk/view" target="_blank" rel="noopener"><span class="lang-en">Open the PDF in Drive &rarr;</span><span class="lang-es">Abrir el PDF en Drive &rarr;</span><span class="lang-de">PDF in Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Drive &#20013;&#25171;&#24320; PDF &rarr;</span></a>
+        </div>
+      </div></div></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:30px">
+    <a class="btn btn-ghost" href="https://drive.google.com/drive/folders/1dVtwfA1cjRg1PWtwadWLppZZMvlZrUVA" target="_blank" rel="noopener"><span class="lang-en">Open the whole folder in Google Drive &rarr;</span><span class="lang-es">Abrir la carpeta completa en Google Drive &rarr;</span><span class="lang-de">Ganzen Ordner in Google Drive &ouml;ffnen &rarr;</span><span class="lang-zh">&#22312; Google Drive &#20013;&#25171;&#24320;&#25972;&#20010;&#25991;&#20214;&#22841; &rarr;</span></a>
+  </div>
+</section>
+  <div class="backbar">
+    <a class="btn btn-ghost" href="/">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zur&uuml;ck zur Startseite</span><span class="lang-zh">&#36820;&#22238;&#20027;&#39029;</span></a>
+  </div>
+<footer>
+  <p>&copy; <span id="yr"></span> Bastian Castorene</p>
+  <p style="margin-top:6px;opacity:.7">Ph.D. (C) in Physics &middot; UTFSM &amp; PUCV &middot; Quantum thermodynamics</p>
+  <p style="margin-top:6px"><a href="/">&larr; <span class="lang-en">Back to home</span><span class="lang-es">Volver al inicio</span><span class="lang-de">Zur&uuml;ck zur Startseite</span><span class="lang-zh">&#36820;&#22238;&#20027;&#39029;</span></a></p>
+</footer>
+<script src="app.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.dochead').forEach(function(h){
+    h.addEventListener('click', function(e){
+      var it = h.parentNode;
+      if(!it.classList.contains('open')){
+        document.querySelectorAll('.docitem.open').forEach(function(o){ if(o!==it) o.classList.remove('open'); });
+        it.classList.add('open');
+      } else if (e.target.closest('.docchev')) {
+        it.classList.remove('open');
+      } else {
+        window.open(h.getAttribute('data-url'), '_blank', 'noopener');
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
