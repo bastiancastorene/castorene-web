@@ -745,7 +745,10 @@ html[data-theme="light"] .peek{background:linear-gradient(to top,var(--bg) 10%,r
 }
 
 /* ===== Figuras dentro de los posts de papers ===== */
-.pfig{margin:26px 0 22px}
+/* las figuras no ocupan el ancho completo de la columna: a 1080px se ven enormes */
+.pfig{max-width:600px;margin:28px auto 24px}
+.pfig.wide{max-width:760px}          /* para figuras apaisadas con rótulos finos */
+@media(max-width:700px){.pfig,.pfig.wide{max-width:100%}}
 .pfig img{width:100%;height:auto;display:block;border-radius:14px;
   border:1px solid var(--panel-brd);background:#fff;
   box-shadow:0 18px 44px -24px rgba(0,0,0,.7)}
