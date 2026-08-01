@@ -1,6 +1,30 @@
 /* Posts del blog · editar aquí; lo usan /blog y la portada */
 window.POSTS = [
   {
+    date: "2026-08-01",
+    dateLabel: "Aug 2026",
+    category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
+    featured: true,
+    title: {
+      en: "The liquid helium that refuses to freeze",
+      es: "El helio líquido que se niega a congelarse",
+      de: "Das flüssige Helium, das nicht gefrieren will",
+      zh: "拒绝冻结的液氦"
+    },
+    body: {
+      en: "Helium seems to cheat: cool it almost to absolute zero and it stays liquid. Below the lambda point, part of the same liquid begins to glide with almost no friction. Landau's two-fluid model describes that double life through waves and whirlpools called phonons and rotons.\nA simple thermodynamic estimate lands near the experimental transition temperature. Read the explanation in two layers, from the party floor to the excitation spectrum.",
+      es: "El helio parece hacer trampa: enfríalo casi hasta el cero absoluto y sigue líquido. Por debajo del punto lambda, parte del mismo líquido empieza a deslizarse casi sin roce. El modelo de dos fluidos de Landau describe esa doble vida mediante ondas y remolinos llamados fonones y rotones.\nUna estimación termodinámica sencilla cae cerca de la temperatura de transición experimental. Léelo en dos capas, desde la pista de baile hasta el espectro de excitaciones.",
+      de: "Helium scheint zu schummeln: Man kühlt es fast bis zum absoluten Nullpunkt ab, und es bleibt flüssig. Unterhalb des Lambda-Punkts beginnt ein Teil derselben Flüssigkeit fast reibungslos zu gleiten. Landaus Zwei-Flüssigkeiten-Modell beschreibt dieses Doppelleben mit Wellen und Wirbeln, den Phononen und Rotonen.\nEine einfache thermodynamische Abschätzung liegt nahe an der experimentellen Übergangstemperatur. Die Erklärung gibt es in zwei Ebenen, von der Tanzfläche bis zum Anregungsspektrum.",
+      zh: "氦看起来像是在耍赖：把它冷却到几乎绝对零度，它仍然保持液态。在λ点以下，同一液体的一部分开始几乎无摩擦地滑动。朗道两流体模型用称为声子与旋子的波和漩涡描述这种双重生活。\n一个简单的热力学估计给出了接近实验转变温度的结果。分两层阅读，从舞池一直到激发谱。"
+    },
+    link: {
+      url: "/blog/liquid-helium",
+      label: { en:"Read it in π min", es:"Léelo en π min", de:"In π Min lesen", zh:"π 分钟读懂" }
+    },
+    images: [],
+    video: null
+  },
+  {
     date: "2026-07-30",
     dateLabel: "Jul 2026",
     category: { en:"Papers explained", es:"Papers explicados", de:"Papers erkl\u00e4rt", zh:"\u8bba\u6587\u89e3\u8bfb" },
