@@ -6,6 +6,30 @@ window.POSTS = [
     category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
     featured: true,
     title: {
+      en: "The current that slips sideways",
+      es: "La corriente que se va de lado",
+      de: "Der Strom, der seitwärts ausweicht",
+      zh: "向侧面偏转的电流"
+    },
+    body: {
+      en: "Picture a road where every electron moves forward, but opposite spins are gently steered toward opposite edges. The sideways charge currents cancel, while their spin separation survives.\nThe Drude picture, crystal symmetry and spin–orbit interaction are enough to show where this small but measurable effect comes from.",
+      es: "Imagina una avenida donde todos los electrones avanzan, pero los espines opuestos son desviados suavemente hacia bordes opuestos. Las corrientes laterales de carga se cancelan, mientras la separación de espines permanece.\nEl modelo de Drude, la simetría cristalina y la interacción espín-órbita bastan para mostrar de dónde sale este efecto pequeño, pero medible.",
+      de: "Stell dir eine Straße vor, auf der sich alle Elektronen vorwärts bewegen, während entgegengesetzte Spins sanft zu gegenüberliegenden Rändern gelenkt werden. Die seitlichen Ladungsströme heben sich auf, die Spintrennung bleibt bestehen.\nDas Drude-Bild, die Kristallsymmetrie und die Spin-Bahn-Wechselwirkung zeigen, woher dieser kleine, aber messbare Effekt kommt.",
+      zh: "想象一条道路，所有电子都向前运动，但相反的自旋被轻轻引向相对的两侧。侧向电荷流相互抵消，而自旋分离仍然存在。\n德鲁德模型、晶体对称性与自旋–轨道相互作用足以说明这个虽小却可测量的效应从何而来。"
+    },
+    link: {
+      url: "/blog/spin-hall",
+      label: { en:"Read the explainer", es:"Leer la explicación", de:"Erklärung lesen", zh:"阅读解读" }
+    },
+    images: [],
+    video: null
+  },
+  {
+    date: "2026-08-01",
+    dateLabel: "Aug 2026",
+    category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
+    featured: true,
+    title: {
       en: "The liquid helium that refuses to freeze",
       es: "El helio líquido que se niega a congelarse",
       de: "Das flüssige Helium, das nicht gefrieren will",
