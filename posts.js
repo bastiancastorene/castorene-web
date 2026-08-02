@@ -6,16 +6,16 @@ window.POSTS = [
     category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
     featured: true,
     title: {
-      en: "The current that slips sideways",
-      es: "La corriente que se va de lado",
-      de: "Der Strom, der seitwärts ausweicht",
-      zh: "向侧面偏转的电流"
+      en: "Two spins, two sides",
+      es: "Dos espines, dos lados",
+      de: "Zwei Spins, zwei Seiten",
+      zh: "两种自旋，分向两侧"
     },
     body: {
-      en: "Picture a road where every electron moves forward, but opposite spins are gently steered toward opposite edges. The sideways charge currents cancel, while their spin separation survives.\nThe Drude picture, crystal symmetry and spin–orbit interaction are enough to show where this small but measurable effect comes from.",
-      es: "Imagina una avenida donde todos los electrones avanzan, pero los espines opuestos son desviados suavemente hacia bordes opuestos. Las corrientes laterales de carga se cancelan, mientras la separación de espines permanece.\nEl modelo de Drude, la simetría cristalina y la interacción espín-órbita bastan para mostrar de dónde sale este efecto pequeño, pero medible.",
-      de: "Stell dir eine Straße vor, auf der sich alle Elektronen vorwärts bewegen, während entgegengesetzte Spins sanft zu gegenüberliegenden Rändern gelenkt werden. Die seitlichen Ladungsströme heben sich auf, die Spintrennung bleibt bestehen.\nDas Drude-Bild, die Kristallsymmetrie und die Spin-Bahn-Wechselwirkung zeigen, woher dieser kleine, aber messbare Effekt kommt.",
-      zh: "想象一条道路，所有电子都向前运动，但相反的自旋被轻轻引向相对的两侧。侧向电荷流相互抵消，而自旋分离仍然存在。\n德鲁德模型、晶体对称性与自旋–轨道相互作用足以说明这个虽小却可测量的效应从何而来。"
+      en: "Picture an avenue where a single electric push moves everyone forward, but the crystal sends opposite spins toward opposite edges. Unlike the Seebeck effect, it does not need a hot end and a cold end: spin separates sideways while the transverse charge currents can cancel.\nThe Drude picture, crystal symmetry and spin–orbit interaction show where this small but measurable effect comes from.",
+      es: "Imagina una avenida donde un mismo empujón eléctrico hace avanzar a todos, pero el cristal envía los espines opuestos hacia bordes opuestos. A diferencia del efecto Seebeck, no hace falta un extremo caliente y otro frío: aquí se separa el espín hacia los lados, mientras las corrientes transversales de carga pueden cancelarse.\nEl modelo de Drude, la simetría cristalina y la interacción espín-órbita muestran de dónde sale este efecto pequeño, pero medible.",
+      de: "Stell dir eine Straße vor, auf der ein einziger elektrischer Schub alle vorwärts bewegt, während der Kristall entgegengesetzte Spins zu gegenüberliegenden Rändern lenkt. Anders als der Seebeck-Effekt braucht dieser Vorgang kein heißes und kein kaltes Ende: Die Spins trennen sich seitlich, während sich die transversalen Ladungsströme aufheben können.\nDas Drude-Bild, die Kristallsymmetrie und die Spin-Bahn-Wechselwirkung zeigen, woher dieser kleine, aber messbare Effekt kommt.",
+      zh: "想象一条道路，单一的电驱动让所有电子向前运动，但晶体把相反的自旋送向相对两侧。与塞贝克效应不同，它不需要一端热、一端冷：自旋向侧面分离，而横向电荷流可以相互抵消。\n德鲁德模型、晶体对称性与自旋–轨道相互作用说明了这个虽小却可测量的效应从何而来。"
     },
     link: {
       url: "/blog/spin-hall",
