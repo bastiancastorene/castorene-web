@@ -687,17 +687,23 @@ html[data-theme="light"] .peek{background:linear-gradient(to top,var(--bg) 10%,r
 @media(prefers-reduced-motion:reduce){.peek-svg .pk1,.peek-svg .pk2{animation:none}}
 @media(max-width:760px){.peek{height:108px;padding-bottom:12px}.peek-svg{width:48px}}
 
-/* ===== Últimos posts en la portada ===== */
-.hbpost{display:block;padding:22px 24px;border-radius:var(--radius);border:1px solid var(--panel-brd);
+/* ===== Posts destacados en la portada ===== */
+.homeblog-head{margin:0 0 20px}
+.hbgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.hbpost{display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:1/1;min-width:0;min-height:0;overflow:hidden;padding:22px 20px;border-radius:var(--radius);border:1px solid var(--panel-brd);
   background:linear-gradient(135deg,rgba(124,58,237,.14),rgba(217,70,239,.07) 55%,rgba(79,70,229,.12));
   transition:transform .25s ease, border-color .3s ease, box-shadow .3s ease}
 .hbpost:hover{transform:translateY(-4px);border-color:rgba(168,120,255,.45);
   box-shadow:0 20px 48px -22px rgba(217,70,239,.55)}
 .hbpost .pmeta{display:flex;gap:10px;align-items:center;margin-bottom:8px}
-.hbpost h3{font-family:Georgia,serif;font-size:1.28rem;margin:0 0 8px;color:var(--txt)}
-.hbpost p{color:var(--muted);font-size:.94rem;line-height:1.65;margin:0}
+.hbpost h3{font-family:Georgia,serif;font-size:1.2rem;margin:0 0 8px;color:var(--txt);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.hbpost p{color:var(--muted);font-size:.9rem;line-height:1.55;margin:0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
 .hbpost .hbgo{display:inline-block;margin-top:14px;color:var(--accent);font-weight:600;font-size:.88rem}
 .hbpost:hover .hbgo{text-shadow:0 0 14px rgba(217,70,239,.6)}
+@media(max-width:760px){
+  .hbgrid{grid-template-columns:repeat(3,minmax(250px,78vw));overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:8px}
+  .hbpost{scroll-snap-align:start}
+}
 
 /* ===== Botón "Explicación" en publicaciones con blog asociado ===== */
 .pub .links a.explain{border-color:transparent;color:#fff;font-weight:600;

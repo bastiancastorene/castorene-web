@@ -340,7 +340,7 @@ document.addEventListener('click', function(e){
   upd();
 })();
 
-/* ---------- último post del blog en la portada ---------- */
+/* ---------- posts destacados del blog en la portada ---------- */
 (function(){
   var box=document.getElementById('homeblog');
   if(!box || !window.POSTS || !window.POSTS.length) return;
@@ -348,14 +348,21 @@ document.addEventListener('click', function(e){
   function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
   function ml(o){ if(!o) return ''; if(typeof o==='string') return esc(o);
     return L.map(function(l){return '<span class="lang-'+l+'">'+esc(o[l]||o.en||'')+'</span>';}).join(''); }
-  var p=window.POSTS.slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));})[0];
-  var first={}; L.forEach(function(l){ first[l]=String((p.body&&(p.body[l]||p.body.en))||'').split('\n')[0]; });
-  var go=p.link?p.link.label:{en:'Read more',es:'Leer más',de:'Mehr lesen',zh:'阅读更多'};
-  box.innerHTML='<a class="hbpost" href="'+(p.link?p.link.url:'/blog')+'">'+
-    '<div class="pmeta"><span class="pdate">'+ml(p.dateLabel||p.date)+'</span>'+
-    (p.category?'<span class="pcat">'+ml(p.category)+'</span>':'')+'</div>'+
-    '<h3>'+ml(p.title)+'</h3><p>'+ml(first)+'</p>'+
-    '<span class="hbgo">'+ml(go)+' &rarr;</span></a>';
+  function card(p){
+    var first={};
+    L.forEach(function(l){ first[l]=String((p.body&&(p.body[l]||p.body.en))||'').split('\n')[0]; });
+    var go=p.link?p.link.label:{en:'Read more',es:'Leer más',de:'Mehr lesen',zh:'阅读更多'};
+    return '<a class="hbpost" href="'+(p.link?p.link.url:'/blog')+'">'+
+      '<div><div class="pmeta"><span class="pdate">'+ml(p.dateLabel||p.date)+'</span>'+
+      (p.category?'<span class="pcat">'+ml(p.category)+'</span>':'')+'</div>'+
+      '<h3>'+ml(p.title)+'</h3><p>'+ml(first)+'</p></div>'+
+      '<span class="hbgo">'+ml(go)+' &rarr;</span></a>';
+  }
+  var posts=window.POSTS.slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
+  var featured=posts.filter(function(p){return p.featured;});
+  if(!featured.length) return;
+  box.innerHTML='<h3 class="subhead homeblog-head"><span class="lang-en">Featured</span><span class="lang-es">Destacados</span><span class="lang-de">Highlights</span><span class="lang-zh">精选</span></h3>'+
+    '<div class="hbgrid">'+featured.map(card).join('')+'</div>';
 })();
 
 /* ---------- "What's new": 4 items, or the whole month if it has more ---------- */
