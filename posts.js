@@ -4,7 +4,7 @@ window.POSTS = [
     date: "2026-08-01",
     dateLabel: "Aug 2026",
     category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
-    featured: true,
+    featured: false,
     title: {
       en: "Two spins, two sides",
       es: "Dos espines, dos lados",
@@ -28,7 +28,7 @@ window.POSTS = [
     date: "2026-08-01",
     dateLabel: "Aug 2026",
     category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
-    featured: true,
+    featured: false,
     title: {
       en: "The liquid helium that refuses to freeze",
       es: "El helio líquido que se niega a congelarse",
@@ -124,7 +124,7 @@ window.POSTS = [
     date: "2026-07-19",
     dateLabel: "Jul 2026",
     category: { en:"Papers explained", es:"Papers explicados", de:"Papers erklärt", zh:"论文解读" },
-    featured: true,
+    featured: false,
     title: {
       en: "The golden ratio hidden inside a magnet",
       es: "El número áureo escondido dentro de un imán",
