@@ -18,6 +18,8 @@ borradores/
 *_borrador.*
 
 # Material local, credenciales y extracción temporal: NUNCA se publican
+AGENTS.md
+MANUAL-DEL-SITIO.md
 _tmp_*.pdf
 _figs_tmp/
 .env
