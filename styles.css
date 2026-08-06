@@ -130,7 +130,7 @@ section{max-width:var(--maxw);margin:0 auto;padding:clamp(56px,9vw,110px) clamp(
 .hero-photo .pf{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;
   border-radius:25px;display:block;
   opacity:0;transition:opacity 1.2s ease}
-.hero-photo .pf.pf-zoom{transform:scale(1.25);transform-origin:center center}
+.hero-photo .pf.pf-zoom{transform:scale(1.25);transform-origin:center 30%}
 .hero-photo .pf.active{opacity:1}
 .hero-photo::after{content:"";position:absolute;inset:-16px;border-radius:34px;z-index:-1;
   background:linear-gradient(135deg,var(--v1),var(--v2),var(--v3));filter:blur(38px);opacity:.5}
