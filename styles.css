@@ -237,6 +237,16 @@ html[data-theme="light"] .btn-ghost:hover{color:var(--v1)}
 .contact-box h2{margin-bottom:12px}
 .contact-box p{color:var(--muted);max-width:50ch;margin:0 auto 26px}
 .social{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.social .social-brand{color:#fff;border-color:transparent;box-shadow:0 10px 24px -13px var(--social-shadow)}
+.social .social-scholar{--social-shadow:#4285f4;background:linear-gradient(100deg,#174ea6,#2b6cc4)}
+.social .social-orcid{--social-shadow:#a6ce39;background:linear-gradient(100deg,#3f5b0d,#567719)}
+.social .social-linkedin{--social-shadow:#0a66c2;background:linear-gradient(100deg,#004182,#0a66c2)}
+.social .social-brand:hover{color:#fff;border-color:transparent;background:linear-gradient(100deg,var(--brand-from),var(--brand-to));filter:saturate(1.12) brightness(1.03);box-shadow:0 14px 30px -12px var(--social-shadow)}
+.social .social-scholar{--brand-from:#174ea6;--brand-to:#2b6cc4}
+.social .social-orcid{--brand-from:#3f5b0d;--brand-to:#567719}
+.social .social-linkedin{--brand-from:#004182;--brand-to:#0a66c2}
+html[data-theme="light"] .social .social-brand{color:#fff;border-color:transparent;box-shadow:0 9px 22px -13px var(--social-shadow)}
+html[data-theme="light"] .social .social-brand:hover{color:#fff;box-shadow:0 13px 28px -12px var(--social-shadow)}
 
 footer{border-top:1px solid var(--panel-brd);padding:34px 20px;text-align:center;color:var(--muted);font-size:.85rem}
 footer a{color:var(--accent)}
