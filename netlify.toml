@@ -1,4 +1,6 @@
 # Netlify configuration — castorene.cl
+# GitHub Pages es el hosting activo. Estas cabeceras solo se aplicarán si el
+# sitio vuelve a desplegarse desde Netlify; no sustituyen controles en GitHub.
 [build]
   publish = "."
 

@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+git diff --cached --check
+python3 scripts/preflight.py
+
+if command -v node >/dev/null 2>&1; then
+  node --check app.js
+  node --check posts.js
+fi

@@ -116,7 +116,19 @@
 
 (function(){
   var L=['en','es','de','zh'];
-  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+  function localPath(v,fallback){
+    v=String(v||'');
+    return /^\/(?!\/)[A-Za-z0-9._~!$&()*+,;=:@/%-]*$/.test(v)?v:fallback;
+  }
+  function driveId(v){
+    v=String(v||'');
+    return /^[A-Za-z0-9_-]{10,}$/.test(v)?v:null;
+  }
+  function youtubeId(v){
+    v=String(v||'');
+    return /^[A-Za-z0-9_-]{11}$/.test(v)?v:null;
+  }
   function ml(o){ // multilingual -> lang spans
     if(o==null)return '';
     if(typeof o==='string')return esc(o);
@@ -133,19 +145,21 @@
   }
   function media(p){
     var h='';
-    if(p.images && p.images.length){
-      h+='<div class="pgallery">'+p.images.map(function(id){
+    var images=(p.images||[]).map(driveId).filter(Boolean);
+    if(images.length){
+      h+='<div class="pgallery">'+images.map(function(id){
         return '<a href="https://drive.google.com/file/d/'+id+'/view" target="_blank" rel="noopener"><img loading="lazy" src="https://drive.google.com/thumbnail?id='+id+'&sz=w1600" alt="" /></a>';
       }).join('')+'</div>';
     }
-    if(p.youtube){ h+='<div class="pvideo"><iframe src="https://www.youtube.com/embed/'+p.youtube+'" title="video" allowfullscreen loading="lazy"></iframe></div>'; }
-    else if(p.video){ h+='<div class="pvideo"><iframe src="https://drive.google.com/file/d/'+p.video+'/preview" title="video" allow="autoplay" allowfullscreen loading="lazy"></iframe></div>'; }
+    var youtube=youtubeId(p.youtube), video=driveId(p.video);
+    if(youtube){ h+='<div class="pvideo"><iframe src="https://www.youtube.com/embed/'+youtube+'" title="video" allowfullscreen loading="lazy"></iframe></div>'; }
+    else if(video){ h+='<div class="pvideo"><iframe src="https://drive.google.com/file/d/'+video+'/preview" title="video" allow="autoplay" allowfullscreen loading="lazy"></iframe></div>'; }
     return h;
   }
   function card(p,feat){
     return '<article class="post'+(feat?' post-feat':'')+'">'+
       '<div class="pmeta"><span class="pdate">'+ml(p.dateLabel||p.date)+'</span>'+(p.category?'<span class="pcat">'+ml(p.category)+'</span>':'')+'</div>'+
-      '<h3>'+ml(p.title)+'</h3>'+bodyHtml(p.body)+media(p)+(p.link?'<a class="plink" href="'+p.link.url+'">'+ml(p.link.label)+' &rarr;</a>':'')+'</article>';
+      '<h3>'+ml(p.title)+'</h3>'+bodyHtml(p.body)+media(p)+(p.link?'<a class="plink" href="'+localPath(p.link.url,'/blog')+'">'+ml(p.link.label)+' &rarr;</a>':'')+'</article>';
   }
   var posts=(window.POSTS||[]).slice().sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
   if(!posts.length){var e=document.getElementById('bempty'); if(e)e.style.display='block'; return;}

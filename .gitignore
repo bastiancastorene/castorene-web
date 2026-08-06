@@ -16,4 +16,18 @@ borrador-*.md
 borradores/
 *.draft.md
 *_borrador.*
-borrador-*.md
+
+# Material local, credenciales y extracción temporal: NUNCA se publican
+_tmp_*.pdf
+_figs_tmp/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+id_rsa
+id_ed25519
