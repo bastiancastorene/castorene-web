@@ -161,5 +161,8 @@
   if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){ms.classList.toggle('docked',!e.isIntersecting);});},{threshold:0}).observe(sent);}
 })();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.2"></script>
+<script src="/blog-interactions.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=castoreneTurnstileReady&amp;render=explicit" async defer></script>
 </body>
 </html>
