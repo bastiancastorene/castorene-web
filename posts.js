@@ -1,6 +1,30 @@
 /* Posts del blog · editar aquí; lo usan /blog y la portada */
 window.POSTS = [
   {
+    date: "2026-08-09",
+    dateLabel: "Aug 2026",
+    category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
+    featured: false,
+    title: {
+      en: "The barrier graphene cannot see",
+      es: "La barrera que el grafeno no ve",
+      de: "Die Barriere, die Graphen nicht sieht",
+      zh: "石墨烯看不见的势垒"
+    },
+    body: {
+      en: "A graphene barrier can be transparent or reflective depending on whether the sheet has one layer or two. In a monolayer, chirality gives perfect transmission at normal incidence; in an AB bilayer, the doubled winding suppresses it and produces anti-Klein tunnelling.\nA two-layer explanation of the Klein paradox, from the road-and-wall picture to the effective Hamiltonians and angular transmission.",
+      es: "Una barrera en grafeno puede ser transparente o reflectante según tenga una capa o dos. En la monocapa, la quiralidad da transmisión perfecta en incidencia normal; en la bicapa AB, el giro doble la suprime y produce el túnel anti-Klein.\nUna explicación en dos capas de la paradoja de Klein, desde la imagen de la carretera y la muralla hasta los Hamiltonianos efectivos y la transmisión angular.",
+      de: "Eine Graphenbarriere kann je nach Schichtzahl transparent oder reflektierend sein. In der einschichtigen Probe führt Chiralität bei senkrechtem Einfall zu perfekter Transmission; im AB-zweischichtigen Graphen unterdrückt das doppelte Winding sie und erzeugt Anti-Klein-Tunneln.\nEine Erklärung des Klein-Paradoxons in zwei Ebenen, vom Bild der Straße und Mauer bis zu effektiven Hamiltonoperatoren und winkelabhängiger Transmission.",
+      zh: "石墨烯中的势垒可以透明，也可以反射，取决于材料是一层还是两层。单层中，手性使正入射完全透射；AB 双层中，双重绕转抑制正向透射，并产生反克莱因隧穿。\n分两层解释克莱因悖论，从道路与墙的图像一直到有效哈密顿量与角度透射。"
+    },
+    link: {
+      url: "/blog/klein-graphene",
+      label: { en:"Read the explainer", es:"Leer la explicación", de:"Erklärung lesen", zh:"阅读解读" }
+    },
+    images: [],
+    video: null
+  },
+  {
     date: "2026-08-01",
     dateLabel: "Aug 2026",
     category: { en:"Physics notes", es:"Notas de física", de:"Physik-Notizen", zh:"物理笔记" },
