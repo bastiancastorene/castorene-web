@@ -8,6 +8,10 @@
   };
   var LANGS=['en','es','de','zh'];
   var POSTS={
+    'klein-graphene':{
+      prompt:{en:'What do you think about graphene transmitting carriers through a barrier that should stop them?',es:'¿Qué te parece que el grafeno transmita portadores a través de una barrera que debería detenerlos?',de:'Was hältst du davon, dass Graphen Ladungsträger durch eine Barriere überträgt, die sie aufhalten sollte?',zh:'你怎么看石墨烯让载流子穿过本应阻挡它们的势垒？'},
+      topic:{en:'Klein tunnelling in graphene',es:'el túnel de Klein en grafeno',de:'dem Klein-Tunneln in Graphen',zh:'石墨烯中的克莱因隧穿'}
+    },
     'spin-hall':{
       pdf:{en:'https://drive.google.com/file/d/1odKwLHW0-gKvbHgWKHLwOMhD8mTJmdw0/view',es:'https://drive.google.com/file/d/1FFhmc-BwCRj86FGWwTmc1BxuLeiAJsEx/view',de:'https://drive.google.com/file/d/1odKwLHW0-gKvbHgWKHLwOMhD8mTJmdw0/view',zh:'https://drive.google.com/file/d/1odKwLHW0-gKvbHgWKHLwOMhD8mTJmdw0/view'},
       prompt:{en:'What do you think about a current that separates spin without needing a temperature difference?',es:'¿Qué te parece que una corriente pueda separar espines sin necesitar una diferencia de temperatura?',de:'Was hältst du davon, dass ein Strom Spins ohne Temperaturunterschied trennen kann?',zh:'你怎么看待电流无需温差就能分离自旋这一现象？'},
@@ -90,7 +94,7 @@
   function reactionButtons(id,compact){return '<div class="reaction-pair" data-reactions="'+id+'">'+
     '<button class="action-btn react-like'+(compact?' compact':'')+'" type="button" data-reaction="1" data-post="'+id+'" aria-label="'+escapeHtml(tx(TEXT.like))+'" aria-pressed="false">'+icon('like')+'<span class="like-count">0</span></button>'+
     '<button class="action-btn react-dislike'+(compact?' compact':'')+'" type="button" data-reaction="-1" data-post="'+id+'" aria-label="'+escapeHtml(tx(TEXT.dislike))+'" aria-pressed="false">'+icon('dislike')+'<span class="dislike-count">0</span></button></div>';}
-  function pdfButton(id){var p=POSTS[id];return '<a class="action-btn pdf-tech" data-pdf-post="'+id+'" href="'+escapeHtml(tx(p.pdf))+'" target="_blank" rel="noopener">'+
+  function pdfButton(id){var p=POSTS[id];if(!p||!p.pdf)return '';return '<a class="action-btn pdf-tech" data-pdf-post="'+id+'" href="'+escapeHtml(tx(p.pdf))+'" target="_blank" rel="noopener">'+
     '<svg class="pdf-sparks" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><rect class="pdf-ring" x="1.5" y="1.5" width="97" height="27" rx="13.5" pathLength="100"/><rect class="pdf-spark spark-3" x="1.5" y="1.5" width="97" height="27" rx="13.5" pathLength="100"/><rect class="pdf-spark spark-2" x="1.5" y="1.5" width="97" height="27" rx="13.5" pathLength="100"/><rect class="pdf-spark" x="1.5" y="1.5" width="97" height="27" rx="13.5" pathLength="100"/></svg><span class="pdf-arrow pdf-arrow-in" aria-hidden="true">⟶</span>'+ml(TEXT.calculations)+'<span class="pdf-arrow pdf-arrow-out" aria-hidden="true">⟵</span></a>';}
   function shareBlock(id,url,title){return '<div class="share-wrap"'+(url?' data-share-url="'+escapeHtml(url)+'"':'')+(title?' data-share-title="'+escapeHtml(title)+'"':'')+'><button class="action-btn share-toggle" type="button" data-share-toggle="'+id+'" aria-expanded="false">'+icon('share')+ml(TEXT.share)+'</button><div class="share-menu" data-share-menu="'+id+'">'+
     '<a data-share="linkedin" href="#">LinkedIn</a><a data-share="x" href="#">X / Twitter</a><a data-share="facebook" href="#">Facebook</a><a data-share="whatsapp" href="#">WhatsApp</a><a data-share="email" href="#">'+ml({en:'Email',es:'Correo',de:'E-Mail',zh:'电子邮件'})+'</a><button data-share="copy" type="button">'+ml(TEXT.copy)+'</button></div></div>';}
