@@ -781,11 +781,21 @@ html[data-theme="light"] .peek{background:linear-gradient(to top,var(--bg) 10%,r
   box-shadow:0 24px 60px -42px rgba(217,70,239,.75)}
 html[data-theme="light"] .blog-interactions{background:linear-gradient(145deg,rgba(124,58,237,.055),rgba(255,255,255,.88) 48%,rgba(79,70,229,.05));box-shadow:0 22px 52px -40px rgba(79,70,229,.45)}
 .article-actions,.preview-actions,.top-post-actions,.publication-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.pdf-links{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}
+.pdf-links .pdf-tech{min-width:0}
+.pdf-menu-wrap{position:relative;display:inline-flex;min-width:0}
+.pdf-menu{position:absolute;z-index:90;left:0;top:calc(100% + 9px);display:none;width:270px;padding:8px;border:1px solid var(--panel-brd);border-radius:14px;background:rgba(18,10,36,.97);box-shadow:0 18px 45px rgba(0,0,0,.35);backdrop-filter:blur(14px)}
+.pdf-menu.open{display:grid}
+.pdf-choice{display:flex;align-items:center;gap:8px;width:100%;padding:10px;border-radius:9px;color:var(--txt);font:600 .78rem/1.25 system-ui,sans-serif;text-decoration:none}
+.pdf-choice:hover{background:rgba(124,58,237,.16)}
+html[data-theme="light"] .pdf-menu{background:rgba(255,255,255,.98);box-shadow:0 18px 42px rgba(62,42,100,.18)}
 .top-post-actions{justify-content:center;margin:16px auto 24px}
 .top-post-actions .pdf-tech{min-height:46px;padding-inline:18px}
 .article-actions{padding-bottom:20px;border-bottom:1px solid var(--panel-brd)}
 .preview-actions{margin-top:18px;padding-top:14px;border-top:1px solid var(--panel-brd)}
 .preview-actions .plink{flex:0 0 auto;margin-top:0}
+.preview-actions .pdf-links{flex:1 1 auto;width:100%}
+.preview-actions .pdf-links .pdf-tech{flex:1 1 0;width:100%}
 #bf .post-feat{display:flex;flex-direction:column;min-width:0}
 #bf .preview-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;margin-top:auto}
 #bf .preview-actions .plink,#bf .preview-actions .pdf-tech{box-sizing:border-box;width:100%;min-width:0;padding-inline:12px;text-align:center}
@@ -841,6 +851,6 @@ html[data-theme="light"] .comment-form{background:rgba(124,58,237,.035)}html[dat
 .captcha-card{position:relative;width:min(430px,100%);padding:26px;border:1px solid rgba(168,120,255,.4);border-radius:20px;background:var(--bg2);box-shadow:0 28px 80px rgba(0,0,0,.48)}html[data-theme="light"] .captcha-card{background:#fff;box-shadow:0 28px 70px rgba(62,42,100,.25)}
 .captcha-card h2{margin:0 42px 8px 0;font:700 1.35rem/1.25 Georgia,serif}.captcha-card p{margin:0 0 18px;color:var(--muted);line-height:1.55}.captcha-close{position:absolute;right:14px;top:12px;width:44px;height:44px;border:1px solid var(--panel-brd);border-radius:50%;background:transparent;color:var(--txt);font-size:1.5rem;cursor:pointer}.captcha-status{min-height:1.4em;margin:12px 0 0!important;color:var(--muted);font-size:.82rem}
 @media(min-width:821px){#bt .preview-actions{flex-wrap:nowrap}}
-@media(max-width:820px){.blog-interactions{padding:18px}.article-actions .pdf-tech{order:-1;width:100%}.preview-actions .pdf-tech,.top-post-actions .pdf-tech{width:100%}.top-post-actions{padding-inline:4px}.material-actions{padding-left:18px}.share-menu{left:0;right:auto}.action-btn{min-height:46px}.captcha-card{padding:22px 18px}}
+@media(max-width:820px){.blog-interactions{padding:18px}.article-actions .pdf-tech{order:-1;width:100%}.article-actions .pdf-links{order:-1;width:100%}.article-actions .pdf-links .pdf-tech{width:100%;min-width:0}.preview-actions .pdf-tech,.top-post-actions .pdf-tech{width:100%}.top-post-actions .pdf-links{width:100%}.top-post-actions .pdf-links .pdf-tech{width:100%;min-width:0}.pdf-menu{left:0;width:min(270px,calc(100vw - 36px))}.top-post-actions{padding-inline:4px}.material-actions{padding-left:18px}.share-menu{left:0;right:auto}.action-btn{min-height:46px}.captcha-card{padding:22px 18px}}
 @media(max-width:420px){#bf .preview-actions{grid-template-columns:1fr}#bf .preview-actions .reaction-pair,#bf .preview-actions .share-wrap{justify-self:start}}
 @media(prefers-reduced-motion:reduce){.pdf-spark{animation:none}.pdf-spark.spark-2,.pdf-spark.spark-3{display:none}.action-btn{transition:none}}
