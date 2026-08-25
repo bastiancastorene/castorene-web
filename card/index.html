@@ -121,13 +121,38 @@ html[data-theme="light"] .act.act-orcid{color:#fff;background:linear-gradient(10
 html[data-theme="light"] .act.act-linkedin{color:#fff;background:linear-gradient(100deg,#004182,#0a66c2);border-color:transparent}
 
 /* QR */
+.card-qr-row{
+  display:flex; align-items:center; justify-content:center; gap:14px;
+}
 .card-qr{
-  margin:4px auto 0; padding:16px;
+  margin:4px 0 0; padding:16px;
   background:#fff; border-radius:var(--radius);
   width:max-content;
 }
 .card-qr img{width:160px;height:160px;display:block}
 .card-qr-cap{font-size:.78rem;color:var(--muted);margin:12px 0 0}
+.card-lang-cycle{
+  width:78px; min-height:116px; padding:14px 8px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:9px;
+  color:var(--txt); border:1px solid rgba(217,70,239,.42);
+  border-radius:26px; cursor:pointer;
+  background:linear-gradient(145deg,rgba(124,58,237,.18),rgba(217,70,239,.10),rgba(79,70,229,.16));
+  box-shadow:0 12px 28px -18px rgba(217,70,239,.9);
+  transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease;
+}
+.card-lang-cycle:hover{
+  transform:translateY(-2px); border-color:rgba(217,70,239,.72);
+  box-shadow:0 15px 30px -16px rgba(217,70,239,.9);
+}
+.card-lang-cycle:active{transform:scale(.96)}
+.card-lang-cycle:focus-visible{outline:3px solid rgba(217,70,239,.42);outline-offset:3px}
+.card-lang-cycle svg{width:25px;height:25px}
+.card-lang-code{font-size:1rem;font-weight:800;letter-spacing:.08em}
+.card-lang-arrow{font-size:1rem;line-height:1;color:var(--accent)}
+html[data-theme="light"] .card-lang-cycle{
+  color:var(--txt); border-color:rgba(124,58,237,.30);
+  background:linear-gradient(145deg,rgba(124,58,237,.10),rgba(217,70,239,.08),rgba(79,70,229,.10));
+}
 
 /* separador */
 .card-sep{
@@ -148,6 +173,10 @@ html[data-theme="light"] .card-sep{
 @media (max-width:380px){
   .card{padding:26px 18px 24px}
   .card-name{font-size:1.5rem}
+  .card-qr-row{gap:10px}
+  .card-qr{padding:12px}
+  .card-qr img{width:148px;height:148px}
+  .card-lang-cycle{width:70px;min-height:108px}
 }
 </style>
 </head>
@@ -206,8 +235,15 @@ html[data-theme="light"] .card-sep{
 
     <div class="card-sep"></div>
 
-    <div class="card-qr">
-      <img src="/assets/qr-castorene.png" alt="QR castorene.cl/card" width="160" height="160">
+    <div class="card-qr-row">
+      <div class="card-qr">
+        <img src="/assets/qr-castorene.png" alt="QR castorene.cl/card" width="160" height="160">
+      </div>
+      <button class="card-lang-cycle" type="button" aria-label="Change language">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.5 3.6 5.5 3.6 9S14.4 18.5 12 21M12 3C9.6 5.5 8.4 8.5 8.4 12S9.6 18.5 12 21"/></svg>
+        <span class="card-lang-code" aria-hidden="true">EN</span>
+        <span class="card-lang-arrow" aria-hidden="true">↻</span>
+      </button>
     </div>
     <p class="card-qr-cap">
       <span class="lang-en">Scan to open this card</span><span class="lang-es">Escanea para abrir esta tarjeta</span><span class="lang-de">Scannen, um diese Karte zu öffnen</span><span class="lang-zh">扫描以打开此名片</span>
@@ -220,5 +256,34 @@ html[data-theme="light"] .card-sep{
 
 <!-- Motor de idiomas y tema, compartido con el resto del sitio -->
 <script src="/app.js"></script>
+<script>
+(function(){
+  var order=['en','es','de','zh'];
+  var codes={en:'EN',es:'ES',de:'DE',zh:'中文'};
+  var labels={en:'Change language',es:'Cambiar idioma',de:'Sprache ändern',zh:'切换语言'};
+  var button=document.querySelector('.card-lang-cycle');
+  var code=button&&button.querySelector('.card-lang-code');
+  function current(){
+    var lang=document.documentElement.getAttribute('data-lang');
+    return order.indexOf(lang)>-1?lang:'en';
+  }
+  function refresh(){
+    if(!button||!code)return;
+    var lang=current();
+    code.textContent=codes[lang];
+    button.setAttribute('aria-label',labels[lang]);
+    button.setAttribute('title',labels[lang]);
+  }
+  if(button){
+    button.addEventListener('click',function(){
+      var lang=current();
+      var next=order[(order.indexOf(lang)+1)%order.length];
+      setLang(next);
+      refresh();
+    });
+    refresh();
+  }
+})();
+</script>
 </body>
 </html>
