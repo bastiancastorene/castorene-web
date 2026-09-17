@@ -60,7 +60,7 @@
     'Equilibrium Thermodynamics of Non-Hermitian Dirac Fermions: Caloric and Magnetic Responses':'nh-dirac',
     'Entropy-weighted Berry curvature: A geometric diagnostic for bosonic topological transitions':'entropy-berry',
     'Coupling-response thermodynamic density of states for bosonic working media':'coupling-tdos',
-    'Fundamental Work Scaling and Non-Extensivity in Critical Quantum Stirling Engines':'work-scaling'
+    'Fundamental Work Scaling and Non-Extensivity in Critical Engines':'work-scaling'
   };
   var TEXT={
     calculations:{en:'Detailed calculations',es:'Cálculos detallados',de:'Detaillierte Berechnungen',zh:'详细计算'},
