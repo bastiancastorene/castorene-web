@@ -16,7 +16,6 @@
 
 <link rel="canonical" href="https://www.castorene.cl/card">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='0.5' stop-color='%23d946ef'/%3E%3Cstop offset='1' stop-color='%234f46e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='16' font-weight='bold' fill='white' text-anchor='middle'%3EBC%3C/text%3E%3C/svg%3E" />
-<link rel="canonical" href="https://www.castorene.cl/talks" />
 
 
 <!-- Guardar en pantalla de inicio: abre a pantalla completa, sin barra de Safari -->
@@ -28,7 +27,7 @@
 <meta name="apple-mobile-web-app-title" content="Bastian Castorene">
 
 <!-- Estilos compartidos del sitio -->
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=12">
 
 <style>
 /* ==========================================================================
@@ -56,6 +55,9 @@ html[data-theme="light"] .card{
   border-color:rgba(0,0,0,.08);
   box-shadow:0 24px 60px -24px rgba(80,60,140,.28);
 }
+/* anula el .card:hover del sitio: aquí la tarjeta entera no debe elevarse ni cambiar de borde */
+.card:hover{transform:none;border-color:rgba(255,255,255,.08);box-shadow:0 24px 60px -20px rgba(0,0,0,.6)}
+html[data-theme="light"] .card:hover{border-color:rgba(0,0,0,.08);box-shadow:0 24px 60px -24px rgba(80,60,140,.28)}
 
 /* Foto */
 .card-photo{
@@ -255,7 +257,7 @@ html[data-theme="light"] .card-sep{
 </div>
 
 <!-- Motor de idiomas y tema, compartido con el resto del sitio -->
-<script src="/app.js"></script>
+<script src="/app.js?v=12"></script>
 <script>
 (function(){
   var order=['en','es','de','zh'];

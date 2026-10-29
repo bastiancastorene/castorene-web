@@ -1,3 +1,5 @@
+/* app.js llegó a ejecutarse: desactiva el respaldo CSS que muestra las secciones .reveal solas */
+document.documentElement.classList.add('app-ready');
 var _yr=document.getElementById('yr'); if(_yr)_yr.textContent=new Date().getFullYear();
 
 /* ---------- language ---------- */
@@ -16,6 +18,10 @@ function setLang(l){
   var cur=document.querySelector('.lang-cur');
   var li=document.querySelector('.lang-menu li[data-lang="'+l+'"]');
   if(cur&&li)cur.innerHTML=li.innerHTML;
+  document.querySelectorAll('.lang-menu li').forEach(function(o){o.setAttribute('aria-selected',o===li?'true':'false');});
+  closeLangMenu();
+}
+function closeLangMenu(){
   var m=document.querySelector('.lang-menu'); if(m)m.classList.remove('open');
   var b=document.querySelector('.lang-btn'); if(b)b.setAttribute('aria-expanded','false');
 }
@@ -24,9 +30,42 @@ function toggleLangMenu(btn){
   var m=document.querySelector('.lang-menu'); if(!m)return;
   var open=m.classList.toggle('open');
   btn.setAttribute('aria-expanded', open?'true':'false');
+  /* al abrir, el foco va al idioma actual (con ratón no se dibuja anillo de foco) */
+  if(open){var sel=m.querySelector('li[aria-selected="true"]')||m.querySelector('li'); if(sel)sel.focus();}
 }
+/* el selector de idioma también funciona con teclado: Tab/flechas para moverse,
+   Enter o Espacio para elegir, Escape para cerrar y volver al botón */
+document.querySelectorAll('.lang-menu li').forEach(function(li){
+  li.tabIndex=0;
+  li.addEventListener('keydown',function(e){
+    var items=[].slice.call(li.parentNode.querySelectorAll('li')), i=items.indexOf(li);
+    if(e.key==='Enter'||e.key===' '){e.preventDefault(); pickLang(li.getAttribute('data-lang')); var b=document.querySelector('.lang-btn'); if(b)b.focus();}
+    else if(e.key==='ArrowDown'){e.preventDefault(); items[(i+1)%items.length].focus();}
+    else if(e.key==='ArrowUp'){e.preventDefault(); items[(i-1+items.length)%items.length].focus();}
+  });
+});
 document.addEventListener('click',function(e){
-  if(!e.target.closest('.lang-dd')){var m=document.querySelector('.lang-menu'); if(m)m.classList.remove('open');}
+  if(!e.target.closest('.lang-dd'))closeLangMenu();
+});
+
+/* ---------- mobile menu (☰) ---------- */
+function toggleMenu(btn){
+  var n=document.querySelector('.nav-links'); if(!n)return;
+  var open=n.classList.toggle('open');
+  if(btn)btn.setAttribute('aria-expanded',open?'true':'false');
+}
+function closeMenu(){
+  var n=document.querySelector('.nav-links'); if(n)n.classList.remove('open');
+  var b=document.querySelector('.nav-burger'); if(b)b.setAttribute('aria-expanded','false');
+}
+/* Escape cierra cualquier menú abierto y devuelve el foco a su botón */
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Escape')return;
+  var lm=document.querySelector('.lang-menu.open');
+  if(lm){closeLangMenu(); var b=document.querySelector('.lang-btn'); if(b)b.focus(); return;}
+  var nl=document.querySelector('.nav-links.open');
+  if(nl){closeMenu(); var bg=document.querySelector('.nav-burger'); if(bg)bg.focus(); return;}
+  document.querySelectorAll('.navgroup.open').forEach(function(o){o.classList.remove('open');});
 });
 
 /* ---------- theme ---------- */
@@ -63,7 +102,7 @@ if('IntersectionObserver' in window){
 }
 
 /* ---------- close mobile menu on link click ---------- */
-document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){var n=document.querySelector('.nav-links'); if(n)setTimeout(function(){n.classList.remove('open');},340);});});
+document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',function(){setTimeout(closeMenu,340);});});
 
 /* ---------- energy-transfer particle canvas ---------- */
 (function(){
@@ -86,8 +125,6 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
     return 'rgb('+ch(c[0]+(NEAR[0]-c[0])*t)+','+ch(c[1]+(NEAR[1]-c[1])*t)+','+ch(c[2]+(NEAR[2]-c[2])*t)+')';
   }
 
-  /* sobre la caja del lienzo, no sobre innerHeight: así el número de partículas
-     tampoco fluctúa cuando la barra de URL aparece o se oculta */
   /* color de la línea entre dos partículas: la media de sus tintes, ya resuelta a un
      rgb() sólido. Sustituye al degradado por pareja; ver el bucle de líneas en step(). */
   function mix(p,q){
@@ -100,6 +137,8 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
                  +ch((a[2]+(NEAR[2]-a[2])*tp + b[2]+(NEAR[2]-b[2])*tq)/2)+')';
   }
 
+  /* sobre la caja del lienzo, no sobre innerHeight: así el número de partículas
+     tampoco fluctúa cuando la barra de URL aparece o se oculta */
   function target(){ var a=(cssW||innerWidth)*(cssH||innerHeight); return Math.max(30,Math.min(95,Math.round(a/11000))); }
   function mass(p){ return p.r*p.r; }
 
@@ -138,6 +177,9 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
     }
     cssW=iw; cssH=ih;
     seed(target());
+    /* con movimiento reducido no hay bucle de animación: fijar width/height acaba de
+       borrar el lienzo, así que se dibuja una vez el fotograma estático */
+    if(reduce) step();
   }
 
   function coalesce(){
@@ -255,7 +297,7 @@ document.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener
   function onResize(){ clearTimeout(t); t=setTimeout(resize,150); }
   addEventListener('resize',onResize);
   addEventListener('orientationchange',onResize);
-  resize(); step();
+  resize(); if(!reduce) step();             /* con movimiento reducido, resize() ya dibujó */
 })();
 
 /* ---------- generic carousels (team photos, group banner) ---------- */

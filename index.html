@@ -51,7 +51,8 @@
 }
 </script>
 
-<link rel="stylesheet" href="styles.css" />
+<script>document.documentElement.classList.add('js')</script>
+<link rel="stylesheet" href="styles.css?v=12" />
 </head>
 <body>
 <div class="bg-glow"></div>
@@ -94,7 +95,7 @@
         <li role="option" data-lang="zh" onclick="pickLang('zh')"><svg class="flag" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#DE2910"/><g fill="#FFDE00"><polygon points="5,2.5 6,5.5 9,5.5 6.6,7.4 7.5,10.4 5,8.6 2.5,10.4 3.4,7.4 1,5.5 4,5.5"/><circle cx="10.5" cy="2.2" r="0.7"/><circle cx="12.3" cy="4" r="0.7"/><circle cx="12.3" cy="6.5" r="0.7"/><circle cx="10.5" cy="8.3" r="0.7"/></g></svg> 中文</li>
       </ul>
     </div>
-    <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false" onclick="toggleMenu(this)">☰</button>
   </div>
 </nav>
 
@@ -121,7 +122,7 @@
       </div>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#publications"><span class="lang-en">View publications</span><span class="lang-es">Ver publicaciones</span><span class="lang-de">Publikationen ansehen</span><span class="lang-zh">查看论文</span></a>
-        <a class="btn btn-ghost gsoft" href="CV_Bastian_Castorene_2026.pdf?v=20260930" download>↓ <span class="lang-en">Download CV</span><span class="lang-es">Descargar CV</span><span class="lang-de">CV herunterladen</span><span class="lang-zh">下载简历</span></a>
+        <a class="btn btn-ghost gsoft" href="CV_Bastian_Castorene_2026.pdf?v=20261029" download>↓ <span class="lang-en">Download CV</span><span class="lang-es">Descargar CV</span><span class="lang-de">CV herunterladen</span><span class="lang-zh">下载简历</span></a>
         <a class="btn btn-ghost gsoft2" href="mailto:bastian.castorene@gmail.com"><span class="lang-en">Get in touch</span><span class="lang-es">Escríbeme</span><span class="lang-de">Kontakt aufnehmen</span><span class="lang-zh">联系我</span></a>
       </div>
     </div>
@@ -167,8 +168,8 @@
       <div class="fact"><div class="k"><span class="lang-en">Based in</span><span class="lang-es">Ubicación</span><span class="lang-de">Standort</span><span class="lang-zh">所在地</span></div><div class="val">Valparaíso, Chile</div></div>
       <div class="fact"><div class="k"><span class="lang-en">Funding</span><span class="lang-es">Financiamiento</span><span class="lang-de">Förderung</span><span class="lang-zh">资助</span></div><div class="val">ANID Doctoral Fellowship · PIIC</div></div>
       <div class="fact"><div class="k"><span class="lang-en">Languages</span><span class="lang-es">Idiomas</span><span class="lang-de">Sprachen</span><span class="lang-zh">语言</span></div><div class="val">ES (native) · EN (C1) · DE (B2) · 中文 (HSK 1)</div></div>
-      <a class="cvbox" href="CV_Bastian_Castorene_2026.pdf?v=20260930" download>
-        <img src="cv-thumb-2026.jpg" alt="Curriculum Vitae preview" />
+      <a class="cvbox" href="CV_Bastian_Castorene_2026.pdf?v=20261029" download>
+        <img src="cv-thumb-2026.jpg?v=20261029" alt="Curriculum Vitae preview" />
         <div class="cvmeta">
           <div class="k">Curriculum Vitae</div>
           <div class="cvdl"><span class="lang-en">↓ Download PDF</span><span class="lang-es">↓ Descargar PDF</span><span class="lang-de">↓ PDF herunterladen</span><span class="lang-zh">↓ 下载 PDF</span></div>
@@ -225,14 +226,14 @@
       <h3>Thermal Hofstadter Butterflies</h3>
       <p class="auth">N. Cortés, <b>B. Castorene</b>, F. J. Peña, D. Melo, S. E. Ulloa, P. Vargas</p>
       <div class="cardlinks">
-        <a class="doi" href="https://pubs.acs.org/doi/10.1021/acs.nanolett.6c01000" target="_blank" rel="noopener">↓ PDF</a>
+        <a class="doi" href="https://arxiv.org/pdf/2603.07424" target="_blank" rel="noopener">↓ PDF</a>
         <a class="doi" href="https://doi.org/10.1021/acs.nanolett.6c01000" target="_blank" rel="noopener">DOI →</a>
       </div>
     </div>
     <div class="card">
       <span class="yv">2026 · Phys. Rev. E</span>
       <h3>Reaching maximum efficiency in quantum Stirling engines using multilayer graphene</h3>
-      <p class="auth"><b>B. Castorene</b>, F. J. Peña, E. Suárez Morell, N. Cortés, P. Vargas</p>
+      <p class="auth"><b>B. Castorene</b>, F. J. Peña, E. Suárez Morell, C. Lewenkopf, M. HvE Groves, N. Cortés, P. Vargas</p>
       <div class="cardlinks">
         <a class="doi" href="https://arxiv.org/pdf/2510.18086" target="_blank" rel="noopener">↓ PDF</a>
         <a class="doi" href="https://doi.org/10.1103/s59t-ygkq" target="_blank" rel="noopener">DOI →</a>
@@ -353,6 +354,6 @@
   <p style="margin-top:6px;opacity:.7">Ph.D. (C) in Physics &middot; UTFSM &amp; PUCV &middot; Quantum thermodynamics</p>
 </footer>
 
-<script src="app.js"></script>
+<script src="app.js?v=12"></script>
 </body>
 </html>
