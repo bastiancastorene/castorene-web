@@ -66,7 +66,15 @@ No existen actualmente `posts.js`, `blog/` ni `notes-*.html`.
 Que el verificador o el JS todavía contemple blogs no significa que deban crearse.
 
 Portada, en orden:
-`#top → #about → #latest → #research → #publications → #conferences → #awards → #team → #contact`.
+`#top → #about → #latest → #research → #publications → #explained → #conferences → #awards → #team → #contact`.
+
+`#explained` («Papers explicados», 2026-11-17): carrusel `.xcar` con una tarjeta
+`.xcard` por resumen de Primo Físico (miniatura del paper, fecha y revista, título y
+primer párrafo copiados de `PRIMO_POSTS` de primofisico.com, botón «Resumen y notas»).
+Para añadir un resumen: copia un `<article class="xcard">`, usa los textos exactos de
+la entrada en Primo Físico y su URL canónica, y añade el mismo enlace en
+`publications.html` (ver §6). Flechas y puntos los genera `app.js`; sin JS es una fila
+desplazable.
 
 El hero tiene enlaces principales a publicaciones e investigación y un carrusel
 de tres retratos. La navegación está repetida en varias páginas: un cambio de
@@ -204,6 +212,16 @@ después de «Motor de Castorene» y sus equivalentes en los cuatro idiomas.
 Mantén esa cita al editar el párrafo. Los títulos antiguos en charlas históricas
 no se sustituyen automáticamente por el título definitivo.
 
+Resúmenes en Primo Físico (enlazados el 2026-11-17): cuatro papers tienen una
+explicación en dos capas en primofisico.com, enlazada como «Resumen y notas» (clase
+`.explain` en publicaciones, `.doi` en las tarjetas destacadas y una tarjeta en el
+carrusel `#explained` de portada; externo, sin flecha):
+`work-scaling` → `/blog/castorene-engine/`, `ising-dos` → `/blog/paper-entropy-ising`,
+`hofstadter` → `/blog/butterfly`, `three-qubit-criticality` → `/blog/paper-3qubits`.
+Usa la URL canónica exacta de Primo Físico (con o sin barra final según la página)
+para no enlazar a redirecciones. La correspondencia se verificó por el DOI que cita
+cada página; para un paper nuevo, comprobar igual antes de enlazar.
+
 Un HTTP 403 del editor no demuestra que el artículo requiera suscripción:
 puede ser una restricción automatizada. No inventes explicaciones de acceso.
 
@@ -260,8 +278,8 @@ pública del cliente; **nunca** agregar service-role keys, secretos de Turnstile
 ni tokens privados. No deshabilites autenticación, captcha o permisos para
 resolver un error de integración.
 
-Caché: desde el 2026-10-29 todas las páginas cargan `styles.css?v=12` y
-`app.js?v=12`; publicaciones carga `blog-interactions.js?v=11`. Después de modificar
+Caché: desde el 2026-11-17 todas las páginas cargan `styles.css?v=13` y
+`app.js?v=13`; publicaciones carga `blog-interactions.js?v=11`. Después de modificar
 CSS/JS compartido, sube la versión en todas sus etiquetas de carga (incluida
 `card/index.html`); no asumas que una única página invalida toda la caché.
 

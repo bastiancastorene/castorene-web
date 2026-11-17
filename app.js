@@ -307,6 +307,57 @@ document.querySelectorAll('.carousel').forEach(function(c){
   setInterval(function(){s[i].classList.remove('active'); i=(i+1)%s.length; s[i].classList.add('active');}, 4000+Math.random()*1600);
 });
 
+/* ---------- "Papers explicados": carrusel con flechas y puntos ----------
+   La pista ya se desliza sola (scroll-snap); esto añade flechas, un punto por cada
+   posición posible y flechas del teclado cuando la pista tiene el foco. */
+document.querySelectorAll('.xcar').forEach(function(car){
+  var track=car.querySelector('.xcar-track'), prev=car.querySelector('.xcar-prev'),
+      next=car.querySelector('.xcar-next'), dots=car.querySelector('.xcar-dots');
+  if(!track||!prev||!next||!dots) return;
+  var cards=[].slice.call(track.children); if(!cards.length) return;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function step(){ return cards.length>1 ? cards[1].offsetLeft-cards[0].offsetLeft : track.clientWidth; }
+  function maxScroll(){ return track.scrollWidth-track.clientWidth; }
+  function count(){ return maxScroll()<=2 ? 1 : Math.round(maxScroll()/step())+1; }
+  function current(){ return track.scrollLeft>=maxScroll()-2 ? count()-1 : Math.round(track.scrollLeft/step()); }
+  function go(i){
+    i=Math.max(0,Math.min(count()-1,i));
+    track.scrollTo({left:Math.min(i*step(),maxScroll()),behavior:reduce?'auto':'smooth'});
+  }
+  function update(){
+    var i=current();
+    [].forEach.call(dots.children,function(d,k){
+      d.classList.toggle('is-active',k===i);
+      if(k===i) d.setAttribute('aria-current','true'); else d.removeAttribute('aria-current');
+    });
+    prev.disabled=track.scrollLeft<=2; next.disabled=track.scrollLeft>=maxScroll()-2;
+    /* una flecha que se desactiva no debe quedarse con el foco */
+    if(document.activeElement===prev&&prev.disabled) next.focus();
+    if(document.activeElement===next&&next.disabled) prev.focus();
+  }
+  function build(){
+    var n=count(); dots.innerHTML='';
+    car.classList.toggle('xcar-static',n<2);
+    for(var i=0;i<n;i++){
+      var b=document.createElement('button'); b.type='button'; b.className='xcar-dot';
+      b.setAttribute('aria-label',(i+1)+' / '+n); b.addEventListener('click',go.bind(null,i));
+      dots.appendChild(b);
+    }
+    update();
+  }
+  prev.addEventListener('click',function(){go(current()-1);});
+  next.addEventListener('click',function(){go(current()+1);});
+  var raf=0;
+  track.addEventListener('scroll',function(){ if(!raf) raf=requestAnimationFrame(function(){raf=0; update();}); },{passive:true});
+  track.addEventListener('keydown',function(e){
+    if(e.target!==track) return;
+    if(e.key==='ArrowRight'){e.preventDefault(); go(current()+1);}
+    else if(e.key==='ArrowLeft'){e.preventDefault(); go(current()-1);}
+  });
+  var t=null; addEventListener('resize',function(){clearTimeout(t); t=setTimeout(build,150);});
+  build();
+});
+
 /* ---------- nav link tap/click energy pulse ---------- */
 document.querySelectorAll('.nav-links a').forEach(function(a){
   a.addEventListener('pointerdown',function(){/*navtap*/ a.classList.remove('tap'); void a.offsetWidth; a.classList.add('tap'); setTimeout(function(){a.classList.remove('tap');},520);});
