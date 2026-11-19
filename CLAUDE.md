@@ -1,7 +1,7 @@
 # castorene.cl — guía de continuidad para IA
 
-Revisión: 2026-10-29. Estado local inspeccionado: commit `bc66582` más cambios sin
-publicar de esa fecha (auditoría de errores y CV actualizado).
+Revisión: 2026-11-19 (rama `rediseno-portada`). Texto mínimo 12 px; acento claro
+`#a21caf` por contraste AA.
 Lee esta guía completa antes de editar. Es la guía versionada; `AGENTS.md` es un
 punto de entrada local ignorado por Git. No mantengas dos manuales contradictorios.
 Las instrucciones actuales del usuario prevalecen. Si el código cambia después de
@@ -66,11 +66,43 @@ No existen actualmente `posts.js`, `blog/` ni `notes-*.html`.
 Que el verificador o el JS todavía contemple blogs no significa que deban crearse.
 
 Portada, en orden:
-`#top → #about → #latest → #research → #publications → #explained → #conferences → #awards → #team → #contact`.
+`#top → #research → #explained → #publications → #latest → #about → #conferences → #awards → #team → #contact`.
+
+Orden reorganizado el 2026-11-19 para que lo esencial aparezca antes: qué investiga
+→ cómo se explica → qué publicó. El hero ofrece tres caminos (`.hero-paths`:
+Investigación, Publicaciones, Divulgación) con cifras en el subtítulo: mantenlas
+al día con los totales (14 trabajos, 4 papers explicados). Cada tarjeta de
+investigación (`.rcard`) lista papers clave (`.keypapers`) con enlaces a
+`/publications#paper-SLUG` y la marca «Explicado» si hay resumen en Primo Físico;
+la asignación de papers a cada línea se hizo por título y tema. Junto a la foto del
+hero (`.hero-side`) va una ficha `.hero-facts` movida desde «Sobre mí», debajo de la foto
+y del mismo ancho: Financiamiento e Idiomas separados por una línea, con icono `.hf-ico`.
+No superponerla a la foto: la versión en diagonal sobre los bordes fue rechazada por el
+autor. En Idiomas cada idioma va en `span.nw` para no partirse.
+El hero tiene tres botones: Descargar CV, «Sobre mí →» (`#about`) y Escríbeme.
+Redacción (2026-11-19): se eliminaron eslóganes y fórmulas de texto generado («Donde la
+energía se encuentra con lo cuántico», «Motores hechos de materia cuántica», «explora la
+intersección», «Impulsado por el desafío», etc.). Al editar textos: frases concretas,
+sin eslóganes ni rayas de relleno, y sin cambiar las afirmaciones científicas del autor.
+Posición y Enfoque no van ahí porque repetirían el texto del hero; siguen en «Sobre mí». En
+móvil `.hero-side` usa `display:contents` para ordenar foto → texto → fichas. La biografía
+se muestra completa y siempre abierta (decisión del autor, 2026-11-19): no plegarla.
+«Sobre mí» usa `.about-wrap`: texto con el primer párrafo de cada idioma en `.about-lead`
+y una ficha `.about-card` (sticky en escritorio) con Posición, Enfoque, Ubicación (`.ab-row`)
+y el CV (`.ab-cv`). La charla de SOCHIFI 2024 fue la de cierre: «(closing talk)» y
+equivalentes, en portada y charlas. En Contacto, Primo Físico es el último botón,
+solo con su nombre y con estilo de marca (`.social-primo`, colores de primofisico.com).
+El pie de página de todas las subpáginas está en los cuatro idiomas.
 
 `#explained` («Papers explicados», 2026-11-17): carrusel `.xcar` con una tarjeta
 `.xcard` por resumen de Primo Físico (miniatura del paper, fecha y revista, título y
 primer párrafo copiados de `PRIMO_POSTS` de primofisico.com, botón «Resumen y notas»).
+Cada tarjeta lleva una figura publicada del paper en `assets/explained/` (no la portada):
+mapas de color (`.is-map`, tres qubits y Hofstadter) recortados a su área de datos, y
+diagramas (`.is-diagram`, motor y Ising) convertidos a trazo claro sobre transparente;
+por eso la franja es siempre oscura. Fuentes: Fig. 3 de PRE 111, 034118; mapa de Ce de
+Nano Letters (versión publicada, vía Primo Físico); Fig. 2 de Entropy 28, 821; ciclo
+crítico de Primo Físico. Mantener densidad ≥2 (ancho fuente ≥ 2 × ancho mostrado).
 Para añadir un resumen: copia un `<article class="xcard">`, usa los textos exactos de
 la entrada en Primo Físico y su URL canónica, y añade el mismo enlace en
 `publications.html` (ver §6). Flechas y puntos los genera `app.js`; sin JS es una fila
@@ -278,7 +310,7 @@ pública del cliente; **nunca** agregar service-role keys, secretos de Turnstile
 ni tokens privados. No deshabilites autenticación, captcha o permisos para
 resolver un error de integración.
 
-Caché: desde el 2026-11-17 todas las páginas cargan `styles.css?v=13` y
+Caché: desde el 2026-11-19 todas las páginas cargan `styles.css?v=14` y
 `app.js?v=13`; publicaciones carga `blog-interactions.js?v=11`. Después de modificar
 CSS/JS compartido, sube la versión en todas sus etiquetas de carga (incluida
 `card/index.html`); no asumas que una única página invalida toda la caché.

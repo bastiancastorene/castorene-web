@@ -114,7 +114,7 @@ html[data-theme="light"] .nav-links a:active{color:var(--v1)}
 /* ---- layout ---- */
 section{max-width:var(--maxw);margin:0 auto;padding:clamp(56px,9vw,110px) clamp(18px,4vw,32px)}
 .eyebrow{
-  text-transform:uppercase;letter-spacing:3px;font-size:.72rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:3px;font-size:.75rem;font-weight:700;
   color:var(--accent);margin-bottom:14px;display:block
 }
 .section-title{font-size:clamp(1.7rem,4vw,2.5rem);margin-bottom:8px}
@@ -185,12 +185,9 @@ html[data-theme="light"] .btn-ghost:hover{color:var(--v1)}
 .card .icon{font-size:1.6rem;margin-bottom:12px;display:block}
 
 /* about */
-.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start}
-.about-grid p{color:var(--muted);margin-bottom:16px}
-.about-grid strong{color:var(--txt)}
 .facts{display:flex;flex-direction:column;gap:14px}
 .fact{background:var(--panel);border:1px solid var(--panel-brd);border-radius:14px;padding:16px 18px}
-.fact .k{font-size:.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-weight:700}
+.fact .k{font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-weight:700}
 .fact .val{font-size:.98rem;color:var(--txt);margin-top:2px}
 
 /* publications */
@@ -208,7 +205,7 @@ html[data-theme="light"] .btn-ghost:hover{color:var(--v1)}
 .subhead{font-family:Georgia,serif;font-size:1.15rem;color:var(--txt);margin:8px 0 24px;opacity:.9}
 .pub-cards{margin-bottom:12px}
 .pub-cards .card{display:flex;flex-direction:column}
-.pub-cards .card .yv{font-size:.72rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
+.pub-cards .card .yv{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase}
 .pub-cards .card h3{font-size:1rem;margin:8px 0}
 .pub-cards .card .auth{font-size:.82rem;color:var(--muted);margin-bottom:14px}
 .pub-cards .card .auth b{color:var(--txt);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:2px}
@@ -247,6 +244,7 @@ html[data-theme="light"] .btn-ghost:hover{color:var(--v1)}
 .social .social-scholar{--brand-from:#174ea6;--brand-to:#2b6cc4}
 .social .social-orcid{--brand-from:#3f5b0d;--brand-to:#567719}
 .social .social-linkedin{--brand-from:#004182;--brand-to:#0a66c2}
+.social .social-primo{--social-shadow:#55dfe8;--brand-from:#4338ca;--brand-to:#7137f4;background:linear-gradient(100deg,#4338ca,#7137f4)}   /* colores de primofisico.com */
 html[data-theme="light"] .social .social-brand{color:#fff;border-color:transparent;box-shadow:0 9px 22px -13px var(--social-shadow)}
 html[data-theme="light"] .social .social-brand:hover{color:#fff;box-shadow:0 13px 28px -12px var(--social-shadow)}
 
@@ -261,7 +259,6 @@ html.js:not(.app-ready) .reveal{animation:revealfallback .7s ease 2.5s forwards}
 @keyframes revealfallback{to{opacity:1;transform:none}}
 
 @media(max-width:760px){
-  .about-grid{grid-template-columns:1fr}
   .conf{grid-template-columns:1fr}
   .conf .when{margin-bottom:-6px}
 }
@@ -315,7 +312,7 @@ html[data-theme="light"]{
   --bg:#f5f2fc; --bg2:#e8e1f6;
   --panel:rgba(124,58,237,.06);
   --panel-brd:rgba(124,58,237,.22);
-  --txt:#1c1533; --muted:#5c5578; --accent:#c026d3;
+  --txt:#1c1533; --muted:#5c5578; --accent:#a21caf;  /* #c026d3 daba 4,26:1 en etiquetas de 12 px (AA pide 4,5) */
 }
 html[data-theme="light"] nav{background:rgba(255,255,255,.62)}
 html[data-theme="light"] .nav-links{--panelbg:rgba(255,255,255,.97)}
@@ -369,11 +366,6 @@ html[data-theme="light"] .bg-glow{opacity:.6}
 .inlink:hover{filter:brightness(1.15)}
 
 /* ---- CV preview box ---- */
-.cvbox{display:flex;gap:14px;align-items:center;background:var(--panel);border:1px solid var(--panel-brd);border-radius:14px;padding:12px 14px;transition:.2s}
-.cvbox:hover{border-color:var(--accent);transform:translateY(-2px)}
-.cvbox img{width:56px;height:74px;object-fit:cover;object-position:top;border-radius:6px;border:1px solid var(--panel-brd);flex:0 0 auto;box-shadow:0 6px 18px -8px rgba(0,0,0,.5)}
-.cvbox .k{font-size:.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-weight:700}
-.cvbox .cvdl{font-size:.95rem;color:var(--txt);margin-top:3px;font-weight:600}
 
 /* ---- stats band ---- */
 .stats{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:32px}
@@ -388,7 +380,7 @@ html[data-theme="light"] .bg-glow{opacity:.6}
 .news-item:hover{border-color:var(--accent)}
 .news-item .when{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .news-item .date{font-size:.82rem;font-weight:700;color:var(--accent)}
-.news-item .kind{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--txt);background:var(--panel);border:1px solid var(--panel-brd);border-radius:999px;padding:2px 10px;text-decoration:none;white-space:nowrap;transition:.2s}
+.news-item .kind{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--txt);background:var(--panel);border:1px solid var(--panel-brd);border-radius:999px;padding:2px 10px;text-decoration:none;white-space:nowrap;transition:.2s}
 a.kind:hover{border-color:var(--accent);color:var(--accent)}
 .news-item .what{font-size:.95rem;color:var(--txt)}
 .news-item em{color:var(--muted);font-style:italic}
@@ -666,7 +658,7 @@ html[data-theme="light"] .modeswitch{background:rgba(255,255,255,.72)}
 .qlink:active{transform:scale(.96)}
 .qlink .qi{font-size:1.05rem;line-height:1}
 .qlink .qt{display:flex;flex-direction:column;line-height:1.2}
-.qlink .qs{font-size:.72rem;font-weight:500;opacity:.82}
+.qlink .qs{font-size:.75rem;font-weight:500;opacity:.82}
 @media(max-width:560px){.hero-quick{gap:10px}.qlink{flex:1 1 100%;justify-content:center}}
 .plink{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:10px 20px;border-radius:999px;
   background:linear-gradient(100deg,var(--v1),var(--v2));color:#fff;font-weight:600;font-size:.86rem;
@@ -690,11 +682,19 @@ html[data-theme="light"] .modeswitch{background:rgba(255,255,255,.72)}
   border:1px solid var(--panel-brd);border-radius:var(--radius);overflow:hidden;
   transition:border-color .25s ease, box-shadow .25s ease}
 .xcard:hover{border-color:var(--accent);box-shadow:0 18px 50px -20px rgba(217,70,239,.5)}
-.xcard-media{display:block;height:150px;overflow:hidden;background:#fff;border-bottom:1px solid var(--panel-brd)}
-.xcard-media img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .5s ease}
+/* Franja con una figura de cada paper (assets/explained/). Es siempre oscura, también en
+   tema claro: los diagramas están preparados en trazo claro sobre fondo transparente.
+   .is-map: mapa de color recortado a su área de datos, a todo el ancho.
+   .is-diagram: diagrama de líneas, contenido sin recortar. */
+.xcard-media{display:flex;align-items:center;justify-content:center;height:150px;overflow:hidden;
+  background:linear-gradient(135deg,#120a24,#1d1138 55%,#171034);border-bottom:1px solid var(--panel-brd)}
+.xcard-media img{display:block;transition:transform .6s ease}
+.xcard-media.is-map img{width:100%;height:100%;object-fit:cover}
+.xcard-media.is-map.focus-low img{object-position:50% 88%}   /* Hofstadter: los «corazones» están abajo */
+.xcard-media.is-diagram img{height:128px;width:auto;max-width:calc(100% - 28px);object-fit:contain}
 .xcard:hover .xcard-media img{transform:scale(1.04)}
 .xcard-body{display:flex;flex-direction:column;gap:8px;padding:16px 18px 18px;flex:1}
-.xcard-meta{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:.72rem;letter-spacing:1.4px;text-transform:uppercase;font-weight:700}
+.xcard-meta{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:.75rem;letter-spacing:1.4px;text-transform:uppercase;font-weight:700}
 .xcard-date{color:var(--accent)}
 .xcard-venue{color:var(--muted)}
 .xcard h3{font-size:1.12rem}
@@ -878,7 +878,7 @@ html[data-theme="light"] .material-actions{background:rgba(124,58,237,.02)}
 .reaction-pair{display:inline-flex;align-items:center;gap:8px}
 .react-like.selected{color:#fff;border-color:rgba(217,70,239,.7);background:linear-gradient(100deg,var(--v1),var(--v2));box-shadow:0 8px 22px -12px rgba(217,70,239,.9)}
 .react-dislike.selected{color:#fff;border-color:rgba(79,70,229,.72);background:linear-gradient(100deg,#4338ca,#6366f1);box-shadow:0 8px 22px -12px rgba(79,70,229,.9)}
-.action-btn.compact{min-height:36px;padding:6px 10px;font-size:.72rem}
+.action-btn.compact{min-height:36px;padding:6px 10px;font-size:.75rem}
 .pdf-tech{isolation:isolate;overflow:visible;color:#fff;border-color:rgba(168,120,255,.38);background:linear-gradient(100deg,rgba(124,58,237,.84),rgba(217,70,239,.78),rgba(79,70,229,.84));box-shadow:0 9px 25px -15px rgba(217,70,239,.9)}
 .pdf-tech:hover{background:linear-gradient(100deg,rgba(124,58,237,.96),rgba(217,70,239,.92),rgba(79,70,229,.96));box-shadow:0 12px 30px -14px rgba(217,70,239,.95)}
 .pdf-arrow{display:inline-block;color:rgba(255,255,255,.92);font-size:1.05rem;line-height:1;transition:transform .24s ease,text-shadow .24s ease}
@@ -915,3 +915,108 @@ html[data-theme="light"] .comment-form{background:rgba(124,58,237,.035)}html[dat
 /* aviso de error de reacciones/compartir en páginas sin formulario (p. ej. /publications) */
 .interaction-toast{position:fixed;left:50%;bottom:22px;z-index:120;transform:translateX(-50%);max-width:calc(100% - 32px);padding:11px 18px;border-radius:12px;background:var(--bg2);color:var(--txt);border:1px solid var(--panel-brd);box-shadow:0 18px 40px -16px rgba(0,0,0,.6);font-size:.9rem;text-align:center}
 .interaction-toast[hidden]{display:none}
+
+/* ===== Portada reorganizada (2026-11): investigación → papers → explicaciones =====
+   Hero con tres caminos; cada línea de investigación enlaza a sus papers clave y,
+   si existe, a su explicación en Primo Físico; biografía con el resto plegado. */
+.hero-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.hero-paths .qlink{padding:11px 14px 11px 12px;justify-content:flex-start}
+@media(max-width:560px){.hero-paths{grid-template-columns:1fr}.hero-paths .qlink{justify-content:center}}
+
+.rcard{display:flex;flex-direction:column}
+.rcard>p{margin-bottom:16px}
+.keypapers{margin-top:auto;padding-top:14px;border-top:1px solid var(--panel-brd);display:flex;flex-direction:column;gap:9px}
+.kp-h{font-size:.75rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.kp-row{display:flex;align-items:flex-start;gap:8px}
+.kp{flex:1;min-width:0;color:var(--txt);font-size:.85rem;line-height:1.35;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;transition:color .2s ease}
+.kp:hover{color:var(--accent)}
+.kp-x{flex:none;display:inline-flex;align-items:center;min-height:24px;padding:3px 10px;border-radius:999px;font-size:.75rem;font-weight:700;letter-spacing:.3px;
+  color:#fff;background:linear-gradient(100deg,var(--v1),var(--v2));white-space:nowrap}
+.kp-x:hover{filter:brightness(1.12)}
+
+/* fotos de charlas lado a lado también en móvil (antes apiladas a 220 px: ~1 pantalla) */
+@media(max-width:640px){
+  .talk-photos{grid-template-columns:1fr 1fr;gap:10px}
+  .talk-photos img{height:140px}
+  .talk-photos figcaption{font-size:.75rem;padding:8px 10px;line-height:1.35}
+}
+
+/* ===== Revisión de escalado (2026-11-19) =====
+   Áreas táctiles: el ☰ medía 21 px de ancho y el ▾ de los submenús 12×14. El ▾ amplía
+   su zona táctil con un pseudo-elemento para no cambiar el ancho del menú (el corte
+   del ☰ a 1100 px depende de ese ancho). */
+@media(max-width:1100px){.nav-burger{display:grid;place-items:center;min-width:40px;min-height:40px;padding:0}}
+.subcaret{position:relative}
+.subcaret::after{content:"";position:absolute;inset:-7px -8px}
+.kp{padding:3px 0}
+/* Pantallas de 320–380 px (iPhone SE, Android pequeños): la barra no cabía y el ☰ se
+   salía 5–10 px, con scroll horizontal. Se compacta solo aquí. */
+@media(max-width:380px){
+  nav{padding-left:12px;padding-right:12px}
+  .brand{font-size:.98rem}
+  .nav-right{gap:6px}
+  .nav-burger{min-width:34px}
+}
+
+/* ===== Ficha bajo la foto del hero (movida desde «Sobre mí») =====
+   Financiamiento e idiomas en una sola ficha bajo la foto, del mismo ancho y alineada
+   con ella: no tapa la cara ni flota en diagonal. Posición y enfoque no van aquí porque
+   ya están en el texto del hero; siguen en «Sobre mí».
+   Móvil: .hero-side se disuelve (display:contents) para ordenar foto → texto → ficha,
+   así no empuja el nombre fuera de la primera pantalla. */
+.hero-side{justify-self:center;display:flex;flex-direction:column;gap:18px;width:min(340px,74vw)}
+@media(min-width:821px){.hero-side .hero-photo{width:100%}}
+.hero-facts{display:flex;flex-direction:column;border-radius:18px;padding:4px 16px;
+  background:var(--panel);border:1px solid var(--panel-brd);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.fact.hero-fact{display:flex;align-items:center;gap:12px;padding:10px 0;margin:0;
+  background:none;border:0;border-radius:0;box-shadow:none}
+.fact.hero-fact+.fact.hero-fact{border-top:1px solid var(--panel-brd)}
+.hf-ico{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;
+  color:var(--accent);background:rgba(217,70,239,.12);border:1px solid rgba(217,70,239,.25)}
+.hf-ico svg{width:16px;height:16px}
+.hf-txt{min-width:0}
+.fact.hero-fact .k{letter-spacing:1.6px}
+.fact.hero-fact .val{font-size:.86rem;line-height:1.35;margin-top:1px}
+html[data-theme="light"] .hf-ico{background:rgba(162,28,175,.08);border-color:rgba(162,28,175,.22)}
+@media(max-width:820px){
+  .hero-side{display:contents}
+  .hero-facts{order:1;width:100%;max-width:560px;justify-self:center}
+}
+/* Botones del hero en móvil: con tres botones el reparto quedaba irregular según el
+   idioma (1+2 o uno por fila). CV a todo el ancho; «Sobre mí» y «Escríbeme» debajo. */
+@media(max-width:560px){
+  .hero-cta{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .hero-cta .btn{justify-content:center;text-align:center;padding-left:12px;padding-right:12px}
+  .hero-cta .btn:first-child{grid-column:1/-1}
+}
+.hero-fact .nw{white-space:nowrap}   /* cada idioma entero: solo se corta en los «·» */
+
+/* ===== «Sobre mí» (2026-11-19) =====
+   Texto a la izquierda con el primer párrafo destacado (filete con el degradado del
+   sitio); a la derecha una ficha fija (sticky) con posición, enfoque y ubicación en el
+   mismo estilo que la ficha del hero, y el CV al pie. En móvil la ficha va después. */
+.about-wrap{margin-top:28px;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,1fr);gap:clamp(28px,5vw,56px);align-items:start}
+.about-text p{color:var(--muted);line-height:1.75;margin:0 0 18px;max-width:66ch}
+.about-text p:last-child{margin-bottom:0}
+.about-text strong{color:var(--txt)}
+.about-text p.about-lead{font-size:clamp(1.06rem,1.5vw,1.18rem);line-height:1.65;color:var(--txt);
+  padding-left:18px;border-left:3px solid var(--v2);border-image:linear-gradient(180deg,var(--v1),var(--v2)) 1;margin-bottom:26px}
+.about-card{position:sticky;top:96px;display:flex;flex-direction:column;padding:0 20px 20px;border-radius:18px;
+  background:var(--panel);border:1px solid var(--panel-brd);overflow:hidden}
+.about-card::before{content:"";display:block;height:3px;margin:0 -20px 4px;background:linear-gradient(100deg,var(--v1),var(--v2),var(--v3))}
+.ab-row{display:flex;align-items:center;gap:12px;padding:14px 0}
+.ab-row+.ab-row{border-top:1px solid var(--panel-brd)}
+.ab-row .k,.ab-cv .k{font-size:.75rem;text-transform:uppercase;letter-spacing:1.6px;color:var(--accent);font-weight:700}
+.ab-row .val{font-size:.95rem;color:var(--txt);margin-top:1px;line-height:1.4}
+.ab-cv{display:flex;align-items:center;gap:14px;margin-top:10px;padding:12px;border-radius:14px;
+  background:linear-gradient(135deg,rgba(124,58,237,.16),rgba(217,70,239,.10));border:1px solid rgba(217,70,239,.28);transition:.2s}
+.ab-cv:hover{border-color:var(--accent);transform:translateY(-2px)}
+.ab-cv img{width:58px;height:78px;object-fit:cover;object-position:top;border-radius:6px;border:1px solid var(--panel-brd);flex:none;
+  box-shadow:0 8px 20px -10px rgba(0,0,0,.6)}
+.ab-cv .cvdl{font-size:.95rem;color:var(--txt);margin-top:3px;font-weight:600}
+html[data-theme="light"] .ab-cv{background:linear-gradient(135deg,rgba(124,58,237,.07),rgba(217,70,239,.05));border-color:rgba(162,28,175,.22)}
+@media(max-width:820px){
+  .about-wrap{grid-template-columns:1fr}
+  .about-card{position:static}
+}
